@@ -1,0 +1,600 @@
+{# ── expenses/form.html — Multi-step Expense Creation Flow ────────── #}
+{% extends "base.html" %}
+{% block title %}Create Expense — Campus Split{% endblock %}
+
+{% block breadcrumb %}
+  <a href="/expenses" class="text-ink-muted hover:text-ink transition-colors">Expenses</a>
+  <span class="text-ink-subtle mx-1">/</span>
+  <span class="font-body-md-strong text-body-md-strong text-ink">Create Expense</span>
+{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-[1120px] mx-auto py-space-md flex flex-col gap-space-lg"
+     x-data="expenseFlow({
+       currentUser: { id: {{ current_user.id }}, username: '{{ current_user.username }}' },
+       allStudents: [
+         {% for s in students %}
+           { id: {{ s.id }}, username: '{{ s.username }}' },
+         {% endfor %}
+       ],
+       groups: [
+         {% for g in groups %}
+           {
+             id: {{ g.id }},
+             name: '{{ g.name }}',
+             member_ids: [{% for m in g.members %}{{ m.user_id }}{% if not loop.last %},{% endif %}{% endfor %}]
+           },
+         {% endfor %}
+       ],
+       preselectedVendorId: {{ selected_vendor.id if selected_vendor else 'null' }}
+     })">
+
+  {# Page header & 3-step progress bar #}
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+    <div class="flex flex-col gap-space-xs">
+      <div class="flex items-center gap-space-sm">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-brand bg-brand-soft px-space-sm py-space-xs rounded-lg">New Ledger Entry</span>
+        <span class="font-body-sm text-body-sm text-ink-subtle">Split &amp; Settle</span>
+      </div>
+      <h1 class="font-headline-lg text-headline-lg text-ink">Create expense</h1>
+      <p class="font-body-md text-body-md text-ink-muted">Split a campus bill and set how each share is paid.</p>
+    </div>
+
+    {# 3-step progress pills #}
+    <div class="flex items-center bg-surface-muted p-space-xs rounded-xl shadow-sm" role="tablist">
+      <button type="button" @click="goToStep(1)"
+              :class="currentStep === 1 ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+              class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all">
+        <span class="w-5 h-5 rounded-full font-label-sm text-label-sm flex items-center justify-center"
+              :class="currentStep === 1 ? 'bg-brand text-on-primary' : 'bg-surface-container-high text-ink-muted'">1</span>
+        <span class="font-body-sm-strong text-body-sm-strong whitespace-nowrap">Expense details</span>
+      </button>
+      <span class="material-symbols-outlined text-[16px] text-ink-subtle mx-space-xs">chevron_right</span>
+      <button type="button" @click="goToStep(2)"
+              :class="currentStep === 2 ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+              class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all">
+        <span class="w-5 h-5 rounded-full font-label-sm text-label-sm flex items-center justify-center"
+              :class="currentStep === 2 ? 'bg-brand text-on-primary' : 'bg-surface-container-high text-ink-muted'">2</span>
+        <span class="font-body-sm-strong text-body-sm-strong whitespace-nowrap">Participants &amp; shares</span>
+      </button>
+      <span class="material-symbols-outlined text-[16px] text-ink-subtle mx-space-xs">chevron_right</span>
+      <button type="button" @click="goToStep(3)"
+              :class="currentStep === 3 ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+              class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all">
+        <span class="w-5 h-5 rounded-full font-label-sm text-label-sm flex items-center justify-center"
+              :class="currentStep === 3 ? 'bg-brand text-on-primary' : 'bg-surface-container-high text-ink-muted'">3</span>
+        <span class="font-body-sm-strong text-body-sm-strong whitespace-nowrap">Payment arrangement</span>
+      </button>
+    </div>
+  </div>
+
+  {# Error Banner #}
+  <div x-show="errorMessage" x-cloak
+       class="flex items-center gap-space-sm p-space-md bg-danger-soft border border-danger/20 rounded-xl text-danger">
+    <span class="material-symbols-outlined text-[18px]">error</span>
+    <span class="font-body-md-strong text-body-md-strong" x-text="errorMessage"></span>
+  </div>
+
+  {# Main 2-column layout #}
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+
+    {# Left Column: Multi-step Form #}
+    <div class="lg:col-span-7 bg-surface rounded-2xl border border-line shadow-sm p-space-lg flex flex-col gap-space-lg">
+
+      {# STEP 1: Expense details #}
+      <section x-show="currentStep === 1" class="flex flex-col gap-space-lg">
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-space-xs">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Step 01</span>
+            <h2 class="font-headline-md text-headline-md text-ink">Expense details</h2>
+          </div>
+          <span class="material-symbols-outlined text-[24px] text-brand bg-brand-soft p-space-sm rounded-xl">receipt_long</span>
+        </div>
+
+        <div class="flex flex-col gap-space-md">
+          {# Vendor Selector #}
+          <div class="flex flex-col gap-space-xs">
+            <label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vendor-select">
+              Campus Vendor <span class="text-danger">*</span>
+            </label>
+            <div class="relative flex items-center bg-surface-raised border border-line rounded-xl px-space-md h-11 shadow-sm">
+              <span class="material-symbols-outlined text-[20px] text-brand mr-space-sm">storefront</span>
+              <select id="vendor-select" x-model="selectedVendorId" @change="onVendorChange()"
+                      class="w-full bg-transparent font-body-md text-body-md text-ink focus:outline-none cursor-pointer">
+                <option value="" disabled>Select campus merchant…</option>
+                {% for v in vendors %}
+                <option value="{{ v.id }}" data-name="{{ v.name }}" data-upi="{{ v.upi_id }}" data-cat="{{ v.category }}">
+                  {{ v.name }} · {{ v.category }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          {# Description #}
+          <div class="flex flex-col gap-space-xs">
+            <label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="expense-title">
+              Expense title / Description <span class="text-danger">*</span>
+            </label>
+            <input type="text" id="expense-title" x-model="description"
+                   placeholder="e.g. Weekly laundry pickup, Lab prints"
+                   class="w-full h-11 px-space-md rounded-xl bg-surface-raised border border-line font-body-md text-body-md text-ink shadow-sm focus:outline-none focus:bg-surface focus:border-brand transition-colors">
+          </div>
+
+          {# Total Amount & Date #}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-space-xs">
+              <label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="total-amount">
+                Total amount (₹) <span class="text-danger">*</span>
+              </label>
+              <div class="flex items-center h-11 px-space-md rounded-xl bg-surface-raised border border-line shadow-sm focus-within:bg-surface focus-within:border-brand transition-colors">
+                <span class="font-body-md-strong text-body-md-strong text-ink-muted mr-space-xs">₹</span>
+                <input type="number" id="total-amount" x-model="totalAmount" @input="recalculate()"
+                       min="1" step="any" placeholder="210.00"
+                       class="w-full bg-transparent font-financial-amount-md text-financial-amount-md text-ink tabular-nums focus:outline-none">
+              </div>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="expense-date">Date</label>
+              <div class="flex items-center h-11 px-space-md rounded-xl bg-surface-raised border border-line shadow-sm">
+                <span class="material-symbols-outlined text-[18px] text-ink-muted mr-space-sm">calendar_today</span>
+                <input type="text" id="expense-date" x-model="expenseDate"
+                       class="w-full bg-transparent font-body-md text-body-md text-ink focus:outline-none">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {# STEP 2: Participants & shares #}
+      <section x-show="currentStep === 2" class="flex flex-col gap-space-lg" x-cloak>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-space-xs">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Step 02</span>
+            <h2 class="font-headline-md text-headline-md text-ink">Participants &amp; shares</h2>
+          </div>
+          <span class="material-symbols-outlined text-[24px] text-brand bg-brand-soft p-space-sm rounded-xl">group</span>
+        </div>
+
+        {# Group quick-select & Student selection #}
+        <div class="flex flex-col gap-space-sm">
+          <span class="font-body-sm-strong text-body-sm-strong text-ink-muted">Quick-select from groups:</span>
+          <div class="flex flex-wrap items-center gap-space-sm">
+            <template x-for="g in groups" :key="g.id">
+              <button type="button" @click="selectGroup(g)"
+                      :class="selectedGroupId === g.id ? 'bg-brand-soft text-brand border-brand' : 'bg-surface-muted text-ink-muted hover:text-ink border-transparent'"
+                      class="flex items-center gap-space-xs px-space-md py-1.5 rounded-xl border font-body-sm-strong text-body-sm-strong transition-all">
+                <span class="material-symbols-outlined text-[16px]">group</span>
+                <span x-text="g.name"></span>
+              </button>
+            </template>
+            <span x-show="groups.length === 0" class="font-body-sm text-body-sm text-ink-subtle">No saved groups. Select students below.</span>
+          </div>
+        </div>
+
+        {# Add student picker #}
+        <div class="flex flex-col gap-space-xs">
+          <label class="font-body-sm-strong text-body-sm-strong text-ink-muted">Add / Remove students:</label>
+          <div class="flex flex-wrap gap-2">
+            <template x-for="s in allStudents" :key="s.id">
+              <button type="button" @click="toggleParticipant(s)"
+                      :class="isParticipantSelected(s.id) ? 'bg-brand text-on-primary' : 'bg-surface-raised border border-line text-ink hover:bg-surface-muted'"
+                      class="px-3 py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]" x-text="isParticipantSelected(s.id) ? 'check' : 'person_add'"></span>
+                <span x-text="s.username + (s.id === currentUser.id ? ' (You)' : '')"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        {# Split Method Control #}
+        <div class="flex flex-col gap-space-xs">
+          <span class="font-body-sm-strong text-body-sm-strong text-ink-muted">Split method</span>
+          <div class="grid grid-cols-3 gap-space-xs bg-surface-muted p-space-xs rounded-xl border border-line">
+            <button type="button" @click="setSplitType('equal')"
+                    :class="splitType === 'equal' ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+                    class="py-space-sm rounded-lg font-body-sm-strong text-body-sm-strong transition-all">Equal</button>
+            <button type="button" @click="setSplitType('custom')"
+                    :class="splitType === 'custom' ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+                    class="py-space-sm rounded-lg font-body-sm-strong text-body-sm-strong transition-all">Custom Amount</button>
+            <button type="button" @click="setSplitType('percentage')"
+                    :class="splitType === 'percentage' ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+                    class="py-space-sm rounded-lg font-body-sm-strong text-body-sm-strong transition-all">Percentage</button>
+          </div>
+        </div>
+
+        {# Participant Share Rows #}
+        <div class="flex flex-col gap-space-sm">
+          <template x-for="(p, index) in participants" :key="p.user_id">
+            <div class="flex items-center justify-between px-space-md py-space-md rounded-xl bg-surface-raised border border-line gap-space-md">
+              <div class="flex items-center gap-space-md min-w-0">
+                <div class="w-9 h-9 rounded-full font-label-sm text-label-sm flex items-center justify-center shrink-0"
+                     :class="p.user_id === currentUser.id ? 'bg-brand text-on-primary' : 'bg-surface-container-high text-ink'"
+                     x-text="p.username.substring(0, 2).toUpperCase()"></div>
+                <div class="flex flex-col min-w-0">
+                  <span class="font-body-md-strong text-body-md-strong text-ink truncate"
+                        x-text="p.username + (p.user_id === currentUser.id ? ' (You)' : '')"></span>
+                  <span class="font-body-sm text-body-sm text-ink-muted"
+                        x-text="splitType === 'equal' ? (100 / participants.length).toFixed(1) + '% equal share' : (splitType === 'percentage' ? p.percentage + '%' : 'Custom allocation')"></span>
+                </div>
+              </div>
+
+              {# Input depending on split type #}
+              <div class="flex items-center gap-2 shrink-0">
+                <template x-if="splitType === 'equal'">
+                  <span class="font-body-md-strong text-body-md-strong text-ink tabular-nums text-right"
+                        x-text="'₹' + (p.amount_paise / 100).toFixed(2)"></span>
+                </template>
+
+                <template x-if="splitType === 'custom'">
+                  <div class="flex items-center h-9 px-2 rounded-lg bg-surface border border-line w-28">
+                    <span class="text-xs text-ink-muted mr-1">₹</span>
+                    <input type="number" step="any" min="0" x-model="p.custom_amount" @input="recalculate()"
+                           class="w-full text-right font-body-md-strong text-body-md-strong text-ink focus:outline-none tabular-nums">
+                  </div>
+                </template>
+
+                <template x-if="splitType === 'percentage'">
+                  <div class="flex items-center h-9 px-2 rounded-lg bg-surface border border-line w-24">
+                    <input type="number" step="any" min="0" max="100" x-model="p.percentage" @input="recalculate()"
+                           class="w-full text-right font-body-md-strong text-body-md-strong text-ink focus:outline-none tabular-nums">
+                    <span class="text-xs text-ink-muted ml-1">%</span>
+                  </div>
+                </template>
+
+                <button type="button" @click="removeParticipant(p.user_id)" x-show="participants.length > 1"
+                        class="p-1 text-ink-subtle hover:text-danger rounded" title="Remove">
+                  <span class="material-symbols-outlined text-[16px]">close</span>
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        {# Total Validation Bar #}
+        <div class="flex items-center justify-between px-space-md py-space-sm rounded-xl border"
+             :class="isTotalMatched() ? 'bg-success-soft text-success border-success/20' : 'bg-warning-soft text-warning border-warning/20'">
+          <div class="flex items-center gap-space-sm">
+            <span class="material-symbols-outlined text-[18px]" x-text="isTotalMatched() ? 'verified' : 'pending'"></span>
+            <span class="font-body-sm-strong text-body-sm-strong">
+              Allocated: <span class="tabular-nums" x-text="'₹' + (allocatedPaise() / 100).toFixed(2) + ' / ₹' + parseFloat(totalAmount || 0).toFixed(2)"></span>
+            </span>
+          </div>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider" x-text="isTotalMatched() ? 'Matched' : 'Discrepancy'"></span>
+        </div>
+      </section>
+
+      {# STEP 3: Payment arrangement #}
+      <section x-show="currentStep === 3" class="flex flex-col gap-space-lg" x-cloak>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col gap-space-xs">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Step 03</span>
+            <h2 class="font-headline-md text-headline-md text-ink">Payment arrangement</h2>
+          </div>
+          <span class="material-symbols-outlined text-[24px] text-brand bg-brand-soft p-space-sm rounded-xl">account_balance_wallet</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-ink-muted">
+          Choose how each participant's share is settled. Mixed arrangements are fully supported.
+        </p>
+
+        <div class="flex flex-col gap-space-md">
+          <template x-for="p in participants" :key="p.user_id">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-raised border border-line">
+              <div class="flex items-center gap-space-md">
+                <div class="w-9 h-9 rounded-full font-label-sm text-label-sm flex items-center justify-center shrink-0"
+                     :class="p.user_id === currentUser.id ? 'bg-brand text-on-primary' : 'bg-surface-container-high text-ink'"
+                     x-text="p.username.substring(0, 2).toUpperCase()"></div>
+                <div class="flex flex-col">
+                  <span class="font-body-md-strong text-body-md-strong text-ink"
+                        x-text="p.username + (p.user_id === currentUser.id ? ' (You)' : '')"></span>
+                  <span class="font-body-sm text-body-sm text-ink-muted tabular-nums"
+                        x-text="'Share: ₹' + (p.amount_paise / 100).toFixed(2)"></span>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-end gap-space-xs">
+                <select x-model="p.payment_route"
+                        class="h-10 px-space-md rounded-xl bg-surface border border-line font-body-sm-strong text-body-sm-strong text-ink shadow-sm focus:outline-none cursor-pointer">
+                  <option value="vendor">Pay vendor directly</option>
+                  <option value="covered" x-show="p.user_id !== currentUser.id">Covered by <span x-text="currentUser.username"></span></option>
+                  <option value="already_paid">Already paid to vendor</option>
+                </select>
+
+                {# Status tag #}
+                <template x-if="p.payment_route === 'vendor'">
+                  <span class="font-body-sm text-body-sm text-warning bg-warning-soft px-space-sm py-0.5 rounded-lg">Vendor payment due</span>
+                </template>
+                <template x-if="p.payment_route === 'covered'">
+                  <span class="font-body-sm text-body-sm text-brand bg-brand-soft px-space-sm py-0.5 rounded-lg">Creates peer debt</span>
+                </template>
+                <template x-if="p.payment_route === 'already_paid'">
+                  <span class="font-body-sm text-body-sm text-success bg-success-soft px-space-sm py-0.5 rounded-lg">Reported paid</span>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      {# Bottom Navigation Bar #}
+      <div class="flex items-center justify-between pt-space-md border-t border-line">
+        <div class="flex items-center gap-space-sm">
+          <a href="/expenses" x-show="currentStep === 1"
+             class="px-space-md py-space-sm rounded-xl bg-surface-muted text-ink font-body-md-strong text-body-md-strong hover:bg-surface-container-high transition-colors">
+            Cancel
+          </a>
+          <button type="button" @click="currentStep--" x-show="currentStep > 1" x-cloak
+                  class="px-space-md py-space-sm rounded-xl bg-surface-muted text-ink font-body-md-strong text-body-md-strong hover:bg-surface-container-high transition-colors">
+            Back
+          </button>
+        </div>
+
+        <div class="flex items-center gap-space-sm">
+          <button type="button" @click="nextStep()" x-show="currentStep < 3"
+                  class="px-space-lg py-space-sm rounded-xl bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-all active:scale-95 shadow-sm">
+            Continue
+          </button>
+          <button type="button" @click="submitExpense()" x-show="currentStep === 3" x-cloak :disabled="isSubmitting"
+                  class="px-space-lg py-space-sm rounded-xl bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-all active:scale-95 shadow-sm flex items-center gap-space-sm disabled:opacity-50">
+            <span class="material-symbols-outlined text-[18px]">check</span>
+            <span x-text="isSubmitting ? 'Creating...' : 'Create expense'"></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    {# Right Column: Sticky Live Review Card #}
+    <aside class="lg:col-span-5 lg:sticky lg:top-24 bg-surface rounded-2xl border border-line shadow-sm p-space-lg flex flex-col gap-space-lg">
+      <div class="flex items-start justify-between gap-space-md border-b border-line pb-space-md">
+        <div class="flex flex-col gap-space-xs">
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Expense summary</span>
+          <h3 class="font-headline-sm text-headline-sm text-ink" x-text="vendorName || 'Select a vendor'"></h3>
+          <p class="font-body-sm text-body-sm text-ink-muted" x-text="description || 'Untitled expense'"></p>
+        </div>
+        <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-brand-soft text-brand font-semibold"
+              x-text="splitType.toUpperCase()"></span>
+      </div>
+
+      {# Amounts summary #}
+      <div class="flex flex-col gap-2">
+        <div class="flex items-baseline justify-between">
+          <span class="font-body-md text-body-md text-ink-muted">Total Bill</span>
+          <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums"
+                x-text="'₹' + parseFloat(totalAmount || 0).toFixed(2)"></span>
+        </div>
+        <div class="flex items-center justify-between font-body-sm text-body-sm text-ink-subtle">
+          <span>Participants</span>
+          <span x-text="participants.length + ' students'"></span>
+        </div>
+      </div>
+
+      {# Live shares breakdown #}
+      <div class="flex flex-col gap-space-xs pt-space-sm border-t border-line">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Shares &amp; Arrangements</span>
+        <div class="flex flex-col divide-y divide-line/60">
+          <template x-for="p in participants" :key="p.user_id">
+            <div class="py-2 flex items-center justify-between text-body-sm">
+              <div class="flex items-center gap-1.5 min-w-0">
+                <span class="font-medium text-ink truncate" x-text="p.username"></span>
+                <span class="text-xs text-ink-subtle" x-show="p.payment_route === 'covered'">(Covered)</span>
+                <span class="text-xs text-success" x-show="p.payment_route === 'already_paid'">(Paid)</span>
+              </div>
+              <span class="font-semibold text-ink tabular-nums"
+                    x-text="'₹' + (p.amount_paise / 100).toFixed(2)"></span>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      {# Accounting Rule Callout #}
+      <div class="p-space-md rounded-xl bg-surface-raised border border-line text-body-sm text-ink-muted">
+        <div class="flex items-center gap-1 text-ink font-semibold mb-1">
+          <span class="material-symbols-outlined text-[16px] text-brand">info</span>
+          Financial Invariant
+        </div>
+        Direct vendor payments never create room peer debt. Only shares covered on behalf of others become peer balances.
+      </div>
+    </aside>
+
+  </div>
+
+</div>
+
+<script>
+function expenseFlow(config) {
+  return {
+    currentUser: config.currentUser,
+    allStudents: config.allStudents,
+    groups: config.groups,
+    currentStep: 1,
+    selectedVendorId: config.preselectedVendorId || '',
+    vendorName: '',
+    vendorUpi: '',
+    description: 'Laundry pickup',
+    totalAmount: '210',
+    expenseDate: 'Today',
+    selectedGroupId: null,
+    splitType: 'equal',
+    errorMessage: '',
+    isSubmitting: false,
+    participants: [],
+
+    init() {
+      // Default to currentUser + 2 other students for realistic preview
+      const otherStudents = this.allStudents.filter(s => s.id !== this.currentUser.id);
+      this.participants = [
+        { user_id: this.currentUser.id, username: this.currentUser.username, amount_paise: 7000, custom_amount: '70', percentage: '33.33', payment_route: 'vendor' }
+      ];
+      if (otherStudents.length >= 2) {
+        this.participants.push(
+          { user_id: otherStudents[0].id, username: otherStudents[0].username, amount_paise: 7000, custom_amount: '70', percentage: '33.33', payment_route: 'covered' },
+          { user_id: otherStudents[1].id, username: otherStudents[1].username, amount_paise: 7000, custom_amount: '70', percentage: '33.34', payment_route: 'already_paid' }
+        );
+      } else if (otherStudents.length === 1) {
+        this.participants.push(
+          { user_id: otherStudents[0].id, username: otherStudents[0].username, amount_paise: 10500, custom_amount: '105', percentage: '50', payment_route: 'covered' }
+        );
+      }
+
+      this.onVendorChange();
+      this.recalculate();
+    },
+
+    onVendorChange() {
+      const select = document.getElementById('vendor-select');
+      if (select && select.selectedOptions && select.selectedOptions[0]) {
+        this.vendorName = select.selectedOptions[0].getAttribute('data-name') || '';
+        this.vendorUpi = select.selectedOptions[0].getAttribute('data-upi') || '';
+      }
+    },
+
+    selectGroup(g) {
+      this.selectedGroupId = g.id;
+      const groupUsers = this.allStudents.filter(s => g.member_ids.includes(s.id));
+      if (groupUsers.length > 0) {
+        this.participants = groupUsers.map(u => ({
+          user_id: u.id,
+          username: u.username,
+          amount_paise: 0,
+          custom_amount: '0',
+          percentage: (100 / groupUsers.length).toFixed(2),
+          payment_route: u.id === this.currentUser.id ? 'vendor' : 'covered'
+        }));
+        this.recalculate();
+      }
+    },
+
+    isParticipantSelected(id) {
+      return this.participants.some(p => p.user_id === id);
+    },
+
+    toggleParticipant(s) {
+      if (this.isParticipantSelected(s.id)) {
+        if (this.participants.length > 1) {
+          this.participants = this.participants.filter(p => p.user_id !== s.id);
+        }
+      } else {
+        this.participants.push({
+          user_id: s.id,
+          username: s.username,
+          amount_paise: 0,
+          custom_amount: '0',
+          percentage: (100 / (this.participants.length + 1)).toFixed(2),
+          payment_route: s.id === this.currentUser.id ? 'vendor' : 'covered'
+        });
+      }
+      this.recalculate();
+    },
+
+    removeParticipant(id) {
+      if (this.participants.length > 1) {
+        this.participants = this.participants.filter(p => p.user_id !== id);
+        this.recalculate();
+      }
+    },
+
+    setSplitType(type) {
+      this.splitType = type;
+      this.recalculate();
+    },
+
+    recalculate() {
+      const totalPaise = Math.round(parseFloat(this.totalAmount || 0) * 100);
+      const n = this.participants.length;
+      if (n === 0 || totalPaise <= 0) return;
+
+      if (this.splitType === 'equal') {
+        const base = Math.floor(totalPaise / n);
+        const rem = totalPaise % n;
+        this.participants.forEach((p, idx) => {
+          p.amount_paise = idx < rem ? base + 1 : base;
+          p.custom_amount = (p.amount_paise / 100).toFixed(2);
+        });
+      } else if (this.splitType === 'percentage') {
+        this.participants.forEach((p) => {
+          const pct = parseFloat(p.percentage || 0);
+          p.amount_paise = Math.round(totalPaise * (pct / 100));
+        });
+      } else if (this.splitType === 'custom') {
+        this.participants.forEach((p) => {
+          p.amount_paise = Math.round(parseFloat(p.custom_amount || 0) * 100);
+        });
+      }
+    },
+
+    allocatedPaise() {
+      return this.participants.reduce((acc, p) => acc + (p.amount_paise || 0), 0);
+    },
+
+    isTotalMatched() {
+      const totalPaise = Math.round(parseFloat(this.totalAmount || 0) * 100);
+      return totalPaise > 0 && Math.abs(this.allocatedPaise() - totalPaise) === 0;
+    },
+
+    goToStep(step) {
+      if (step > 1 && (!this.selectedVendorId || !this.description || parseFloat(this.totalAmount || 0) <= 0)) {
+        this.errorMessage = 'Please complete vendor, description and total amount before continuing.';
+        return;
+      }
+      if (step > 2 && !this.isTotalMatched()) {
+        this.errorMessage = 'Shares must sum exactly to the expense total.';
+        return;
+      }
+      this.errorMessage = '';
+      this.currentStep = step;
+    },
+
+    nextStep() {
+      this.goToStep(this.currentStep + 1);
+    },
+
+    async submitExpense() {
+      if (!this.isTotalMatched()) {
+        this.errorMessage = 'Total shares do not match the expense amount.';
+        return;
+      }
+      this.isSubmitting = true;
+      this.errorMessage = '';
+
+      const payload = {
+        csrf_token: '{{ csrf_token }}',
+        vendor_id: this.selectedVendorId,
+        description: this.description,
+        total_amount: this.totalAmount,
+        split_type: this.splitType,
+        group_id: this.selectedGroupId,
+        participants: this.participants.map(p => ({
+          user_id: p.user_id,
+          custom_amount: (p.amount_paise / 100).toFixed(2),
+          percentage: p.percentage,
+          payment_route: p.payment_route,
+          covered_by_id: this.currentUser.id
+        }))
+      };
+
+      try {
+        const resp = await fetch('/expenses/new', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        const res = await resp.json();
+        if (resp.ok && res.redirect_url) {
+          window.location.href = res.redirect_url;
+        } else {
+          this.errorMessage = res.error || 'Failed to create expense';
+          this.isSubmitting = false;
+        }
+      } catch (err) {
+        this.errorMessage = 'Network error while submitting';
+        this.isSubmitting = false;
+      }
+    }
+  };
+}
+</script>
+{% endblock %}

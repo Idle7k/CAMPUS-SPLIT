@@ -1,0 +1,120 @@
+{# ── expenses/detail.html — Expense Detail View ────────────────────── #}
+{% extends "base.html" %}
+{% block title %}{{ expense.description }} — Campus Split{% endblock %}
+
+{% block breadcrumb %}
+  <a href="/expenses" class="text-ink-muted hover:text-ink transition-colors">Expenses</a>
+  <span class="text-ink-subtle mx-1">/</span>
+  <span class="font-body-md-strong text-body-md-strong text-ink truncate">{{ expense.description }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-space-lg flex flex-col gap-space-lg">
+
+  {# Back button #}
+  <a href="/expenses" class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-ink-muted hover:text-ink transition-colors">
+    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+    Back to expenses
+  </a>
+
+  {# Main Expense Header Card #}
+  <div class="bg-surface rounded-2xl border border-line shadow-sm p-space-lg flex flex-col gap-space-md">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md border-b border-line pb-space-md">
+      <div class="flex items-start gap-space-md min-w-0">
+        <div class="w-12 h-12 rounded-xl bg-brand-soft text-brand flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="font-headline-md text-headline-md text-ink truncate">{{ expense.description }}</h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm
+              {% if expense.status == 'settled' %}bg-success-soft text-success
+              {% elif expense.status == 'active' %}bg-brand-soft text-brand
+              {% else %}bg-surface-muted text-ink-muted{% endif %}">
+              {{ expense.status | capitalize }}
+            </span>
+          </div>
+          <p class="font-body-sm text-body-sm text-ink-muted mt-1">
+            Vendor: <a href="/vendors/{{ expense.vendor.id }}" class="text-brand hover:underline font-medium">{{ expense.vendor.name }}</a>
+            · Created by <span class="text-ink font-medium">{{ expense.creator.username }}</span>
+            · {{ expense.created_at.strftime('%d %b %Y, %I:%M %p') }}
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:items-end shrink-0">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Total Amount</span>
+        <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">
+          ₹{{ "%.2f"|format(expense.total_amount / 100) }}
+        </span>
+        <span class="font-body-sm text-body-sm text-ink-muted">Split: {{ expense.split_type | capitalize }}</span>
+      </div>
+    </div>
+
+    {# Split Participants Breakdown #}
+    <div>
+      <h3 class="font-headline-sm text-headline-sm text-ink mb-space-sm">Participant Shares &amp; Allocations</h3>
+      <div class="bg-surface-raised rounded-xl border border-line divide-y divide-line overflow-hidden">
+        {% for share in expense.shares %}
+        <div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+          <div class="flex items-center gap-space-md min-w-0">
+            <div class="w-9 h-9 rounded-full bg-brand-soft text-brand font-label-sm text-label-sm flex items-center justify-center shrink-0">
+              {{ share.user.username[:2].upper() }}
+            </div>
+            <div class="min-w-0">
+              <span class="font-body-md-strong text-body-md-strong text-ink">
+                {{ share.user.username }}
+                {% if share.user_id == current_user.id %}<span class="text-ink-muted font-normal">(You)</span>{% endif %}
+              </span>
+              <p class="font-body-sm text-body-sm text-ink-muted">
+                Status:
+                {% if share.status == 'paid' %}
+                  <span class="text-success font-medium">Covered / Paid</span>
+                {% elif share.status == 'partially_paid' %}
+                  <span class="text-warning font-medium">Partially Paid</span>
+                {% else %}
+                  <span class="text-warning font-medium">Unpaid (Vendor due)</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-space-md self-end sm:self-center">
+            <span class="font-financial-amount-md text-financial-amount-md text-ink tabular-nums">
+              ₹{{ "%.2f"|format(share.amount / 100) }}
+            </span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded font-label-sm text-label-sm
+              {% if share.status == 'paid' %}bg-success-soft text-success
+              {% else %}bg-warning-soft text-warning{% endif %}">
+              {{ share.status | capitalize }}
+            </span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# Payment Records / Timeline if any #}
+    {% if expense.payments %}
+    <div class="pt-space-md border-t border-line">
+      <h3 class="font-headline-sm text-headline-sm text-ink mb-space-sm">Payments &amp; Allocations</h3>
+      <div class="space-y-2">
+        {% for payment in expense.payments %}
+        <div class="p-space-sm rounded-lg bg-surface-muted text-body-sm flex items-center justify-between">
+          <div>
+            <span class="font-semibold text-ink">{{ payment.payer.username }}</span> paid
+            <span class="font-mono font-semibold">₹{{ "%.2f"|format(payment.amount / 100) }}</span> to
+            <span class="text-ink">{{ payment.vendor.name }}</span>
+            <span class="text-ink-subtle text-xs">({{ payment.status }})</span>
+          </div>
+          <span class="text-xs text-ink-muted">{{ payment.created_at.strftime('%d %b, %H:%M') }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+</div>
+{% endblock %}

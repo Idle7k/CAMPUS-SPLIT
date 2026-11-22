@@ -127,3 +127,69 @@ def test_browser_login_and_vendor_directory(live_server):
         assert "Sign In" in page.title()
 
         browser.close()
+
+
+def test_responsive_layouts_desktop_and_mobile(live_server):
+    """
+    Test responsive layouts at specified viewports:
+    - Desktop: 1440x900 (sidebar visible, mobile nav hidden, no overflow)
+    - Mobile: 390x844 (sidebar hidden, mobile nav visible, mobile bottom nav active)
+    """
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+
+        # ── 1. Desktop Viewport (1440 x 900) ─────────────────────────
+        desktop_page = browser.new_page(viewport={"width": 1440, "height": 900})
+        desktop_page.goto(f"{live_server}/login")
+        desktop_page.fill("#username", "admin")
+        desktop_page.fill("#password", "admin123")
+        desktop_page.click("button[type='submit']")
+        desktop_page.wait_for_url("**/dashboard")
+
+        # Sidebar must be visible on desktop
+        assert desktop_page.locator("aside").is_visible()
+        # Mobile bottom navigation must be hidden on desktop
+        assert not desktop_page.locator("nav.md\\:hidden").is_visible()
+
+        # Check navigation to Balances & Expenses
+        desktop_page.click("a[href='/balances']")
+        desktop_page.wait_for_url("**/balances")
+        assert "Balances" in desktop_page.title()
+
+        desktop_page.click("a[href='/expenses']")
+        desktop_page.wait_for_url("**/expenses")
+        assert "Expenses" in desktop_page.title()
+
+        # Verify no horizontal scroll overflow on desktop
+        scroll_width = desktop_page.evaluate("document.documentElement.scrollWidth")
+        client_width = desktop_page.evaluate("document.documentElement.clientWidth")
+        assert scroll_width <= client_width
+
+        desktop_page.close()
+
+        # ── 2. Mobile Viewport (390 x 844) ───────────────────────────
+        mobile_page = browser.new_page(viewport={"width": 390, "height": 844})
+        mobile_page.goto(f"{live_server}/login")
+        mobile_page.fill("#username", "admin")
+        mobile_page.fill("#password", "admin123")
+        mobile_page.click("button[type='submit']")
+        mobile_page.wait_for_url("**/dashboard")
+
+        # Desktop sidebar should NOT be visible
+        assert not mobile_page.locator("aside").is_visible()
+        # Mobile top header and bottom nav must be visible
+        assert mobile_page.locator("header.md\\:hidden").is_visible()
+        assert mobile_page.locator("nav.md\\:hidden").is_visible()
+
+        # Navigate using mobile bottom navigation to Vendors
+        mobile_page.locator("nav.md\\:hidden a[href='/vendors']").click()
+        mobile_page.wait_for_url("**/vendors")
+        assert "Vendors" in mobile_page.title()
+
+        # Verify no horizontal scroll overflow on mobile
+        m_scroll_width = mobile_page.evaluate("document.documentElement.scrollWidth")
+        m_client_width = mobile_page.evaluate("document.documentElement.clientWidth")
+        assert m_scroll_width <= m_client_width
+
+        mobile_page.close()
+        browser.close()

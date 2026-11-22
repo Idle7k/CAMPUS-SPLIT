@@ -1,190 +1,276 @@
+{# ── dashboard/index.html ─────────────────────────────────────────── #}
 {% extends "base.html" %}
+{% block title %}Dashboard — Overview — Campus Split{% endblock %}
 
-{% block title %}Dashboard — Campus Split{% endblock %}
-{% block page_title %}Student Overview{% endblock %}
+{% block breadcrumb %}
+  <span class="text-ink font-body-md-strong text-body-md-strong">Financial Overview</span>
+{% endblock %}
 
 {% block content %}
-<div class="space-y-6">
-
-    <!-- Phase 1 Architecture Banner -->
-    <div class="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div class="space-y-1">
-            <div class="flex items-center space-x-2">
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">
-                    Phase 1 Active
-                </span>
-                <span class="text-xs text-stone-600 font-mono">Models &bull; Authentication &bull; Vendor Management</span>
-            </div>
-            <h3 class="text-base font-semibold text-stone-900 tracking-tight">System Foundation Ready</h3>
-            <p class="text-xs text-stone-600 max-w-2xl">
-                Relational schema and role-based permissions are active. The balance cards below reflect clear zero placeholders pending the Phase 2/3 financial calculation engine. No transactions are fabricated.
-            </p>
-        </div>
-
-        <div class="shrink-0 flex items-center gap-3">
-            <a href="/vendors" class="cs-btn-secondary text-xs py-2 px-3.5">
-                Browse Vendors
-            </a>
-            <button type="button" 
-                    @click="alert('Expense splitting and share allocation will be unlocked in Phase 2!')"
-                    class="cs-btn-primary text-xs py-2 px-4 shadow-sm inline-flex items-center space-x-1.5">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Split an Expense</span>
-            </button>
-        </div>
+{# ── Page header ───────────────────────────────────────────────────── #}
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-lg">
+  <div class="flex flex-col min-w-0">
+    <div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle mb-1">
+      <span>Financial Overview</span>
     </div>
+    <div class="flex items-center gap-space-xs">
+      <h1 class="font-headline-lg text-headline-lg text-ink tracking-tight">Overview</h1>
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-brand-soft text-brand">
+        Semester 1 · System Foundation Ready
+      </span>
+    </div>
+    <p class="font-body-md text-body-md text-ink-muted mt-0.5">
+      Your campus expenses, all in one place.
+    </p>
+  </div>
+  <div class="flex items-center gap-space-sm flex-wrap">
+    <a href="/vendors"
+       class="inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-surface text-ink
+              font-body-md-strong text-body-md-strong shadow-sm hover:bg-surface-muted
+              transition-colors duration-150 border border-line">
+      <span class="material-symbols-outlined text-[20px] text-ink-muted">qr_code_scanner</span>
+      <span>Pay a vendor</span>
+    </a>
+    <a href="/expenses/new"
+       class="inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary
+              font-body-md-strong text-body-md-strong shadow-sm hover:bg-brand-hover
+              active:scale-[0.98] transition-all duration-150">
+      <span class="material-symbols-outlined text-[20px]">add_circle</span>
+      <span>Split an expense</span>
+    </a>
+  </div>
+</div>
 
-    <!-- Balance Distinction Cards (Mandatory 4 Concepts from AGENTS.md Section 6.6) -->
+{# ── 3 Financial summary cards (never merged) ─────────────────────── #}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-xl">
+
+  {# Card 1: People owe you (peer receivable) #}
+  <div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-success rounded-t-xl"></div>
     <div>
-        <div class="flex items-center justify-between mb-3 px-1">
-            <h4 class="text-xs font-semibold text-stone-600 uppercase tracking-wider">Financial Overview (Zero State)</h4>
-            <span class="text-[11px] text-stone-600 italic">Separate balances &bull; Never combined</span>
+      <div class="flex items-center justify-between gap-space-sm mb-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="w-2 h-2 rounded-full bg-success"></span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Assets</span>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- 1. Others Owe You (Peer Debt) -->
-            <div class="cs-card p-5">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-medium text-stone-600">Others Owe You</span>
-                    <span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-xs">
-                        &darr;
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
-                    <span class="inline-block mt-1 text-[11px] text-emerald-700 font-medium">Peer debts owed to you</span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
-                    <span>Engine Status</span>
-                    <span class="font-mono text-stone-600">Phase 3</span>
-                </div>
-            </div>
-
-            <!-- 2. You Owe Others (Peer Debt) -->
-            <div class="cs-card p-5">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-medium text-stone-600">You Owe Others</span>
-                    <span class="w-7 h-7 rounded-lg bg-stone-100 text-stone-600 flex items-center justify-center text-xs">
-                        &uarr;
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
-                    <span class="inline-block mt-1 text-[11px] text-stone-600 font-medium">Covered by peers</span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
-                    <span>Engine Status</span>
-                    <span class="font-mono text-stone-600">Phase 3</span>
-                </div>
-            </div>
-
-            <!-- 3. You Owe Vendors (Direct Liability) -->
-            <div class="cs-card p-5">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-medium text-stone-600">You Owe Vendors</span>
-                    <span class="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center text-xs">
-                        &bull;
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
-                    <span class="inline-block mt-1 text-[11px] text-amber-800 font-medium">Unpaid direct shares</span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
-                    <span>Engine Status</span>
-                    <span class="font-mono text-stone-600">Phase 2/3</span>
-                </div>
-            </div>
-
-            <!-- 4. Pending Vendor Payments -->
-            <div class="cs-card p-5">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-medium text-stone-600">Pending Payments</span>
-                    <span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-xs">
-                        &hellip;
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <div class="text-2xl font-bold text-stone-900 tracking-tight">0</div>
-                    <span class="inline-block mt-1 text-[11px] text-blue-800 font-medium">Awaiting confirmation</span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
-                    <span>Engine Status</span>
-                    <span class="font-mono text-stone-600">Phase 4</span>
-                </div>
-            </div>
+        <div class="w-9 h-9 rounded-lg bg-success-soft flex items-center justify-center text-success">
+          <span class="material-symbols-outlined text-[20px]">call_received</span>
         </div>
+      </div>
+      <h2 class="font-body-md-strong text-body-md-strong text-ink">People owe you</h2>
+      <div class="mt-2 flex items-baseline gap-space-xs">
+        {% if peer_receivable_paise is defined and peer_receivable_paise > 0 %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-success tabular-nums">
+            ₹{{ "%.2f"|format(peer_receivable_paise / 100) }}
+          </span>
+        {% else %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-ink-subtle tabular-nums">₹0.00</span>
+        {% endif %}
+      </div>
+      <p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+        {% if peer_receivable_paise is defined and peer_receivable_paise > 0 %}
+          Outstanding peer balances owed to you.
+        {% else %}
+          No one owes you anything right now.
+        {% endif %}
+      </p>
+    </div>
+    <div class="pt-space-md mt-space-md border-t border-line">
+      <a href="/balances" class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors">
+        <span>View peer balances</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  {# Card 2: You owe people (peer payable) #}
+  <div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-danger rounded-t-xl"></div>
+    <div>
+      <div class="flex items-center justify-between gap-space-sm mb-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="w-2 h-2 rounded-full bg-danger"></span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Liabilities</span>
+        </div>
+        <div class="w-9 h-9 rounded-lg bg-danger-soft flex items-center justify-center text-danger">
+          <span class="material-symbols-outlined text-[20px]">call_made</span>
+        </div>
+      </div>
+      <h2 class="font-body-md-strong text-body-md-strong text-ink">You owe people</h2>
+      <div class="mt-2 flex items-baseline gap-space-xs">
+        {% if peer_payable_paise is defined and peer_payable_paise > 0 %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-danger tabular-nums">
+            ₹{{ "%.2f"|format(peer_payable_paise / 100) }}
+          </span>
+        {% else %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-ink-subtle tabular-nums">₹0.00</span>
+        {% endif %}
+      </div>
+      <p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+        {% if peer_payable_paise is defined and peer_payable_paise > 0 %}
+          Outstanding peer debts you need to settle.
+        {% else %}
+          You have no outstanding peer debts.
+        {% endif %}
+      </p>
+    </div>
+    <div class="pt-space-md mt-space-md border-t border-line">
+      <a href="/balances" class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors">
+        <span>View peer balances</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  {# Card 3: Vendor payments due #}
+  <div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-warning rounded-t-xl"></div>
+    <div>
+      <div class="flex items-center justify-between gap-space-sm mb-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="w-2 h-2 rounded-full bg-warning"></span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Vendor Direct</span>
+        </div>
+        <div class="w-9 h-9 rounded-lg bg-warning-soft flex items-center justify-center text-warning">
+          <span class="material-symbols-outlined text-[20px]">storefront</span>
+        </div>
+      </div>
+      <h2 class="font-body-md-strong text-body-md-strong text-ink">Vendor payments due</h2>
+      <div class="mt-2 flex items-baseline gap-space-xs">
+        {% if vendor_due_paise is defined and vendor_due_paise > 0 %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">
+            ₹{{ "%.2f"|format(vendor_due_paise / 100) }}
+          </span>
+        {% else %}
+          <span class="font-financial-amount-lg text-financial-amount-lg text-ink-subtle tabular-nums">₹0.00</span>
+        {% endif %}
+      </div>
+      <p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+        {% if vendor_due_paise is defined and vendor_due_paise > 0 %}
+          Your share(s) owed directly to campus vendors.
+        {% else %}
+          No vendor shares outstanding.
+        {% endif %}
+      </p>
+    </div>
+    <div class="pt-space-md mt-space-md border-t border-line">
+      <a href="/balances" class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors">
+        <span>View vendor dues</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+{# ── Recent activity section ───────────────────────────────────────── #}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+
+  {# Recent expenses / activity #}
+  <div class="lg:col-span-2 bg-surface rounded-xl border border-line shadow-sm">
+    <div class="px-space-lg pt-space-lg pb-space-md border-b border-line flex items-center justify-between">
+      <h2 class="font-headline-sm text-headline-sm text-ink">Recent activity</h2>
+      <a href="/expenses" class="inline-flex items-center gap-1 font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors">
+        <span>All expenses</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </div>
 
-    <!-- Main Grid: Recent Activity & Campus Directory Shortcut -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Recent Activity (2 Cols) -->
-        <div class="lg:col-span-2 cs-card p-6 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
-                    <div>
-                        <h4 class="text-sm font-semibold text-stone-900">Recent Activity</h4>
-                        <p class="text-xs text-stone-600">Shared purchases, direct payments and peer settlements</p>
-                    </div>
-                    <span class="cs-badge-gray text-[11px]">Real data only</span>
-                </div>
-
-                <!-- Empty State (No fabricated data per AGENTS.md rule 9) -->
-                <div class="py-12 px-4 text-center">
-                    <div class="w-12 h-12 rounded-full bg-stone-100 text-stone-600 flex items-center justify-center mx-auto mb-3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                        </svg>
-                    </div>
-                    <h5 class="text-sm font-semibold text-stone-800">No Transaction History Yet</h5>
-                    <p class="text-xs text-stone-600 max-w-sm mx-auto mt-1">
-                        Phase 1 establishes the database schema and authentication. When expenses and payments are recorded in Phase 2–4, your full audit trail will display here.
-                    </p>
-                </div>
+    {% if recent_expenses is defined and recent_expenses %}
+      <ul class="divide-y divide-line">
+        {% for expense in recent_expenses %}
+        <li class="px-space-lg py-space-md hover:bg-surface-raised transition-colors">
+          <div class="flex items-center justify-between gap-space-sm">
+            <div class="flex items-center gap-space-md min-w-0">
+              <div class="w-9 h-9 rounded-lg bg-brand-soft flex items-center justify-center text-brand shrink-0">
+                <span class="material-symbols-outlined text-[20px]">receipt</span>
+              </div>
+              <div class="min-w-0">
+                <p class="font-body-md-strong text-body-md-strong text-ink truncate">{{ expense.description }}</p>
+                <p class="font-body-sm text-body-sm text-ink-muted">
+                  {{ expense.vendor.name }} · {{ expense.created_at.strftime('%d %b') }}
+                </p>
+              </div>
             </div>
-
-            <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-600">
-                <span>Direct vendor payments require zero peer collection</span>
-                <a href="/vendors" class="text-emerald-700 font-medium hover:underline">View Active Vendors &rarr;</a>
+            <div class="text-right shrink-0">
+              <p class="font-body-md-strong text-body-md-strong text-ink tabular-nums">
+                ₹{{ "%.2f"|format(expense.total_amount / 100) }}
+              </p>
+              <span class="inline-flex items-center px-1.5 py-0.5 rounded font-label-sm text-label-sm
+                {% if expense.status == 'active' %}bg-brand-soft text-brand
+                {% elif expense.status == 'settled' %}bg-success-soft text-success
+                {% else %}bg-surface-muted text-ink-muted{% endif %}">
+                {{ expense.status | capitalize }}
+              </span>
             </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      {# Empty state #}
+      <div class="flex flex-col items-center justify-center py-12 px-space-lg text-center">
+        <div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-[28px] text-ink-subtle">receipt_long</span>
         </div>
+        <h3 class="font-headline-sm text-headline-sm text-ink mb-1">No expenses yet</h3>
+        <p class="font-body-md text-body-md text-ink-muted max-w-xs">
+          Split your first campus expense with friends or a group.
+        </p>
+        <a href="/expenses/new"
+           class="mt-4 inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary
+                  font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-colors shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">add_circle</span>
+          Split an expense
+        </a>
+      </div>
+    {% endif %}
+  </div>
 
-        <!-- Campus Quick Info & Active Vendors Preview (1 Col) -->
-        <div class="cs-card p-6 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
-                    <h4 class="text-sm font-semibold text-stone-900">Campus Vendors</h4>
-                    <span class="text-xs text-stone-600 font-mono">{{ active_vendor_count }} Available</span>
-                </div>
-
-                <div class="mt-4 space-y-3">
-                    {% for vendor in sample_vendors %}
-                    <a href="/vendors/{{ vendor.id }}" class="block p-3 rounded-xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200/80 transition-colors">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-stone-900 truncate">{{ vendor.name }}</span>
-                            <span class="text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded bg-stone-200 text-stone-700">
-                                {{ vendor.category }}
-                            </span>
-                        </div>
-                        <div class="mt-1 text-[11px] text-stone-600 font-mono truncate">
-                            {{ vendor.upi_id }}
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="pt-4 mt-4 border-t border-stone-100">
-                <a href="/vendors" class="cs-btn-secondary w-full text-xs py-2">
-                    Open Full Vendor Directory
-                </a>
-            </div>
-        </div>
-
+  {# Quick access: Campus vendors #}
+  <div class="bg-surface rounded-xl border border-line shadow-sm flex flex-col">
+    <div class="px-space-lg pt-space-lg pb-space-md border-b border-line flex items-center justify-between">
+      <h2 class="font-headline-sm text-headline-sm text-ink">Campus vendors</h2>
+      <a href="/vendors" class="inline-flex items-center gap-1 font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors">
+        <span>All</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </div>
+
+    {% if sample_vendors %}
+      <ul class="divide-y divide-line flex-1">
+        {% for vendor in sample_vendors %}
+        <li>
+          <a href="/vendors/{{ vendor.id }}"
+             class="flex items-center gap-space-md px-space-lg py-space-md hover:bg-surface-raised transition-colors">
+            <div class="w-9 h-9 rounded-lg bg-brand-soft flex items-center justify-center text-brand shrink-0">
+              <span class="material-symbols-outlined text-[20px]">storefront</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-body-md-strong text-body-md-strong text-ink truncate">{{ vendor.name }}</p>
+              <p class="font-body-sm text-body-sm text-ink-muted truncate">{{ vendor.category }}</p>
+            </div>
+            <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded
+              {% if vendor.is_active %}bg-success-soft text-success{% else %}bg-surface-muted text-ink-muted{% endif %}">
+              {% if vendor.is_active %}Active{% else %}Inactive{% endif %}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="flex flex-col items-center justify-center py-8 px-space-lg text-center flex-1">
+        <span class="material-symbols-outlined text-[32px] text-ink-subtle mb-2">storefront</span>
+        <p class="font-body-sm text-body-sm text-ink-muted">No active vendors found.</p>
+      </div>
+    {% endif %}
+
+    <div class="p-space-md border-t border-line">
+      <p class="font-body-sm text-body-sm text-ink-muted text-center">
+        {{ active_vendor_count }} active campus vendor{% if active_vendor_count != 1 %}s{% endif %}
+      </p>
+    </div>
+  </div>
 
 </div>
 {% endblock %}

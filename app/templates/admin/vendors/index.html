@@ -1,114 +1,315 @@
+{# ── admin/vendors/index.html — Admin vendor management ───────────── #}
 {% extends "base.html" %}
+{% block title %}Manage Vendors — Campus Split{% endblock %}
 
-{% block title %}Admin — Vendor Management — Campus Split{% endblock %}
-{% block page_title %}Administrator Directory Console{% endblock %}
+{% block breadcrumb %}
+  <span class="text-ink-muted">Admin</span>
+  <span class="text-ink-subtle mx-1">/</span>
+  <span class="font-body-md-strong text-body-md-strong text-ink">Manage Vendors</span>
+{% endblock %}
 
 {% block content %}
-<div class="space-y-6">
 
-    <!-- Header Actions -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-            <div class="flex items-center space-x-2">
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-200">
-                    Administrator Restricted
-                </span>
-                <span class="text-xs text-stone-600 font-mono">Role: admin</span>
-            </div>
-            <h3 class="text-xl font-bold tracking-tight text-stone-900 mt-1">Campus Vendor Directory Management</h3>
-            <p class="text-xs text-stone-600">Add, configure, and maintain verified campus merchant payment accounts.</p>
-        </div>
-
-        <div class="shrink-0">
-            <a href="/admin/vendors/new" class="cs-btn-primary text-xs py-2 px-4 shadow-sm inline-flex items-center space-x-1.5">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Add New Vendor</span>
-            </a>
-        </div>
+{# ── Admin role banner ──────────────────────────────────────────────── #}
+<div class="mt-space-lg mb-space-lg rounded-xl bg-surface p-space-md border border-line shadow-sm flex items-center justify-between flex-wrap gap-space-md">
+  <div class="flex items-center gap-space-md min-w-0">
+    <div class="w-9 h-9 rounded-lg bg-brand-soft text-brand flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-[20px]">verified_user</span>
     </div>
-
-    <!-- Metric Badges -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="cs-card p-4">
-            <span class="text-xs font-medium text-stone-600">Total Configured</span>
-            <div class="mt-1 text-2xl font-bold text-stone-900">{{ vendors|length }}</div>
-        </div>
-        <div class="cs-card p-4">
-            <span class="text-xs font-medium text-stone-600">Active Campus Merchants</span>
-            <div class="mt-1 text-2xl font-bold text-emerald-700">
-                {{ vendors|selectattr('is_active')|list|length }}
-            </div>
-        </div>
-        <div class="cs-card p-4">
-            <span class="text-xs font-medium text-stone-600">Deactivated</span>
-            <div class="mt-1 text-2xl font-bold text-stone-600">
-                {{ vendors|rejectattr('is_active')|list|length }}
-            </div>
-        </div>
+    <div class="min-w-0">
+      <div class="flex items-center gap-space-sm">
+        <span class="font-body-md-strong text-body-md-strong text-ink">Campus Administrator Mode</span>
+        <span class="inline-flex items-center px-space-xs py-0.5 rounded font-label-sm text-[11px] bg-accent text-ink uppercase tracking-wider">Administrator Restricted</span>
+      </div>
+      <p class="font-body-sm text-body-sm text-ink-muted">Campus Vendor Directory Management · Configure verified merchant UPI details.</p>
     </div>
-
-    <!-- Vendors Table -->
-    <div class="cs-card overflow-hidden">
-        <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-stone-200 text-left text-xs">
-                <thead class="bg-stone-50 text-stone-600 uppercase font-semibold tracking-wider">
-                    <tr>
-                        <th scope="col" class="px-6 py-3.5">Vendor Name</th>
-                        <th scope="col" class="px-6 py-3.5">Category</th>
-                        <th scope="col" class="px-6 py-3.5">UPI ID (VPA)</th>
-                        <th scope="col" class="px-6 py-3.5">Status</th>
-                        <th scope="col" class="px-6 py-3.5 text-right">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-stone-200/80 bg-white">
-                    {% for v in vendors %}
-                    <tr class="hover:bg-stone-50/70 transition-colors">
-                        <td class="px-6 py-4">
-                            <div class="font-semibold text-stone-900 text-sm">{{ v.name }}</div>
-                            <div class="text-[11px] text-stone-600 truncate max-w-xs">{{ v.description or 'No description' }}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
-                                {{ v.category }}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap font-mono text-stone-800">
-                            {{ v.upi_id }}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {% if v.is_active %}
-                            <span class="cs-badge-green text-[10px]">Active</span>
-                            {% else %}
-                            <span class="cs-badge-gray text-[10px]">Inactive</span>
-                            {% endif %}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
-                            <a href="/admin/vendors/{{ v.id }}/edit" class="cs-btn-secondary text-xs py-1 px-2.5">
-                                Edit
-                            </a>
-                            
-                            <!-- Toggle Active/Inactive Form -->
-                            <form action="/admin/vendors/{{ v.id }}/toggle" method="POST" class="inline">
-                                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-                                <button type="submit" class="text-xs py-1 px-2.5 rounded-lg border font-medium transition-colors {% if v.is_active %}border-stone-200 text-stone-600 hover:bg-stone-100{% else %}border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100{% endif %}">
-                                    {% if v.is_active %}Deactivate{% else %}Activate{% endif %}
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="5" class="px-6 py-12 text-center text-stone-600">
-                            No vendors registered in database.
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-
+  </div>
+  <div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-muted text-ink-muted font-body-sm text-body-sm shrink-0">
+    <span class="w-2 h-2 rounded-full bg-success"></span>
+    <span>Local Demo Mode</span>
+  </div>
 </div>
+
+{# ── Page header + actions ──────────────────────────────────────────── #}
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+  <div>
+    <span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Admin Console</span>
+    <h1 class="font-headline-lg text-headline-lg text-ink tracking-tight mt-1">Manage Vendors</h1>
+    <p class="font-body-md text-body-md text-ink-muted mt-1">
+      Configure campus merchants, UPI IDs and active status.
+    </p>
+  </div>
+  <div class="flex items-center gap-space-sm flex-wrap">
+    <a href="/admin/vendors/new"
+       class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-brand text-on-primary
+              font-body-md-strong text-body-md-strong hover:bg-brand-hover active:scale-[0.98]
+              transition-all shadow-sm">
+      <span class="material-symbols-outlined text-[18px]">add</span>
+      Add New Vendor
+    </a>
+  </div>
+</div>
+
+{# ── Stats strip ────────────────────────────────────────────────────── #}
+{% set total = vendors | length %}
+{% set active_count = vendors | selectattr('is_active') | list | length %}
+{% set inactive_count = total - active_count %}
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-space-md mb-space-xl">
+  <div class="bg-surface p-space-md rounded-xl border border-line shadow-sm">
+    <div class="flex items-center justify-between mb-space-sm">
+      <span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Total Registered</span>
+      <span class="material-symbols-outlined text-[20px] text-ink-subtle">store</span>
+    </div>
+    <div class="flex items-baseline gap-2">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">{{ total }}</span>
+      <span class="font-body-sm text-body-sm text-ink-muted">vendor{% if total != 1 %}s{% endif %}</span>
+    </div>
+  </div>
+
+  <div class="bg-surface p-space-md rounded-xl border border-line shadow-sm">
+    <div class="flex items-center justify-between mb-space-sm">
+      <span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Active Outlets</span>
+      <span class="w-2.5 h-2.5 rounded-full bg-success ring-4 ring-success-soft"></span>
+    </div>
+    <div class="flex items-baseline gap-2">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">{{ active_count }}</span>
+      <span class="inline-flex items-center px-1.5 py-0.5 rounded font-label-sm text-[11px] bg-success-soft text-success">
+        {% if total > 0 %}{{ ((active_count / total) * 100) | int }}% operational{% endif %}
+      </span>
+    </div>
+  </div>
+
+  <div class="bg-surface p-space-md rounded-xl border border-line shadow-sm col-span-2 md:col-span-1">
+    <div class="flex items-center justify-between mb-space-sm">
+      <span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Inactive</span>
+      <span class="material-symbols-outlined text-[20px] text-warning">pause_circle</span>
+    </div>
+    <div class="flex items-baseline gap-2">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">{{ inactive_count }}</span>
+      {% if inactive_count > 0 %}
+      <span class="inline-flex items-center px-1.5 py-0.5 rounded font-label-sm text-[11px] bg-warning-soft text-warning">Inactive</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{# ── Flash / error message #}
+{% if error %}
+<div class="mb-space-lg flex items-center gap-space-sm p-space-md bg-danger-soft border border-danger/20 rounded-xl text-danger">
+  <span class="material-symbols-outlined text-[18px]">error</span>
+  <span class="font-body-md-strong text-body-md-strong">{{ error }}</span>
+</div>
+{% endif %}
+{% if success %}
+<div class="mb-space-lg flex items-center gap-space-sm p-space-md bg-success-soft border border-success/20 rounded-xl text-success">
+  <span class="material-symbols-outlined text-[18px]">check_circle</span>
+  <span class="font-body-md-strong text-body-md-strong">{{ success }}</span>
+</div>
+{% endif %}
+
+{# ── Vendor table ───────────────────────────────────────────────────── #}
+<div class="bg-surface rounded-xl border border-line shadow-sm overflow-hidden" x-data="adminVendors()">
+
+  {# Table filter bar #}
+  <div class="p-space-md border-b border-line flex flex-col sm:flex-row gap-space-md items-stretch sm:items-center justify-between bg-surface">
+    <div class="relative flex-1 max-w-md">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-ink-subtle">search</span>
+      <input type="text" x-model="searchQuery"
+             placeholder="Search vendor name or UPI ID…"
+             aria-label="Search vendors"
+             class="w-full pl-9 pr-3 py-2 font-body-md text-body-md rounded-lg bg-surface border border-line
+                    text-ink placeholder:text-ink-subtle focus:outline-none focus:border-brand focus:ring-2
+                    focus:ring-brand-soft transition-all">
+    </div>
+    <div class="flex items-center gap-space-sm">
+      <select x-model="statusFilter"
+              class="px-space-sm py-2 font-body-sm-strong text-body-sm-strong rounded-lg bg-surface border border-line
+                     text-ink focus:outline-none focus:border-brand cursor-pointer">
+        <option value="all">All Status</option>
+        <option value="active">Active only</option>
+        <option value="inactive">Inactive only</option>
+      </select>
+    </div>
+  </div>
+
+  {# Table (desktop) / Cards (mobile) #}
+  {% if vendors %}
+
+  {# Desktop table #}
+  <div class="hidden md:block overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-surface-raised border-b border-line">
+          <th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Vendor</th>
+          <th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">UPI ID</th>
+          <th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Category</th>
+          <th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle text-center">Status</th>
+          <th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-line" id="vendor-table-body">
+        {% for vendor in vendors %}
+        <tr class="vendor-row hover:bg-surface-raised transition-colors"
+            data-name="{{ vendor.name | lower }}"
+            data-upi="{{ vendor.upi_id | lower }}"
+            data-status="{{ 'active' if vendor.is_active else 'inactive' }}">
+          <td class="py-3.5 px-space-md">
+            <div class="flex items-center gap-space-sm">
+              {% set cat = vendor.category | lower %}
+              <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0
+                {% if 'food' in cat or 'canteen' in cat %}vendor-icon-food
+                {% elif 'laundry' in cat %}vendor-icon-laundry
+                {% elif 'print' in cat %}vendor-icon-printing
+                {% elif 'station' in cat %}vendor-icon-stationery
+                {% else %}vendor-icon-other{% endif %}">
+                <span class="material-symbols-outlined text-[20px]">
+                  {% if 'food' in cat or 'canteen' in cat %}restaurant
+                  {% elif 'laundry' in cat %}local_laundry_service
+                  {% elif 'print' in cat %}print
+                  {% elif 'station' in cat %}inventory_2
+                  {% else %}storefront{% endif %}
+                </span>
+              </div>
+              <div class="min-w-0">
+                <span class="font-body-md-strong text-body-md-strong text-ink block truncate">{{ vendor.name }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="py-3.5 px-space-md">
+            <div class="flex items-center gap-1.5">
+              <code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px]">{{ vendor.upi_id }}</code>
+              <button type="button"
+                      @click="$root.copyText('{{ vendor.upi_id }}')"
+                      class="text-ink-subtle hover:text-ink p-1 rounded transition-colors"
+                      aria-label="Copy UPI ID">
+                <span class="material-symbols-outlined text-[15px]">content_copy</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-3.5 px-space-md">
+            <span class="font-body-sm text-body-sm text-ink-muted">{{ vendor.category }}</span>
+          </td>
+          <td class="py-3.5 px-space-md text-center">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-sm text-[11px]
+              {% if vendor.is_active %}bg-success-soft text-success{% else %}bg-surface-muted text-ink-muted{% endif %}">
+              <span class="w-1.5 h-1.5 rounded-full {% if vendor.is_active %}bg-success{% else %}bg-ink-subtle{% endif %}"></span>
+              {% if vendor.is_active %}Active{% else %}Inactive{% endif %}
+            </span>
+          </td>
+          <td class="py-3.5 px-space-md text-right">
+            <div class="flex items-center justify-end gap-1">
+              <a href="/admin/vendors/{{ vendor.id }}/edit"
+                 class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors"
+                 title="Edit vendor">
+                <span class="material-symbols-outlined text-[18px]">edit</span>
+              </a>
+              <form method="POST" action="/admin/vendors/{{ vendor.id }}/toggle"
+                    onsubmit="return confirm('{% if vendor.is_active %}Deactivate{% else %}Activate{% endif %} {{ vendor.name }}?')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit"
+                        class="p-1.5 rounded hover:bg-surface-muted transition-colors
+                               {% if vendor.is_active %}text-warning hover:text-warning{% else %}text-success hover:text-success{% endif %}"
+                        title="{% if vendor.is_active %}Deactivate{% else %}Activate{% endif %}">
+                  <span class="material-symbols-outlined text-[18px]">
+                    {% if vendor.is_active %}pause_circle{% else %}play_circle{% endif %}
+                  </span>
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {# Mobile cards #}
+  <div class="md:hidden divide-y divide-line" id="vendor-mobile-list">
+    {% for vendor in vendors %}
+    <div class="vendor-row p-space-md"
+         data-name="{{ vendor.name | lower }}"
+         data-upi="{{ vendor.upi_id | lower }}"
+         data-status="{{ 'active' if vendor.is_active else 'inactive' }}">
+      <div class="flex items-start justify-between gap-space-md">
+        <div class="flex items-center gap-space-md min-w-0 flex-1">
+          {% set cat = vendor.category | lower %}
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0
+            {% if 'food' in cat or 'canteen' in cat %}vendor-icon-food
+            {% elif 'laundry' in cat %}vendor-icon-laundry
+            {% elif 'print' in cat %}vendor-icon-printing
+            {% elif 'station' in cat %}vendor-icon-stationery
+            {% else %}vendor-icon-other{% endif %}">
+            <span class="material-symbols-outlined text-[20px]">storefront</span>
+          </div>
+          <div class="min-w-0">
+            <p class="font-body-md-strong text-body-md-strong text-ink truncate">{{ vendor.name }}</p>
+            <p class="font-body-sm text-body-sm text-ink-muted">{{ vendor.category }}</p>
+            <code class="font-body-sm text-body-sm text-ink-muted font-mono">{{ vendor.upi_id }}</code>
+          </div>
+        </div>
+        <div class="flex flex-col items-end gap-space-sm shrink-0">
+          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-label-sm text-[11px]
+            {% if vendor.is_active %}bg-success-soft text-success{% else %}bg-surface-muted text-ink-muted{% endif %}">
+            {% if vendor.is_active %}Active{% else %}Inactive{% endif %}
+          </span>
+          <div class="flex items-center gap-1">
+            <a href="/admin/vendors/{{ vendor.id }}/edit"
+               class="p-1.5 rounded hover:bg-surface-muted text-ink-muted transition-colors">
+              <span class="material-symbols-outlined text-[18px]">edit</span>
+            </a>
+            <form method="POST" action="/admin/vendors/{{ vendor.id }}/toggle">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <button type="submit"
+                      class="p-1.5 rounded hover:bg-surface-muted transition-colors
+                             {% if vendor.is_active %}text-warning{% else %}text-success{% endif %}">
+                <span class="material-symbols-outlined text-[18px]">{% if vendor.is_active %}pause_circle{% else %}play_circle{% endif %}</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  {# Empty state #}
+  <div class="flex flex-col items-center justify-center py-16 text-center">
+    <div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center mb-4">
+      <span class="material-symbols-outlined text-[28px] text-ink-subtle">store</span>
+    </div>
+    <h3 class="font-headline-sm text-headline-sm text-ink mb-2">No vendors registered</h3>
+    <p class="font-body-md text-body-md text-ink-muted max-w-xs mb-4">Add your first campus vendor to the directory.</p>
+    <a href="/admin/vendors/new"
+       class="inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary
+              font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-colors shadow-sm">
+      <span class="material-symbols-outlined text-[18px]">add</span>
+      Add First Vendor
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  function adminVendors() {
+    return {
+      searchQuery: '',
+      statusFilter: 'all',
+      filterRows() {
+        const q = this.searchQuery.toLowerCase();
+        const s = this.statusFilter;
+        document.querySelectorAll('.vendor-row').forEach(row => {
+          const name = row.dataset.name || '';
+          const upi  = row.dataset.upi  || '';
+          const stat = row.dataset.status || '';
+          const matchSearch = !q || name.includes(q) || upi.includes(q);
+          const matchStatus = s === 'all' || stat === s;
+          row.style.display = (matchSearch && matchStatus) ? '' : 'none';
+        });
+      }
+    };
+  }
+</script>
+
 {% endblock %}

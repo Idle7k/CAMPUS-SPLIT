@@ -1,0 +1,138 @@
+/* Campus Split — Design System CSS
+   All design tokens from Stitch. Used alongside Tailwind CDN. */
+
+/* ── Base resets ─────────────────────────────────────────────────── */
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child  { margin-bottom: 0 !important; }
+  [x-cloak] { display: none !important; }
+  ::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+}
+
+/* ── Geist font application ──────────────────────────────────────── */
+body {
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tabular numerals for all financial values ───────────────────── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Focus ring (accessible, branded) ───────────────────────────── */
+:focus-visible {
+  outline: 2px solid #176B4B;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ── Smooth transitions (never use `transition: all`) ────────────── */
+.cs-transition {
+  transition: background-color 140ms ease-out,
+              border-color 140ms ease-out,
+              color 140ms ease-out,
+              opacity 140ms ease-out;
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Safe area for mobile bottom nav ────────────────────────────── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Category filter pill active state ──────────────────────────── */
+.category-pill.active,
+button.category-pill[aria-selected="true"] {
+  background-color: #176B4B;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* ── Monospace UPI IDs ───────────────────────────────────────────── */
+code, .font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+}
+
+/* ── Status badge helpers ────────────────────────────────────────── */
+.badge-success {
+  background-color: #E8F4EC;
+  color: #24784E;
+}
+.badge-warning {
+  background-color: #FFF3DE;
+  color: #9A5B13;
+}
+.badge-danger {
+  background-color: #FCECEC;
+  color: #B43F3F;
+}
+.badge-info {
+  background-color: #EAF2F8;
+  color: #356B91;
+}
+.badge-brand {
+  background-color: #E7F1EA;
+  color: #176B4B;
+}
+
+/* ── Top accent bar on summary cards ────────────────────────────── */
+.card-accent-success::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background-color: #24784E;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+.card-accent-danger::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background-color: #B43F3F;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+.card-accent-warning::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background-color: #9A5B13;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+/* ── Active nav indicator ────────────────────────────────────────── */
+.nav-link-active {
+  background-color: #E7F1EA;
+  color: #176B4B;
+  font-weight: 600;
+}
+.nav-link-active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* ── Vendor icon colors by category ─────────────────────────────── */
+.vendor-icon-food     { background-color: #FFF3DE; color: #9A5B13; }
+.vendor-icon-laundry  { background-color: #EAF2F8; color: #356B91; }
+.vendor-icon-printing { background-color: #E7F1EA; color: #176B4B; }
+.vendor-icon-stationery { background-color: #FCECEC; color: #B43F3F; }
+.vendor-icon-other    { background-color: #EEF1EA; color: #68746C; }
+
+/* ── Admin verification banner strip ────────────────────────────── */
+.admin-only-strip {
+  background: linear-gradient(90deg, #E7F1EA 0%, #FAFBF8 100%);
+  border-left: 3px solid #176B4B;
+}

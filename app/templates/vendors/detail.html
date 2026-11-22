@@ -1,69 +1,123 @@
+{# ── vendors/detail.html — Vendor detail page ─────────────────────── #}
 {% extends "base.html" %}
-
 {% block title %}{{ vendor.name }} — Campus Split{% endblock %}
-{% block page_title %}Vendor Profile{% endblock %}
+
+{% block breadcrumb %}
+  <a href="/vendors" class="text-ink-muted hover:text-ink transition-colors">Vendors</a>
+  <span class="text-ink-subtle mx-1">/</span>
+  <span class="font-body-md-strong text-body-md-strong text-ink truncate">{{ vendor.name }}</span>
+{% endblock %}
 
 {% block content %}
-<div class="max-w-3xl mx-auto space-y-6">
-    <div class="flex items-center space-x-2 text-xs text-stone-600">
-        <a href="/vendors" class="hover:text-stone-900 transition-colors">&larr; Back to Directory</a>
-        <span>/</span>
-        <span class="text-stone-900 font-medium">{{ vendor.name }}</span>
-    </div>
+{% set cat = vendor.category | lower %}
 
-    <div class="cs-card p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-stone-200">
+<div class="max-w-2xl mx-auto py-space-lg">
+
+  {# Back link #}
+  <a href="/vendors" class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-ink-muted hover:text-ink transition-colors mb-space-lg">
+    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+    Back to vendors
+  </a>
+
+  {# Vendor card #}
+  <div class="bg-surface rounded-xl border border-line shadow-sm overflow-hidden">
+
+    {# Header band #}
+    <div class="p-space-lg border-b border-line">
+      <div class="flex items-start gap-space-md">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 text-[28px]
+          {% if 'food' in cat or 'canteen' in cat or 'cafe' in cat %}vendor-icon-food
+          {% elif 'laundry' in cat %}vendor-icon-laundry
+          {% elif 'print' in cat %}vendor-icon-printing
+          {% elif 'station' in cat or 'store' in cat %}vendor-icon-stationery
+          {% else %}vendor-icon-other{% endif %}">
+          <span class="material-symbols-outlined">
+            {% if 'food' in cat or 'canteen' in cat or 'cafe' in cat %}restaurant
+            {% elif 'laundry' in cat %}local_laundry_service
+            {% elif 'print' in cat %}print
+            {% elif 'station' in cat or 'store' in cat %}inventory_2
+            {% else %}storefront{% endif %}
+          </span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-space-md flex-wrap">
             <div>
-                <div class="flex items-center space-x-2">
-                    <span class="inline-flex items-center text-xs font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
-                        {{ vendor.category }}
-                    </span>
-                    {% if vendor.is_active %}
-                    <span class="cs-badge-green text-xs">Active Campus Vendor</span>
-                    {% else %}
-                    <span class="cs-badge-amber text-xs">Inactive</span>
-                    {% endif %}
-                </div>
-                <h3 class="mt-3 text-2xl font-bold tracking-tight text-stone-900">{{ vendor.name }}</h3>
-                <p class="mt-2 text-sm text-stone-600 leading-relaxed">{{ vendor.description or 'No additional description provided.' }}</p>
+              <h1 class="font-headline-md text-headline-md text-ink tracking-tight">{{ vendor.name }}</h1>
+              <span class="font-body-md text-body-md text-ink-muted">{{ vendor.category }}</span>
             </div>
-
-            {% if current_user.role.value == 'admin' %}
-            <div class="shrink-0">
-                <a href="/admin/vendors/{{ vendor.id }}/edit" class="cs-btn-secondary text-xs py-2 px-3.5 inline-flex items-center space-x-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                    </svg>
-                    <span>Edit Vendor</span>
-                </a>
-            </div>
-            {% endif %}
+            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg font-label-sm text-label-sm shrink-0
+              {% if vendor.is_active %}bg-success-soft text-success{% else %}bg-surface-muted text-ink-muted{% endif %}">
+              <span class="w-2 h-2 rounded-full {% if vendor.is_active %}bg-success{% else %}bg-ink-subtle{% endif %}"></span>
+              {% if vendor.is_active %}Active{% else %}Inactive{% endif %}
+            </span>
+          </div>
+          {% if vendor.description %}
+          <p class="font-body-md text-body-md text-ink-muted mt-2 leading-relaxed">{{ vendor.description }}</p>
+          {% endif %}
         </div>
-
-        <div class="py-6 space-y-4">
-            <h4 class="text-xs font-semibold uppercase tracking-wider text-stone-600">Payment Destination</h4>
-            
-            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                    <span class="text-xs text-stone-600 block">Configured UPI Virtual Payment Address (VPA)</span>
-                    <span class="font-mono text-base font-bold text-stone-900 tracking-tight">{{ vendor.upi_id }}</span>
-                </div>
-                <button type="button" @click="navigator.clipboard.writeText('{{ vendor.upi_id }}'); alert('Copied {{ vendor.upi_id }} to clipboard!')" 
-                        class="cs-btn-secondary text-xs py-1.5 px-3 self-start sm:self-auto">
-                    Copy UPI ID
-                </button>
-            </div>
-
-            <div class="p-4 rounded-xl bg-stone-100/60 border border-stone-200/80 text-xs text-stone-600 space-y-1">
-                <div class="font-semibold text-stone-800">UPI Protocol Integration Boundary (Phase 4):</div>
-                <div>In Phase 4, selecting this vendor for a shared purchase will generate dynamic UPI QR codes and deep-link payment intents directly addressing <code class="font-mono text-stone-900 bg-white px-1 py-0.5 rounded">{{ vendor.upi_id }}</code>.</div>
-            </div>
-        </div>
-
-        <div class="pt-6 border-t border-stone-200 flex items-center justify-between">
-            <span class="text-xs text-stone-600">Verified by Campus Split Administration</span>
-            <a href="/vendors" class="cs-btn-secondary text-xs">Return to Directory</a>
-        </div>
+      </div>
     </div>
+
+    {# UPI ID section #}
+    <div class="p-space-lg border-b border-line">
+      <p class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle mb-space-sm">UPI Payment ID</p>
+      <div class="flex items-center gap-space-sm bg-surface-muted rounded-lg p-space-md border border-line">
+        <span class="material-symbols-outlined text-[20px] text-brand shrink-0">payments</span>
+        <code class="font-body-md-strong text-body-md-strong text-ink font-mono flex-1">{{ vendor.upi_id }}</code>
+        <button type="button"
+                @click="$root.copyText('{{ vendor.upi_id }}')"
+                class="flex items-center gap-1 px-2 py-1 rounded text-brand bg-brand-soft hover:bg-brand hover:text-on-primary transition-all font-label-sm text-label-sm shrink-0"
+                aria-label="Copy UPI ID">
+          <span class="material-symbols-outlined text-[15px]">content_copy</span>
+          Copy
+        </button>
+      </div>
+    </div>
+
+    {# Action buttons #}
+    {% if vendor.is_active %}
+    <div class="p-space-lg flex flex-col sm:flex-row gap-space-sm">
+      <a href="/expenses/new?vendor_id={{ vendor.id }}"
+         class="flex-1 flex items-center justify-center gap-space-xs py-3 px-space-md rounded-lg
+                bg-brand text-on-primary font-body-md-strong text-body-md-strong
+                hover:bg-brand-hover active:scale-[0.98] transition-all shadow-sm">
+        <span class="material-symbols-outlined text-[20px]">add_circle</span>
+        Split an expense here
+      </a>
+      <button type="button"
+              @click="$root.copyText('upi://pay?pa={{ vendor.upi_id }}&pn={{ vendor.name | urlencode }}&cu=INR')"
+              class="flex items-center justify-center gap-space-xs py-3 px-space-md rounded-lg
+                     bg-surface border border-line text-ink font-body-md-strong text-body-md-strong
+                     hover:bg-surface-muted transition-colors shadow-sm">
+        <span class="material-symbols-outlined text-[20px] text-ink-muted">qr_code_scanner</span>
+        Copy UPI link
+      </button>
+    </div>
+
+    {# Payment disclaimer #}
+    <div class="mx-space-lg mb-space-lg p-space-md bg-warning-soft rounded-xl border border-line">
+      <div class="flex items-start gap-space-sm">
+        <span class="material-symbols-outlined text-[18px] text-warning shrink-0 mt-0.5">info</span>
+        <div>
+          <p class="font-body-sm-strong text-body-sm-strong text-ink mb-0.5">Important</p>
+          <p class="font-body-sm text-body-sm text-ink-muted">
+            Generating a UPI link or scanning a QR does not confirm payment.
+            You must complete the payment in your UPI app. Use
+            <strong class="text-ink">"Record payment"</strong> to report it after completing.
+          </p>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="p-space-lg">
+      <div class="p-space-md bg-surface-muted rounded-xl border border-line text-center">
+        <span class="material-symbols-outlined text-[28px] text-ink-subtle block mb-2">pause_circle</span>
+        <p class="font-body-md-strong text-body-md-strong text-ink">Vendor currently inactive</p>
+        <p class="font-body-sm text-body-sm text-ink-muted mt-1">This vendor is not accepting payments at this time.</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
 </div>
 {% endblock %}

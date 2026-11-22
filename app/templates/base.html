@@ -1,110 +1,263 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Campus Split — Direct Campus Expense Sharing{% endblock %}</title>
-    
-    <!-- Tailwind CSS (Play CDN with fallback) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        stone: {
-                            50: '#FBFBFA',
-                            100: '#F7F7F5',
-                            200: '#E8E7E3',
-                            300: '#D5D4CE',
-                            400: '#A8A7A0',
-                            500: '#7B7A73',
-                            600: '#5C5B55',
-                            700: '#42413C',
-                            800: '#2A2926',
-                            900: '#181715',
-                        },
-                        emerald: {
-                            50: '#F0FDF4',
-                            100: '#DCFCE7',
-                            200: '#BBF7D0',
-                            600: '#16A34A',
-                            700: '#15803D',
-                            800: '#166534',
-                            900: '#14532D',
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Campus Split{% endblock %}</title>
+
+  <!-- Geist typeface -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN with Stitch design tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            canvas:          "#F5F6F1",
+            surface:         "#FFFFFF",
+            "surface-muted": "#EEF1EA",
+            "surface-raised":"#FAFBF8",
+            ink:             "#1B2821",
+            "ink-muted":     "#68746C",
+            "ink-subtle":    "#879188",
+            line:            "#DDE3DB",
+            brand:           "#176B4B",
+            "brand-hover":   "#12573D",
+            "brand-soft":    "#E7F1EA",
+            accent:          "#D6ED75",
+            success:         "#24784E",
+            "success-soft":  "#E8F4EC",
+            warning:         "#9A5B13",
+            "warning-soft":  "#FFF3DE",
+            danger:          "#B43F3F",
+            "danger-soft":   "#FCECEC",
+            info:            "#356B91",
+            "info-soft":     "#EAF2F8",
+            primary:         "#005136",
+            "on-primary":    "#ffffff",
+            "surface-container-high": "#e7e9e4",
+            "surface-container":      "#edeee9",
+            "surface-dim":            "#d9dad6",
+          },
+          spacing: {
+            "space-xs":  "0.25rem",
+            "space-sm":  "0.5rem",
+            "space-md":  "1rem",
+            "space-lg":  "1.5rem",
+            "space-xl":  "2rem",
+            "space-2xl": "2.5rem",
+            "space-3xl": "3rem",
+            "margin-desktop": "2rem",
+            "margin-tablet":  "1.5rem",
+            "gutter":         "1rem",
+            "gutter-desktop": "1.5rem",
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg:  "0.5rem",
+            xl:  "0.75rem",
+            "2xl": "1rem",
+            full:"9999px",
+          },
+          fontFamily: {
+            geist: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+          },
+          fontSize: {
+            "headline-lg":  ["30px", { lineHeight:"36px", letterSpacing:"-0.02em", fontWeight:"600" }],
+            "headline-md":  ["20px", { lineHeight:"28px", letterSpacing:"-0.01em", fontWeight:"600" }],
+            "headline-sm":  ["16px", { lineHeight:"24px", letterSpacing:"-0.005em", fontWeight:"600" }],
+            "headline-lg-mobile": ["24px", { lineHeight:"30px", letterSpacing:"-0.015em", fontWeight:"600" }],
+            "body-lg":      ["16px", { lineHeight:"24px", fontWeight:"400" }],
+            "body-md":      ["14px", { lineHeight:"20px", fontWeight:"400" }],
+            "body-md-strong":["14px",{ lineHeight:"20px", fontWeight:"600" }],
+            "body-sm":      ["12px", { lineHeight:"16px", fontWeight:"400" }],
+            "body-sm-strong":["12px",{ lineHeight:"16px", fontWeight:"500" }],
+            "label-md":     ["14px", { lineHeight:"20px", letterSpacing:"0.01em", fontWeight:"600" }],
+            "label-sm":     ["12px", { lineHeight:"16px", letterSpacing:"0.02em", fontWeight:"600" }],
+            "financial-amount-lg": ["30px", { lineHeight:"36px", letterSpacing:"-0.02em", fontWeight:"600" }],
+            "financial-amount-md": ["24px", { lineHeight:"32px", letterSpacing:"-0.01em", fontWeight:"600" }],
+          },
         }
-    </script>
+      }
+    };
+  </script>
 
-    <!-- Custom Project CSS -->
-    <link rel="stylesheet" href="/static/css/style.css">
+  <!-- Project CSS -->
+  <link rel="stylesheet" href="/static/css/campus-split.css">
 
-    <!-- Vendored Local HTMX & Alpine.js -->
-    <script src="/static/js/htmx.min.js"></script>
-    <script defer src="/static/js/alpine.min.js"></script>
+  <!-- HTMX -->
+  <script src="/static/js/htmx.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="/static/js/alpine.min.js"></script>
+
+  {% block head_extra %}{% endblock %}
 </head>
-<body class="h-full bg-stone-50 text-stone-900 font-sans antialiased" x-data="{ mobileNavOpen: false }">
+<body class="bg-canvas font-geist text-ink antialiased h-full" x-data="campusSplit()">
 
-    {% if current_user %}
-    <div class="min-h-full flex flex-col md:flex-row">
-        <!-- Sidebar Navigation (Desktop) -->
-        <aside class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 border-r border-stone-200 bg-white">
-            {% include "components/sidebar.html" %}
-        </aside>
+{% if current_user %}
+{# ── Authenticated layout ─────────────────────────────────────────── #}
 
-        <!-- Mobile Top Nav -->
-        <header class="md:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-stone-200 sticky top-0 z-30">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white font-bold text-sm tracking-tight shadow-sm">
-                    CS
-                </div>
-                <span class="font-semibold text-stone-900 text-base tracking-tight">Campus Split</span>
-            </div>
-            <button @click="mobileNavOpen = !mobileNavOpen" type="button" class="p-2 rounded-lg text-stone-600 hover:bg-stone-100 focus:outline-none" aria-label="Toggle Navigation">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path x-show="!mobileNavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    <path x-show="mobileNavOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </header>
+{# Desktop sidebar (hidden on mobile) #}
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-60 bg-surface border-r border-line z-50 flex-col justify-between">
+  {% include "components/sidebar.html" %}
+</aside>
 
-        <!-- Mobile Drawer -->
-        <div x-show="mobileNavOpen" x-cloak class="md:hidden fixed inset-0 z-40 bg-stone-900/50 backdrop-blur-sm" @click="mobileNavOpen = false"></div>
-        <div x-show="mobileNavOpen" x-cloak class="md:hidden fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl flex flex-col" @click.stop>
-            {% include "components/sidebar.html" %}
-        </div>
-
-        <!-- Main Workspace -->
-        <main class="flex-1 md:pl-64 flex flex-col min-h-screen">
-            <!-- Topbar Header -->
-            {% include "components/navbar.html" %}
-
-            <!-- Alerts Banner -->
-            {% include "components/alerts.html" %}
-
-            <!-- Page Content -->
-            <div class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
-                {% block content %}{% endblock %}
-            </div>
-
-            <!-- Footer -->
-            <footer class="mt-auto border-t border-stone-200/80 px-6 py-4 text-xs text-stone-600 flex flex-col sm:flex-row items-center justify-between gap-2 bg-stone-100/60">
-                <span>Campus Split &bull; Academic Local Evaluation Prototype</span>
-                <span class="text-stone-600">Phase 1: Foundation Active</span>
-            </footer>
-        </main>
+{# Desktop top bar #}
+<div class="hidden md:block pl-60">
+  <header class="fixed top-0 left-60 right-0 h-16 bg-surface border-b border-line z-40 px-margin-desktop flex items-center justify-between">
+    <div class="flex items-center gap-space-sm text-body-md">
+      {% block breadcrumb %}
+        <span class="text-ink-muted">Campus Split</span>
+      {% endblock %}
     </div>
-    {% else %}
-    <!-- Public / Auth Layout -->
-    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-stone-50">
-        {% include "components/alerts.html" %}
-        {% block auth_content %}{% endblock %}
+    <div class="flex items-center gap-space-md">
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+      </div>
     </div>
-    {% endif %}
+  </header>
+</div>
 
-    {% block scripts %}{% endblock %}
+{# Mobile top bar #}
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface border-b border-line">
+  <div class="h-14 px-gutter flex items-center justify-between gap-space-sm">
+    <div class="flex items-center gap-space-sm min-w-0">
+      <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary text-[20px]">receipt_long</span>
+      </div>
+      <div class="flex flex-col min-w-0">
+        <span class="font-headline-sm text-headline-sm text-ink tracking-tight leading-none truncate">Campus Split</span>
+        <span class="font-label-sm text-label-sm text-ink-muted leading-none mt-0.5 truncate">{{ current_user.username }}</span>
+      </div>
+    </div>
+    <button @click="mobileMenuOpen = !mobileMenuOpen" type="button"
+            class="p-space-xs rounded-lg text-ink-muted hover:bg-surface-muted transition-colors"
+            aria-label="Open menu">
+      <span class="material-symbols-outlined text-[22px]" x-text="mobileMenuOpen ? 'close' : 'menu'">menu</span>
+    </button>
+  </div>
+</header>
+
+{# Mobile slide-in menu #}
+<div x-show="mobileMenuOpen" x-cloak
+     class="md:hidden fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm"
+     @click="mobileMenuOpen = false"></div>
+<div x-show="mobileMenuOpen" x-cloak
+     x-transition:enter="transition ease-out duration-200"
+     x-transition:enter-start="-translate-x-full"
+     x-transition:enter-end="translate-x-0"
+     x-transition:leave="transition ease-in duration-150"
+     x-transition:leave-start="translate-x-0"
+     x-transition:leave-end="-translate-x-full"
+     class="md:hidden fixed inset-y-0 left-0 z-50 w-60 bg-surface flex flex-col justify-between shadow-xl">
+  {% include "components/sidebar.html" %}
+</div>
+
+{# Main content area #}
+<main class="md:pl-60 flex flex-col min-h-screen">
+  {# Desktop spacer for fixed topbar #}
+  <div class="hidden md:block h-16 shrink-0"></div>
+  {# Mobile spacer for fixed topbar #}
+  <div class="md:hidden h-14 shrink-0"></div>
+
+  {# Flash messages #}
+  {% if request.session.get('flash') %}
+  <div class="px-4 md:px-margin-desktop pt-4">
+    {% set flash = request.session.pop('flash', None) %}
+    {% if flash %}
+    <div class="flex items-center gap-space-sm p-space-md rounded-xl border
+      {% if flash.type == 'success' %}bg-success-soft border-success/20 text-success
+      {% elif flash.type == 'error' %}bg-danger-soft border-danger/20 text-danger
+      {% else %}bg-brand-soft border-brand/20 text-brand{% endif %}">
+      <span class="material-symbols-outlined text-[20px]">
+        {% if flash.type == 'success' %}check_circle{% elif flash.type == 'error' %}error{% else %}info{% endif %}
+      </span>
+      <span class="font-body-md-strong text-body-md-strong">{{ flash.message }}</span>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  {# Page content block #}
+  <div class="flex-1 w-full bg-canvas px-4 md:px-margin-desktop pb-space-3xl pt-space-lg {% block content_class %}{% endblock %}">
+    {% block content %}{% endblock %}
+  </div>
+
+  {# Mobile bottom nav #}
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface border-t border-line pb-safe">
+    <div class="grid grid-cols-4 h-16">
+      {% set mobile_nav = [
+        ('dashboard', '/dashboard', 'dashboard', 'Overview'),
+        ('expenses',  '/expenses',  'receipt',   'Expenses'),
+        ('balances',  '/balances',  'account_balance_wallet', 'Balances'),
+        ('vendors',   '/vendors',   'storefront', 'Vendors'),
+      ] %}
+      {% for page, href, icon, label in mobile_nav %}
+      <a href="{{ href }}"
+         class="flex flex-col items-center justify-center gap-0.5 transition-colors
+                {% if active_page == page %}text-brand{% else %}text-ink-muted hover:text-ink{% endif %}">
+        <span class="material-symbols-outlined text-[22px]"
+              style="{% if active_page == page %}font-variation-settings:'FILL' 1;{% endif %}">{{ icon }}</span>
+        <span class="font-label-sm text-label-sm">{{ label }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </nav>
+
+  {# Bottom spacer on mobile so content doesn't go under bottom nav #}
+  <div class="md:hidden h-16 shrink-0"></div>
+</main>
+
+{% else %}
+{# ── Public / Auth layout ─────────────────────────────────────────── #}
+<div class="min-h-full flex flex-col items-center justify-center py-12 px-4 bg-canvas">
+  {% block auth_content %}{% endblock %}
+</div>
+{% endif %}
+
+{# Global toast notification #}
+<div id="toast"
+     x-show="toastVisible"
+     x-cloak
+     x-transition:enter="transition ease-out duration-200"
+     x-transition:enter-start="opacity-0 translate-y-2"
+     x-transition:enter-end="opacity-100 translate-y-0"
+     x-transition:leave="transition ease-in duration-150"
+     x-transition:leave-start="opacity-100 translate-y-0"
+     x-transition:leave-end="opacity-0 translate-y-2"
+     class="fixed bottom-6 right-6 z-[100] flex items-center gap-space-sm bg-ink text-surface px-space-md py-space-sm rounded-xl shadow-xl">
+  <span class="material-symbols-outlined text-[18px] text-accent">check_circle</span>
+  <span class="font-body-sm-strong text-body-sm-strong" x-text="toastMessage"></span>
+</div>
+
+{% block scripts %}{% endblock %}
+
+<script>
+  function campusSplit() {
+    return {
+      mobileMenuOpen: false,
+      toastVisible: false,
+      toastMessage: '',
+      showToast(msg, duration = 3000) {
+        this.toastMessage = msg;
+        this.toastVisible = true;
+        setTimeout(() => { this.toastVisible = false; }, duration);
+      },
+      copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          this.showToast('Copied to clipboard');
+        });
+      }
+    };
+  }
+</script>
 </body>
 </html>

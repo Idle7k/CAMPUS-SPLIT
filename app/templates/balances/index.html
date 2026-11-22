@@ -1,0 +1,174 @@
+{# ── balances/index.html — Balances page ──────────────────────────── #}
+{% extends "base.html" %}
+{% block title %}Balances — Campus Split{% endblock %}
+
+{% block breadcrumb %}
+  <span class="font-body-md-strong text-body-md-strong text-ink">Balances</span>
+{% endblock %}
+
+{% block content %}
+
+{# Page header #}
+<div class="pt-space-lg pb-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+  <div class="flex flex-col gap-space-xs">
+    <div class="flex items-center gap-space-xs">
+      <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Finances &amp; Ledgers</span>
+    </div>
+    <h1 class="font-headline-lg text-headline-lg text-ink tracking-tight">Balances</h1>
+    <p class="font-body-md text-body-md text-ink-muted max-w-2xl">
+      Track what you owe and what you're owed — vendor payments and peer debts are always separate.
+    </p>
+  </div>
+</div>
+
+{# Dual-ledger explanation banner #}
+<div class="mb-space-lg rounded-xl bg-surface-raised p-space-md shadow-sm flex items-start gap-space-md border border-line">
+  <div class="w-8 h-8 rounded-lg bg-brand-soft flex items-center justify-center text-brand flex-shrink-0 mt-0.5">
+    <span class="material-symbols-outlined text-[20px]">account_balance</span>
+  </div>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm w-full">
+    <div>
+      <h4 class="font-body-md-strong text-body-md-strong text-ink">Zero Peer Debt on Direct Vendor Payments</h4>
+      <p class="font-body-sm text-body-sm text-ink-muted mt-0.5">
+        Paying a campus vendor directly clears your personal share without creating peer balances.
+        Vendor obligations and peer debts remain forever separate.
+      </p>
+    </div>
+    <div class="flex-shrink-0">
+      <span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-brand px-2.5 py-1 rounded-md bg-brand-soft">
+        <span class="material-symbols-outlined text-[14px]">verified_user</span> Dual-Ledger System
+      </span>
+    </div>
+  </div>
+</div>
+
+{# 3 Summary cards #}
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-xl">
+
+  {# People owe you #}
+  <div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-success rounded-t-xl"></div>
+    <div class="flex items-start justify-between mb-space-md">
+      <div>
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Receivable</span>
+        <h3 class="font-headline-sm text-headline-sm text-ink mt-space-xs">People owe you</h3>
+      </div>
+      <div class="w-10 h-10 rounded-lg bg-success-soft flex items-center justify-center text-success">
+        <span class="material-symbols-outlined text-[22px]">call_received</span>
+      </div>
+    </div>
+    <div class="flex items-baseline gap-space-xs">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-success tabular-nums">
+        ₹{{ "%.2f"|format((peer_receivable_paise or 0) / 100) }}
+      </span>
+    </div>
+    <div class="mt-space-md pt-space-sm border-t border-line font-body-sm text-body-sm text-ink-muted">
+      Outstanding peer balances owed to you.
+    </div>
+  </div>
+
+  {# You owe people #}
+  <div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-danger rounded-t-xl"></div>
+    <div class="flex items-start justify-between mb-space-md">
+      <div>
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Payable</span>
+        <h3 class="font-headline-sm text-headline-sm text-ink mt-space-xs">You owe people</h3>
+      </div>
+      <div class="w-10 h-10 rounded-lg bg-danger-soft flex items-center justify-center text-danger">
+        <span class="material-symbols-outlined text-[22px]">call_made</span>
+      </div>
+    </div>
+    <div class="flex items-baseline gap-space-xs">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-danger tabular-nums">
+        ₹{{ "%.2f"|format((peer_payable_paise or 0) / 100) }}
+      </span>
+    </div>
+    <div class="mt-space-md pt-space-sm border-t border-line font-body-sm text-body-sm text-ink-muted">
+      Outstanding peer debts you need to settle.
+    </div>
+  </div>
+
+  {# Vendor payments due #}
+  <div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-warning rounded-t-xl"></div>
+    <div class="flex items-start justify-between mb-space-md">
+      <div>
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Vendor Direct</span>
+        <h3 class="font-headline-sm text-headline-sm text-ink mt-space-xs">Campus Vendors</h3>
+      </div>
+      <div class="w-10 h-10 rounded-lg bg-warning-soft flex items-center justify-center text-warning">
+        <span class="material-symbols-outlined text-[22px]">storefront</span>
+      </div>
+    </div>
+    <div class="flex items-baseline gap-space-xs">
+      <span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">
+        ₹{{ "%.2f"|format((vendor_due_paise or 0) / 100) }}
+      </span>
+    </div>
+    <div class="mt-space-md pt-space-sm border-t border-line font-body-sm text-body-sm text-ink-muted">
+      Your share(s) owed directly to vendors.
+    </div>
+  </div>
+
+</section>
+
+{# Tabbed ledger view #}
+<div x-data="{ activeTab: 'peers' }">
+
+  {# Tab switcher #}
+  <div class="flex items-center gap-space-xs p-1 bg-surface-muted rounded-xl mb-space-lg inline-flex">
+    <button @click="activeTab = 'peers'"
+            :class="activeTab === 'peers' ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+            class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong transition-all">
+      <span class="material-symbols-outlined text-[18px]">group</span>
+      Peer Balances
+    </button>
+    <button @click="activeTab = 'vendors'"
+            :class="activeTab === 'vendors' ? 'bg-surface text-ink shadow-sm' : 'text-ink-muted hover:text-ink'"
+            class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong transition-all">
+      <span class="material-symbols-outlined text-[18px]">storefront</span>
+      Vendor Payments
+    </button>
+  </div>
+
+  {# Peer balances tab #}
+  <div x-show="activeTab === 'peers'" x-cloak>
+    <div class="bg-surface rounded-xl border border-line shadow-sm flex flex-col items-center justify-center py-16 text-center">
+      <div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-[28px] text-ink-subtle">group</span>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-ink mb-2">Peer balances</h3>
+      <p class="font-body-md text-body-md text-ink-muted max-w-sm">
+        Peer debts appear here when one student covers another's share. No expenses have been split yet.
+      </p>
+      <a href="/expenses/new"
+         class="mt-4 inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary
+                font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-colors shadow-sm">
+        <span class="material-symbols-outlined text-[18px]">add_circle</span>
+        Split an expense
+      </a>
+    </div>
+  </div>
+
+  {# Vendor payments tab #}
+  <div x-show="activeTab === 'vendors'" x-cloak>
+    <div class="bg-surface rounded-xl border border-line shadow-sm flex flex-col items-center justify-center py-16 text-center">
+      <div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-[28px] text-ink-subtle">receipt_long</span>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-ink mb-2">Vendor payments</h3>
+      <p class="font-body-md text-body-md text-ink-muted max-w-sm">
+        Unpaid vendor shares from expenses you've been added to will appear here.
+      </p>
+      <a href="/vendors"
+         class="mt-4 inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary
+                font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-colors shadow-sm">
+        <span class="material-symbols-outlined text-[18px]">storefront</span>
+        Browse vendors
+      </a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

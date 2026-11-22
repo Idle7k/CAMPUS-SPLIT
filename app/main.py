@@ -12,6 +12,7 @@ from app.routers import (
     dashboard_router,
     vendors_router,
     admin_vendors_router,
+    expenses_router,
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -113,5 +114,6 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
 # 5. Include Application Routers
 app.include_router(auth_router)
 app.include_router(dashboard_router)
+app.include_router(expenses_router)
 app.include_router(vendors_router)
 app.include_router(admin_vendors_router)

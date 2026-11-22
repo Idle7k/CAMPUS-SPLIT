@@ -1,102 +1,206 @@
+{# ── vendors/index.html — Student vendor directory ────────────────── #}
 {% extends "base.html" %}
+{% block title %}Campus Vendors — Directory — Campus Split{% endblock %}
 
-{% block title %}Campus Vendors — Campus Split{% endblock %}
-{% block page_title %}Campus Vendor Directory{% endblock %}
+{% block breadcrumb %}
+  <span class="text-ink font-body-md-strong text-body-md-strong">Vendors</span>
+{% endblock %}
 
 {% block content %}
-<div class="space-y-6" x-data="{
-    search: '',
-    selectedCategory: 'all',
-    matches(name, category, desc) {
-        const q = this.search.toLowerCase();
-        const catMatch = this.selectedCategory === 'all' || category.toLowerCase() === this.selectedCategory.toLowerCase();
-        const searchMatch = !q || name.toLowerCase().includes(q) || desc.toLowerCase().includes(q) || category.toLowerCase().includes(q);
-        return catMatch && searchMatch;
-    }
-}">
-    <!-- Header with description -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-            <h3 class="text-xl font-bold tracking-tight text-stone-900">Official Campus Directory</h3>
-            <p class="text-xs text-stone-600 mt-1">
-                Verified campus vendors configured for direct student UPI payments and expense attribution.
-            </p>
-        </div>
 
-        {% if current_user.role.value == 'admin' %}
-        <div class="shrink-0">
-            <a href="/admin/vendors/new" class="cs-btn-primary text-xs py-2 px-3.5 inline-flex items-center space-x-1.5">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Add New Vendor</span>
-            </a>
-        </div>
-        {% endif %}
+{# ── Page header ────────────────────────────────────────────────────── #}
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md py-space-lg mb-space-md">
+  <div>
+    <div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle mb-space-xs">
+      <span>Campus Workspace</span>
+      <span>·</span>
+      <span>Verified Merchant Registry</span>
+      <span>·</span>
+      <span>Official Campus Directory</span>
     </div>
-
-    <!-- Filter and Search Controls -->
-    <div class="cs-card p-4 flex flex-col sm:flex-row gap-3 items-center justify-between">
-        <div class="w-full sm:w-72 relative">
-            <input type="text" x-model="search" placeholder="Search by vendor name or item..." 
-                   class="cs-input pl-9 text-xs">
-            <svg class="w-4 h-4 text-stone-600 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-        </div>
-
-        <div class="w-full sm:w-auto flex items-center space-x-2">
-            <span class="text-xs text-stone-600 font-medium">Category:</span>
-            <select x-model="selectedCategory" class="cs-input text-xs py-1.5 px-3 w-full sm:w-auto">
-                <option value="all">All Categories</option>
-                {% for category in categories %}
-                <option value="{{ category }}">{{ category }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-
-    <!-- Vendor Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {% for vendor in vendors %}
-        <div class="cs-card cs-card-hover p-5 flex flex-col justify-between"
-             x-show="matches('{{ vendor.name|escape }}', '{{ vendor.category|escape }}', '{{ (vendor.description or '')|escape }}')"
-             x-transition>
-            <div>
-                <div class="flex items-start justify-between gap-2">
-                    <span class="inline-flex items-center text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
-                        {{ vendor.category }}
-                    </span>
-                    <span class="cs-badge-green text-[10px]">Active</span>
-                </div>
-
-                <h4 class="mt-3 text-base font-bold text-stone-900">{{ vendor.name }}</h4>
-                <p class="mt-1 text-xs text-stone-600 leading-relaxed min-h-[2.5rem]">
-                    {{ vendor.description or 'Official campus vendor for student transactions.' }}
-                </p>
-            </div>
-
-            <div class="mt-5 pt-4 border-t border-stone-100 space-y-3">
-                <div class="flex items-center justify-between text-xs">
-                    <span class="text-stone-600 font-medium">VPA / UPI ID:</span>
-                    <span class="font-mono text-stone-900 bg-stone-50 px-2 py-0.5 rounded border border-stone-200 text-[11px]">
-                        {{ vendor.upi_id }}
-                    </span>
-                </div>
-
-                <div class="flex items-center gap-2 pt-1">
-                    <a href="/vendors/{{ vendor.id }}" class="cs-btn-secondary text-xs w-full py-1.5 text-center">
-                        View Details
-                    </a>
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <div class="col-span-full cs-card p-12 text-center">
-            <p class="text-sm text-stone-600 font-medium">No active campus vendors found.</p>
-        </div>
-        {% endfor %}
-    </div>
-
+    <h1 class="font-headline-lg text-headline-lg text-ink">Vendors Directory</h1>
+    <p class="font-body-md text-body-md text-ink-muted mt-space-xs max-w-2xl">
+      Authorized campus merchants. Pay your share directly using UPI.
+    </p>
+  </div>
+  <div class="flex items-center gap-space-sm shrink-0">
+    <a href="/expenses/new"
+       class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-brand hover:bg-brand-hover
+              text-on-primary transition-all font-body-md-strong text-body-md-strong shadow-sm active:scale-95">
+      <span class="material-symbols-outlined text-[18px]">add_circle</span>
+      <span>Split expense</span>
+    </a>
+  </div>
 </div>
+
+{# ── Policy banner ──────────────────────────────────────────────────── #}
+<div class="relative overflow-hidden rounded-xl bg-brand-soft border border-line p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+  <div class="flex items-start gap-space-md">
+    <div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center shrink-0 border border-line text-brand">
+      <span class="material-symbols-outlined text-[22px]">policy</span>
+    </div>
+    <div>
+      <div class="font-body-md-strong text-body-md-strong text-ink">Direct Vendor Payment</div>
+      <p class="font-body-sm text-body-sm text-ink-muted mt-0.5 max-w-2xl">
+        Paying a verified vendor directly with UPI clears your individual share without creating a peer debt.
+        Only covered shares (when someone pays for another person) create peer-to-peer balances.
+      </p>
+    </div>
+  </div>
+  <div class="flex items-center gap-space-xs shrink-0 self-end md:self-center">
+    <span class="font-label-sm text-label-sm text-brand font-semibold">Zero peer debt on direct payments</span>
+    <span class="material-symbols-outlined text-brand text-[18px]">verified_user</span>
+  </div>
+</div>
+
+{# ── Search + category filter bar ───────────────────────────────────── #}
+<div class="bg-surface rounded-xl border border-line p-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md mb-space-lg shadow-sm"
+     x-data="vendorDirectory()">
+
+  {# Search input #}
+  <div class="relative flex-1">
+    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-subtle text-[20px] pointer-events-none">search</span>
+    <input type="text" x-model="searchQuery"
+           placeholder="Search vendors by name or category…"
+           aria-label="Search vendors"
+           class="w-full h-10 pl-10 pr-4 bg-surface border border-line rounded-lg
+                  font-body-md text-body-md text-ink placeholder:text-ink-subtle
+                  focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all">
+  </div>
+
+  {# Category filter pills #}
+  <div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0">
+    <button @click="activeCategory = 'all'"
+            :class="activeCategory === 'all'
+              ? 'bg-brand text-on-primary border-transparent'
+              : 'bg-surface border-line text-ink-muted hover:text-ink hover:bg-surface-muted'"
+            class="flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong
+                   border transition-all shrink-0">
+      All Vendors
+      <span class="px-1.5 py-0.5 rounded-full font-label-sm text-[11px]"
+            :class="activeCategory === 'all' ? 'bg-brand-hover text-on-primary' : 'bg-surface-muted text-ink-muted'">
+        {{ vendors | length }}
+      </span>
+    </button>
+    {% for cat in categories %}
+    <button @click="activeCategory = '{{ cat | lower }}'"
+            :class="activeCategory === '{{ cat | lower }}'
+              ? 'bg-brand text-on-primary border-transparent'
+              : 'bg-surface border-line text-ink-muted hover:text-ink hover:bg-surface-muted'"
+            class="flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong
+                   border transition-all shrink-0">
+      {{ cat }}
+    </button>
+    {% endfor %}
+  </div>
+</div>
+
+{# ── Vendors grid ───────────────────────────────────────────────────── #}
+{% if vendors %}
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-space-md"
+     x-data="vendorDirectory()" id="vendors-grid">
+  {% for vendor in vendors %}
+  <article class="vendor-card bg-surface rounded-xl border border-line shadow-sm overflow-hidden
+                  hover:border-brand/30 hover:shadow-md transition-all duration-200"
+           data-category="{{ vendor.category | lower }}"
+           data-name="{{ vendor.name | lower }}">
+    <a href="/vendors/{{ vendor.id }}" class="block p-space-lg">
+      {# Vendor header #}
+      <div class="flex items-start gap-space-md mb-space-md">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0
+          {% set cat = vendor.category | lower %}
+          {% if 'food' in cat or 'canteen' in cat or 'cafe' in cat %}vendor-icon-food
+          {% elif 'laundry' in cat %}vendor-icon-laundry
+          {% elif 'print' in cat %}vendor-icon-printing
+          {% elif 'station' in cat or 'store' in cat %}vendor-icon-stationery
+          {% else %}vendor-icon-other{% endif %}">
+          <span class="material-symbols-outlined text-[22px]">
+            {% if 'food' in cat or 'canteen' in cat or 'cafe' in cat %}restaurant
+            {% elif 'laundry' in cat %}local_laundry_service
+            {% elif 'print' in cat %}print
+            {% elif 'station' in cat or 'store' in cat %}inventory_2
+            {% else %}storefront{% endif %}
+          </span>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-space-xs flex-wrap">
+            <h2 class="font-headline-sm text-headline-sm text-ink truncate">{{ vendor.name }}</h2>
+          </div>
+          <span class="font-body-sm text-body-sm text-ink-muted">{{ vendor.category }}</span>
+        </div>
+        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-label-sm text-label-sm shrink-0
+          {% if vendor.is_active %}bg-success-soft text-success{% else %}bg-surface-muted text-ink-muted{% endif %}">
+          <span class="w-1.5 h-1.5 rounded-full {% if vendor.is_active %}bg-success{% else %}bg-ink-subtle{% endif %}"></span>
+          {% if vendor.is_active %}Active{% else %}Inactive{% endif %}
+        </span>
+      </div>
+
+      {# Description #}
+      {% if vendor.description %}
+      <p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">{{ vendor.description }}</p>
+      {% endif %}
+
+      {# UPI ID #}
+      <div class="flex items-center gap-space-sm pt-space-md border-t border-line">
+        <span class="material-symbols-outlined text-[16px] text-ink-subtle">payments</span>
+        <code class="font-body-sm text-body-sm text-ink-muted font-mono truncate">{{ vendor.upi_id }}</code>
+        <button type="button"
+                @click.prevent="$root.copyText('{{ vendor.upi_id }}')"
+                class="ml-auto p-1 rounded text-ink-subtle hover:text-ink transition-colors shrink-0"
+                aria-label="Copy UPI ID">
+          <span class="material-symbols-outlined text-[15px]">content_copy</span>
+        </button>
+      </div>
+    </a>
+
+    {# CTA footer #}
+    {% if vendor.is_active %}
+    <div class="px-space-lg pb-space-md">
+      <a href="/vendors/{{ vendor.id }}"
+         class="w-full flex items-center justify-center gap-space-xs py-2 rounded-lg bg-brand-soft text-brand
+                font-body-sm-strong text-body-sm-strong hover:bg-brand hover:text-on-primary
+                transition-all duration-150">
+        <span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+        Pay this vendor
+      </a>
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+
+{# Client-side search/filter #}
+<script>
+  function vendorDirectory() {
+    return {
+      searchQuery: '',
+      activeCategory: 'all',
+      filterVendors() {
+        document.querySelectorAll('.vendor-card').forEach(card => {
+          const name = card.dataset.name || '';
+          const cat  = card.dataset.category || '';
+          const matchSearch = !this.searchQuery || name.includes(this.searchQuery.toLowerCase());
+          const matchCat = this.activeCategory === 'all' || cat.includes(this.activeCategory);
+          card.style.display = (matchSearch && matchCat) ? '' : 'none';
+        });
+      }
+    };
+  }
+  // Wire Alpine watchers after Alpine is ready
+  document.addEventListener('alpine:init', () => {});
+</script>
+
+{% else %}
+{# Empty state #}
+<div class="flex flex-col items-center justify-center py-20 text-center">
+  <div class="w-14 h-14 rounded-xl bg-surface-muted flex items-center justify-center mb-4">
+    <span class="material-symbols-outlined text-[32px] text-ink-subtle">storefront</span>
+  </div>
+  <h2 class="font-headline-sm text-headline-sm text-ink mb-2">No vendors yet</h2>
+  <p class="font-body-md text-body-md text-ink-muted max-w-sm">
+    No active campus vendors are registered. Ask your administrator to add vendors.
+  </p>
+</div>
+{% endif %}
+
 {% endblock %}
