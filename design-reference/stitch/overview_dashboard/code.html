@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#e7e9e4","on-primary-container":"#9ae9c0","warning-soft":"#FFF3DE","primary-container":"#176b4b","error-container":"#ffdad6","surface-container":"#edeee9","line":"#DDE3DB","surface-dim":"#d9dad6","on-error":"#ffffff","ink":"#1B2821","surface-tint":"#176b4b","surface-variant":"#e2e3de","tertiary":"#3f4c00","surface-container-highest":"#e2e3de","on-surface-variant":"#3f4943","outline-variant":"#bec9c1","canvas":"#F5F6F1","primary-fixed-dim":"#88d6af","info-soft":"#EAF2F8","on-background":"#1a1c19","primary-fixed":"#a4f3ca","brand-soft":"#E7F1EA","on-tertiary-fixed-variant":"#3f4c00","info":"#356B91","outline":"#6f7a72","ink-subtle":"#879188","surface-muted":"#EEF1EA","on-tertiary-container":"#cce36c","surface-bright":"#f9faf5","secondary-fixed-dim":"#bdcac0","tertiary-fixed-dim":"#bad15c","on-surface":"#1a1c19","success":"#24784E","inverse-surface":"#2e312e","inverse-on-surface":"#f0f1ec","surface-container-low":"#f3f4ef","primary":"#005136","on-primary":"#ffffff","success-soft":"#E8F4EC","brand":"#176B4B","tertiary-fixed":"#d6ed75","on-secondary-fixed-variant":"#3e4942","ink-muted":"#68746C","on-tertiary-fixed":"#181e00","error":"#ba1a1a","secondary":"#55615a","on-primary-fixed":"#002114","brand-hover":"#12573D","warning":"#9A5B13","danger":"#B43F3F","on-primary-fixed-variant":"#005236","on-secondary-container":"#5b675f","surface":"#FFFFFF","accent":"#D6ED75","on-secondary":"#ffffff","on-secondary-fixed":"#131e18","background":"#f9faf5","on-tertiary":"#ffffff","surface-raised":"#FAFBF8","on-error-container":"#93000a","inverse-primary":"#88d6af","secondary-fixed":"#d9e6dc","danger-soft":"#FCECEC","tertiary-container":"#556500","surface-container-lowest":"#ffffff","secondary-container":"#d9e6dc"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"3rem","space-xl":"2rem","space-lg":"1.5rem","margin-tablet":"1.5rem","margin-desktop":"2rem","space-md":"1rem","margin":"1rem","space-2xl":"2.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg":["Geist"],"financial-amount-md":["Geist"],"body-md":["Geist"],"label-md":["Geist"],"headline-sm":["Geist"],"financial-amount-lg":["Geist"],"body-sm":["Geist"],"body-md-strong":["Geist"],"headline-lg-mobile":["Geist"],"body-sm-strong":["Geist"],"headline-md":["Geist"],"body-lg":["Geist"],"label-sm":["Geist"]},"fontSize":{"headline-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"financial-amount-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"financial-amount-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md-strong":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"30px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm-strong":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}]}}}};</script></head><body class="bg-canvas font-body-md text-ink antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface border-r border-line z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-line"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">receipt_long</span></div><span class="font-headline-sm text-headline-sm text-ink tracking-tight">Campus Split</span></div><div class="px-space-lg pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Campus workspace</span></div><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[20px]">receipt</span><span>Expenses</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="groups" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Groups</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="balances" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Balances</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="vendors" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span>Vendors</span></a></nav></div><div class="p-space-md border-t border-line flex flex-col gap-space-sm"><nav class="flex flex-col" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav><div class="flex items-center justify-between px-space-sm py-space-sm rounded-lg bg-surface-raised border border-line"><div class="flex flex-col min-w-0"><span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Ananya Sharma</span><span class="font-body-sm text-body-sm text-ink-muted truncate">Room 304</span></div><button aria-label="Log out" class="p-space-xs rounded-lg text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface border-b border-line z-40 px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md"><span class="text-ink-muted">Expenses</span><span class="text-ink-subtle">/</span><span class="font-body-md-strong text-body-md-strong text-ink">Create Expense</span></div><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 px-margin-desktop bg-canvas min-h-screen"><div class="flex flex-col w-full pb-space-3xl">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-lg">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-ink tracking-tight">Overview</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-brand-soft text-brand">Semester 1</span>
+</div>
+<p class="font-body-md text-body-md text-ink-muted mt-0.5">Your campus expenses, all in one place.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-surface text-ink font-body-md-strong text-body-md-strong shadow-sm hover:bg-surface-muted transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] text-ink-muted">qr_code_scanner</span>
+<span>Pay a vendor</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong shadow-sm hover:bg-brand-hover active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Split an expense</span>
+</button>
+</div>
+</div>
+<!-- Needs Attention Alert Callout -->
+<div class="mb-space-lg p-space-md bg-warning-soft rounded-xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-warning shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">notification_important</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-md-strong text-body-md-strong text-ink">Direct vendor share pending</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-accent text-ink">Action Required</span>
+</div>
+<p class="font-body-md text-body-md text-ink-muted mt-0.5 leading-snug">
+<strong class="text-ink font-semibold">₹70.00</strong> to <span class="text-ink">Campus Laundry Co.</span> · UPI ID: <code class="text-ink-muted bg-white px-1.5 py-0.5 rounded text-label-sm">campuslaundry@icici</code>. Settle your share directly to clear laundry pickup.
+        </p>
+</div>
+</div>
+<button class="shrink-0 px-3.5 py-2 rounded-lg bg-brand text-on-primary font-body-sm-strong text-body-sm-strong hover:bg-brand-hover shadow-sm transition-colors flex items-center gap-space-xs" type="button">
+<span>Open UPI Payment Sheet</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- 3 Distinct Financial Summary Cards (NEVER MERGED) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-xl">
+<!-- Panel 1: People owe you -->
+<div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Assets</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md text-label-sm font-label-sm bg-success-soft text-success">
+            2 repayments pending
+          </span>
+</div>
+<h2 class="font-body-md-strong text-body-md-strong text-ink">People owe you</h2>
+<div class="mt-2 flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-success tabular-nums tracking-tight">₹180.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+          Peer balances owed to you by 2 students across 2 shared bills.
+        </p>
+</div>
+<div class="pt-space-md mt-space-md">
+<a class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors" href="#">
+<span>View peer balances</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Panel 2: You owe people -->
+<div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Liabilities</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md text-label-sm font-label-sm bg-warning-soft text-warning">
+            1 repayment due
+          </span>
+</div>
+<h2 class="font-body-md-strong text-body-md-strong text-ink">You owe people</h2>
+<div class="mt-2 flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums tracking-tight">₹65.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+          Peer balances you owe to Kabir for snacks covered on Oct 22.
+        </p>
+</div>
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<button class="w-full py-2 px-3 bg-surface-muted hover:bg-surface-dim text-ink font-body-sm-strong text-body-sm-strong rounded-lg transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">send_money</span>
+<span>Settle ₹65.00</span>
+</button>
+</div>
+</div>
+<!-- Panel 3: Vendor payments due -->
+<div class="p-space-lg bg-surface rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-brand"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Vendor Direct</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md text-label-sm font-label-sm bg-brand-soft text-brand font-semibold">
+            Due directly to vendor
+          </span>
+</div>
+<h2 class="font-body-md-strong text-body-md-strong text-ink">Vendor payments due</h2>
+<div class="mt-2 flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums tracking-tight">₹70.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mt-1 leading-normal">
+          Your direct share for Campus Laundry Co. (₹210 bill).
+        </p>
+</div>
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<button class="w-full py-2 px-3 bg-brand hover:bg-brand-hover text-on-primary font-body-sm-strong text-body-sm-strong rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+<span>Pay vendor via UPI</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Content Stage: 2-Column Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left / Primary Column: Recent Activity (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface rounded-xl shadow-sm overflow-hidden">
+<!-- Ledger Header & Filter Toolbar -->
+<div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-ink">Recent activity</h3>
+<p class="font-body-sm text-body-sm text-ink-muted">All campus transactions and splits</p>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-muted p-1 rounded-lg">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-md bg-surface text-ink shadow-sm">All</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-md text-ink-muted hover:text-ink transition-colors">Vendor bills</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-md text-ink-muted hover:text-ink transition-colors">Peer splits</button>
+</div>
+</div>
+<!-- Transactions Ledger List -->
+<div class="flex flex-col">
+<!-- Row 1: Campus Laundry Co (Direct Vendor Payment) -->
+<div class="p-space-lg hover:bg-surface-raised transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Campus Laundry Co.</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-warning-soft text-warning">
+                    Vendor payment due
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-ink-muted mt-0.5">
+<span>Today, Oct 24</span>
+<span>·</span>
+<span>Category: Laundry</span>
+<span>·</span>
+<span class="tabular-nums">Total ₹210.00 (3 students)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md self-end sm:self-center shrink-0">
+<div class="text-right">
+<span class="block font-label-sm text-label-sm text-warning">Your share</span>
+<span class="font-financial-amount-md text-headline-sm font-semibold text-warning tabular-nums">₹70.00</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-brand text-on-primary font-body-sm-strong text-body-sm-strong hover:bg-brand-hover shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+<span>Pay UPI</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Dinner at Green Canteen (Peer Balance Owed to User) -->
+<div class="p-space-lg hover:bg-surface-raised transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Dinner at Green Canteen</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-success-soft text-success">
+                    Peer balance
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-ink-muted mt-0.5">
+<span>Yesterday, Oct 23</span>
+<span>·</span>
+<span>Category: Food</span>
+<span>·</span>
+<span class="tabular-nums">Total ₹360.00 (You paid upfront)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md self-end sm:self-center shrink-0">
+<div class="text-right">
+<span class="block font-label-sm text-label-sm text-success">Rohan owes you</span>
+<span class="font-financial-amount-md text-headline-sm font-semibold text-success tabular-nums">+₹120.00</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-label-sm font-label-sm bg-surface-muted text-ink-muted">
+                1/2 friends repaid
+              </span>
+</div>
+</div>
+<!-- Row 3: Campus Print Shop (Peer Balance Owed to User) -->
+<div class="p-space-lg hover:bg-surface-raised transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Campus Print Shop</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-success-soft text-success">
+                    Peer balance
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-ink-muted mt-0.5">
+<span>Oct 21</span>
+<span>·</span>
+<span>Category: Printing</span>
+<span>·</span>
+<span class="tabular-nums">Total ₹180.00 (Print binding)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md self-end sm:self-center shrink-0">
+<div class="text-right">
+<span class="block font-label-sm text-label-sm text-success">Aniket owes you</span>
+<span class="font-financial-amount-md text-headline-sm font-semibold text-success tabular-nums">+₹60.00</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-label-sm font-label-sm bg-surface-muted text-ink-muted">
+                Awaiting settlement
+              </span>
+</div>
+</div>
+<!-- Row 4: Evening Snacks (Peer Liability) -->
+<div class="p-space-lg hover:bg-surface-raised transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[20px]">fastfood</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Evening Snacks</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-warning-soft text-warning">
+                    Peer debt
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-ink-muted mt-0.5">
+<span>Oct 20</span>
+<span>·</span>
+<span>Category: Food</span>
+<span>·</span>
+<span class="tabular-nums">Total ₹195.00 (Kabir paid)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md self-end sm:self-center shrink-0">
+<div class="text-right">
+<span class="block font-label-sm text-label-sm text-ink-muted">You owe Kabir</span>
+<span class="font-financial-amount-md text-headline-sm font-semibold text-ink tabular-nums">₹65.00</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface hover:bg-surface-muted text-ink font-body-sm-strong text-body-sm-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span>Settle up</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-space-md bg-surface-raised text-center">
+<a class="font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover inline-flex items-center gap-space-xs" href="#">
+<span>View all 34 historical transactions</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Panels (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Panel 1: Your Groups -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-brand">group</span>
+<h3 class="font-headline-sm text-headline-sm text-ink">Your groups</h3>
+</div>
+<button class="text-label-sm font-label-sm text-brand hover:text-brand-hover" type="button">Create</button>
+</div>
+<div class="flex flex-col gap-space-md mb-space-lg">
+<!-- Group 1 -->
+<div class="p-space-md rounded-lg bg-surface-raised hover:bg-surface-muted transition-colors flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md-strong text-body-md-strong text-ink">Room 304</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-brand-soft text-brand">Active</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-ink-muted">
+<span>4 members (Ananya, Rohan, Kabir, Dev)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm pt-space-xs">
+<span class="text-ink-subtle">Last expense: Laundry pickup</span>
+<span class="font-medium text-ink tabular-nums">₹210.00</span>
+</div>
+</div>
+<!-- Group 2 -->
+<div class="p-space-md rounded-lg bg-surface-raised hover:bg-surface-muted transition-colors flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md-strong text-body-md-strong text-ink">Weekend Crew</span>
+<span class="text-label-sm font-label-sm text-ink-muted">5 members</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-ink-muted">
+<span>Last: Dinner at Green Canteen</span>
+<span class="font-medium text-ink tabular-nums">₹360.00</span>
+</div>
+</div>
+<!-- Group 3 -->
+<div class="p-space-md rounded-lg bg-surface-raised hover:bg-surface-muted transition-colors flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md-strong text-body-md-strong text-ink">Project Team Beta</span>
+<span class="text-label-sm font-label-sm text-ink-muted">3 members</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-ink-muted">
+<span>Last: Campus Print Shop</span>
+<span class="font-medium text-ink tabular-nums">₹180.00</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2 px-3 bg-surface hover:bg-surface-muted text-ink font-body-sm-strong text-body-sm-strong rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">call_split</span>
+<span>Split with group</span>
+</button>
+</div>
+<!-- Panel 2: Campus Vendors Directory -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-brand">storefront</span>
+<h3 class="font-headline-sm text-headline-sm text-ink">Campus Vendors</h3>
+</div>
+<span class="text-label-sm font-label-sm text-ink-subtle">Verified UPI</span>
+</div>
+<div class="flex flex-col gap-space-sm mb-space-md">
+<!-- Vendor 1 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-raised transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[18px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Campus Laundry Co.</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Laundry · Wing B</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-success-soft text-success shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span>UPI Active</span>
+</span>
+</div>
+<!-- Vendor 2 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-raised transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Green Canteen</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Food · Student Centre</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-success-soft text-success shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span>UPI Active</span>
+</span>
+</div>
+<!-- Vendor 3 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-raised transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-ink shrink-0">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Campus Print Shop</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Printing · Academic Block</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-success-soft text-success shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span>UPI Active</span>
+</span>
+</div>
+</div>
+<div class="pt-space-xs">
+<a class="inline-flex items-center gap-space-xs font-body-sm-strong text-body-sm-strong text-brand hover:text-brand-hover transition-colors" href="#">
+<span>Browse all vendors</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

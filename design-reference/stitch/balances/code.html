@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#e7e9e4","on-primary-container":"#9ae9c0","warning-soft":"#FFF3DE","primary-container":"#176b4b","error-container":"#ffdad6","surface-container":"#edeee9","line":"#DDE3DB","surface-dim":"#d9dad6","on-error":"#ffffff","ink":"#1B2821","surface-tint":"#176b4b","surface-variant":"#e2e3de","tertiary":"#3f4c00","surface-container-highest":"#e2e3de","on-surface-variant":"#3f4943","outline-variant":"#bec9c1","canvas":"#F5F6F1","primary-fixed-dim":"#88d6af","info-soft":"#EAF2F8","on-background":"#1a1c19","primary-fixed":"#a4f3ca","brand-soft":"#E7F1EA","on-tertiary-fixed-variant":"#3f4c00","info":"#356B91","outline":"#6f7a72","ink-subtle":"#879188","surface-muted":"#EEF1EA","on-tertiary-container":"#cce36c","surface-bright":"#f9faf5","secondary-fixed-dim":"#bdcac0","tertiary-fixed-dim":"#bad15c","on-surface":"#1a1c19","success":"#24784E","inverse-surface":"#2e312e","inverse-on-surface":"#f0f1ec","surface-container-low":"#f3f4ef","primary":"#005136","on-primary":"#ffffff","success-soft":"#E8F4EC","brand":"#176B4B","tertiary-fixed":"#d6ed75","on-secondary-fixed-variant":"#3e4942","ink-muted":"#68746C","on-tertiary-fixed":"#181e00","error":"#ba1a1a","secondary":"#55615a","on-primary-fixed":"#002114","brand-hover":"#12573D","warning":"#9A5B13","danger":"#B43F3F","on-primary-fixed-variant":"#005236","on-secondary-container":"#5b675f","surface":"#FFFFFF","accent":"#D6ED75","on-secondary":"#ffffff","on-secondary-fixed":"#131e18","background":"#f9faf5","on-tertiary":"#ffffff","surface-raised":"#FAFBF8","on-error-container":"#93000a","inverse-primary":"#88d6af","secondary-fixed":"#d9e6dc","danger-soft":"#FCECEC","tertiary-container":"#556500","surface-container-lowest":"#ffffff","secondary-container":"#d9e6dc"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"3rem","space-xl":"2rem","space-lg":"1.5rem","margin-tablet":"1.5rem","margin-desktop":"2rem","space-md":"1rem","margin":"1rem","space-2xl":"2.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg":["Geist"],"financial-amount-md":["Geist"],"body-md":["Geist"],"label-md":["Geist"],"headline-sm":["Geist"],"financial-amount-lg":["Geist"],"body-sm":["Geist"],"body-md-strong":["Geist"],"headline-lg-mobile":["Geist"],"body-sm-strong":["Geist"],"headline-md":["Geist"],"body-lg":["Geist"],"label-sm":["Geist"]},"fontSize":{"headline-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"financial-amount-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"financial-amount-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md-strong":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"30px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm-strong":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}]}}}};</script></head><body class="bg-canvas font-body-md text-ink antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface border-r border-line z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-line"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">receipt_long</span></div><span class="font-headline-sm text-headline-sm text-ink tracking-tight">Campus Split</span></div><div class="px-space-lg pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Campus workspace</span></div><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[20px]">receipt</span><span>Expenses</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="groups" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Groups</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="balances" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Balances</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="vendors" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span>Vendors</span></a></nav></div><div class="p-space-md border-t border-line flex flex-col gap-space-sm"><nav class="flex flex-col" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav><div class="flex items-center justify-between px-space-sm py-space-sm rounded-lg bg-surface-raised border border-line"><div class="flex flex-col min-w-0"><span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Ananya Sharma</span><span class="font-body-sm text-body-sm text-ink-muted truncate">Room 304</span></div><button aria-label="Log out" class="p-space-xs rounded-lg text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface border-b border-line z-40 px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md"><span class="text-ink-muted">Expenses</span><span class="text-ink-subtle">/</span><span class="font-body-md-strong text-body-md-strong text-ink">Create Expense</span></div><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 px-margin-desktop bg-canvas min-h-screen"><div class="flex flex-col w-full pb-space-3xl">
+<!-- Client script to adjust active state in parent shell navigation -->
+<script>
+    (function highlightActiveSidebar() {
+      try {
+        const aside = document.querySelector('aside');
+        if (!aside) return;
+        const links = aside.querySelectorAll('nav a[data-path]');
+        links.forEach(link => {
+          if (link.getAttribute('data-path') === 'balances') {
+            link.className = 'flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong bg-brand-soft text-brand transition-colors relative';
+            if (!link.querySelector('.nav-accent-bar')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'nav-accent-bar absolute left-0 top-1.5 bottom-1.5 w-1 bg-brand rounded-r';
+              link.appendChild(indicator);
+            }
+          } else {
+            link.className = 'flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors';
+            const oldInd = link.querySelector('.nav-accent-bar');
+            if (oldInd) oldInd.remove();
+          }
+        });
+        const headerCrumb = document.querySelector('header .font-body-md-strong');
+        if (headerCrumb) headerCrumb.textContent = 'Balances';
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  </script>
+<!-- Page Header Title Bar & Quick Actions -->
+<div class="pt-space-lg pb-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle">Finances &amp; Ledgers</span>
+<span class="text-ink-subtle text-body-sm">•</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-brand-soft text-brand">Room 304 Active Term</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink tracking-tight">Balances</h1>
+<p class="font-body-md text-body-md text-ink-muted max-w-2xl">
+        Track what you owe and what you're owed across peers and campus vendors with uncompromising mathematical separation.
+      </p>
+</div>
+<!-- Global Ledger Actions -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="h-10 px-space-md rounded-lg bg-surface shadow-sm hover:bg-surface-muted text-ink font-body-md-strong text-body-md-strong flex items-center gap-space-xs transition-all active:scale-95" id="btn-export-ledger" type="button">
+<span class="material-symbols-outlined text-[18px] text-ink-muted">download</span>
+<span>Export Statement</span>
+</button>
+<button class="h-10 px-space-md rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong shadow-sm hover:bg-brand-hover flex items-center gap-space-xs transition-all active:scale-95" id="btn-open-record-settlement" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>Record Peer Settlement</span>
+</button>
+</div>
+</div>
+<!-- Educational System Banner (Section 5.4 Principle) -->
+<div class="mb-space-lg rounded-xl bg-surface-raised p-space-md shadow-sm flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-brand-soft flex items-center justify-center text-brand flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm w-full">
+<div>
+<h4 class="font-body-md-strong text-body-md-strong text-ink">Zero Peer Debt for Vendor Transactions</h4>
+<p class="font-body-sm text-body-sm text-ink-muted mt-0.5">
+          Paying merchants directly clears your personal share without creating room liabilities or secondary peer balances. Vendor obligations and roommate debts remain forever segregated.
+        </p>
+</div>
+<div class="flex-shrink-0">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-brand px-2.5 py-1 rounded-md bg-brand-soft">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Dual-Ledger System
+        </span>
+</div>
+</div>
+</div>
+<!-- Section 1: Top Financial Position Bar (3 Distinct Metric Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-xl">
+<!-- Summary Card 1: People owe you -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-0 left-0 right-0 h-1 bg-success"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Receivable</span>
+<span class="font-headline-sm text-headline-sm text-ink mt-space-xs">People owe you</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-success-soft flex items-center justify-center text-success">
+<span class="material-symbols-outlined text-[22px]">call_received</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-success tabular-nums">₹180.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">total pending</span>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-body-sm text-body-sm text-ink-muted bg-surface-raised -mx-space-lg -mb-space-lg px-space-lg py-space-sm">
+<span class="truncate">2 students (Rohan ₹120, Tanvi ₹60)</span>
+<span class="font-body-sm-strong text-body-sm-strong text-success flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Incoming
+        </span>
+</div>
+</div>
+<!-- Summary Card 2: You owe people -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-0 left-0 right-0 h-1 bg-danger"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Peer Payable</span>
+<span class="font-headline-sm text-headline-sm text-ink mt-space-xs">You owe people</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-danger-soft flex items-center justify-center text-danger">
+<span class="material-symbols-outlined text-[22px]">call_made</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-danger tabular-nums">₹65.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">direct settlement</span>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-body-sm text-body-sm text-ink-muted bg-surface-raised -mx-space-lg -mb-space-lg px-space-lg py-space-sm">
+<span class="truncate">1 student (Kabir S. ₹65)</span>
+<span class="font-body-sm-strong text-body-sm-strong text-danger flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Immediate
+        </span>
+</div>
+</div>
+<!-- Summary Card 3: Vendor liabilities due -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-0 left-0 right-0 h-1 bg-warning"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Direct Vendor Liabilities</span>
+<span class="font-headline-sm text-headline-sm text-ink mt-space-xs">Campus Merchants</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-warning-soft flex items-center justify-center text-warning">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">₹70.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">campus dues</span>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-body-sm text-body-sm text-ink-muted bg-surface-raised -mx-space-lg -mb-space-lg px-space-lg py-space-sm">
+<span class="truncate">Campus Laundry Co. (Verifying)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-warning-soft text-warning">1 in verification</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Tabbed Ledgers Navigation -->
+<div class="flex items-center justify-between mb-space-lg">
+<div class="flex items-center gap-space-xs p-1 bg-surface-muted rounded-xl">
+<button class="tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong bg-surface text-ink shadow-sm transition-all" id="tab-btn-peers" type="button">
+<span class="material-symbols-outlined text-[18px] text-brand">group</span>
+<span>Peer Balances</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full text-label-sm font-label-sm bg-brand-soft text-brand">3</span>
+</button>
+<button class="tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:text-ink hover:bg-surface-raised transition-all" id="tab-btn-vendors" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Campus Vendor Payments</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full text-label-sm font-label-sm bg-warning-soft text-warning">1 Pending</span>
+</button>
+</div>
+<!-- Quick Filter / Search within ledger -->
+<div class="hidden sm:flex items-center gap-space-xs text-body-sm text-ink-muted">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Ledgers reconcile continuously with zero round-trip drift</span>
+</div>
+</div>
+<!-- TAB CONTENT 1: PEER BALANCES (Default Active) -->
+<div class="flex flex-col gap-space-xl" id="tab-view-peers">
+<!-- Sub-section A: People who owe you -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-success"></div>
+<h2 class="font-headline-sm text-headline-sm text-ink">People who owe you</h2>
+<span class="font-label-sm text-label-sm text-ink-muted bg-surface px-2 py-0.5 rounded-full shadow-sm">2 pending requests</span>
+</div>
+<div class="font-body-md-strong text-body-md-strong text-success tabular-nums">
+          Subtotal: +₹180.00
+        </div>
+</div>
+<!-- Peer Receivables Card Container -->
+<div class="bg-surface rounded-xl shadow-sm divide-y divide-surface-muted overflow-hidden">
+<!-- Peer Item 1: Rohan Verma -->
+<div class="p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-raised transition-colors">
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center text-ink-muted font-body-md-strong flex-shrink-0 text-base">
+              RV
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-ink truncate">Rohan Verma</span>
+<span class="font-body-sm text-body-sm text-ink-muted">(Room 302)</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-warning-soft text-warning">
+                  0/120 settled
+                </span>
+</div>
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-ink-muted mt-1 truncate">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">restaurant</span>
+<span class="font-body-sm-strong text-ink truncate">Dinner at Green Canteen</span>
+<span>•</span>
+<span>Oct 22, 2024</span>
+<span>•</span>
+<span class="text-ink-subtle">Split 4-ways (Your share paid upfront)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-lg flex-shrink-0 pt-space-xs md:pt-0">
+<div class="flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase">Owed to You</span>
+<span class="font-financial-amount-md text-financial-amount-md text-success tabular-nums">+₹120.00</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-space-md rounded-lg bg-surface shadow-sm hover:bg-surface-muted text-ink font-body-md-strong text-body-md-strong flex items-center gap-1 transition-all active:scale-95" onclick="sendRepaymentReminder('Rohan Verma', '₹120.00')" type="button">
+<span class="material-symbols-outlined text-[16px] text-brand">notifications</span>
+<span>Request Repayment</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-brand-soft text-brand hover:bg-brand hover:text-on-primary font-body-md-strong text-body-md-strong flex items-center gap-1 transition-all active:scale-95" onclick="openSettlementModal('Rohan Verma', 120.00, 'Dinner at Green Canteen')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Record Settlement</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Peer Item 2: Tanvi Mehta -->
+<div class="p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-raised transition-colors">
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-surface-muted flex items-center justify-center text-ink-muted font-body-md-strong flex-shrink-0 text-base">
+              TM
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-ink truncate">Tanvi Mehta</span>
+<span class="font-body-sm text-body-sm text-ink-muted">(Design Lab)</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-accent text-ink">
+                  Reminder Sent
+                </span>
+</div>
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-ink-muted mt-1 truncate">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">print</span>
+<span class="font-body-sm-strong text-ink truncate">Print Shop Poster Printing</span>
+<span>•</span>
+<span>Oct 21, 2024</span>
+<span>•</span>
+<span class="text-ink-subtle">Split 2-ways</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-lg flex-shrink-0 pt-space-xs md:pt-0">
+<div class="flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase">Owed to You</span>
+<span class="font-financial-amount-md text-financial-amount-md text-success tabular-nums">+₹60.00</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-space-md rounded-lg bg-brand-soft text-brand hover:bg-brand hover:text-on-primary font-body-md-strong text-body-md-strong flex items-center gap-1 transition-all active:scale-95" onclick="openSettlementModal('Tanvi Mehta', 60.00, 'Print Shop Poster Printing')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Record Settlement</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sub-section B: People you owe -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-danger"></div>
+<h2 class="font-headline-sm text-headline-sm text-ink">People you owe</h2>
+<span class="font-label-sm text-label-sm text-ink-muted bg-surface px-2 py-0.5 rounded-full shadow-sm">1 settlement due</span>
+</div>
+<div class="font-body-md-strong text-body-md-strong text-danger tabular-nums">
+          Subtotal: -₹65.00
+        </div>
+</div>
+<!-- Peer Payables Card Container -->
+<div class="bg-surface rounded-xl shadow-sm divide-y divide-surface-muted overflow-hidden">
+<!-- Peer Item: Kabir Sharma -->
+<div class="p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-raised transition-colors">
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-danger-soft flex items-center justify-center text-danger font-body-md-strong flex-shrink-0 text-base">
+              KS
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-ink truncate">Kabir Sharma</span>
+<span class="font-body-sm text-body-sm text-ink-muted">(Room 304 Roommate)</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-danger-soft text-danger">
+                  UPI Linked
+                </span>
+</div>
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-ink-muted mt-1 truncate">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">shopping_basket</span>
+<span class="font-body-sm-strong text-ink truncate">Snacks &amp; Groceries at Central Mart</span>
+<span>•</span>
+<span>Oct 18, 2024</span>
+<span>•</span>
+<span class="text-ink-subtle">Paid by Kabir via PhonePe</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-lg flex-shrink-0 pt-space-xs md:pt-0">
+<div class="flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase">Your Obligation</span>
+<span class="font-financial-amount-md text-financial-amount-md text-danger tabular-nums">-₹65.00</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-space-md rounded-lg bg-surface shadow-sm hover:bg-surface-muted text-ink font-body-md-strong text-body-md-strong flex items-center gap-1 transition-all active:scale-95" onclick="viewExpenseDetail('Snacks &amp; Groceries at Central Mart', '₹65.00', 'Kabir Sharma')" type="button">
+<span>View Expense</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-brand text-on-primary hover:bg-brand-hover font-body-md-strong text-body-md-strong flex items-center gap-1.5 shadow-sm transition-all active:scale-95" onclick="triggerDirectPeerSettle('Kabir Sharma', '₹65.00', 'kabir@okhdfcbank')" type="button">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Settle Up</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-analytic Section: Recent Settlement Velocity -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Direct Peer QR Code Quick Card -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex items-center gap-space-md">
+<div class="w-16 h-16 bg-surface-raised rounded-lg p-2 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full text-ink" fill="currentColor" viewbox="0 0 100 100">
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="6" width="30" x="5" y="5"></rect>
+<rect height="10" width="10" x="15" y="15"></rect>
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="6" width="30" x="65" y="5"></rect>
+<rect height="10" width="10" x="75" y="15"></rect>
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="6" width="30" x="5" y="65"></rect>
+<rect height="10" width="10" x="15" y="75"></rect>
+<circle cx="50" cy="50" r="6"></circle>
+<rect height="8" width="10" x="45" y="15"></rect>
+<rect height="10" width="10" x="45" y="75"></rect>
+<rect height="10" width="12" x="65" y="45"></rect>
+<rect height="15" width="15" x="80" y="65"></rect>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-strong text-body-md-strong text-ink">Personal UPI Receive Handle</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">ananya304@okhdfcbank • Direct to Campus Account</span>
+<span class="font-label-sm text-label-sm text-brand mt-1 flex items-center gap-1 cursor-pointer hover:underline" onclick="copyUPIHandle()">
+<span class="material-symbols-outlined text-[14px]">content_copy</span> Copy Handle
+          </span>
+</div>
+</div>
+<!-- Settlement Status Recap -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md-strong text-body-md-strong text-ink">Last Settled with Rohan</span>
+<span class="font-body-sm text-body-sm text-ink-muted">₹340.00 settled via UPI on Oct 14</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-success-soft text-success">
+          Verified
+        </span>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT 2: VENDOR PAYMENTS (Merged into single page with clean switching) -->
+<div class="hidden flex flex-col gap-space-lg" id="tab-view-vendors">
+<!-- Section Header for Vendors -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs px-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink">Direct Merchant &amp; Campus Vendor Accounts</h2>
+<p class="font-body-sm text-body-sm text-ink-muted">Independent merchant ledgers. Cleared directly without affecting room balances.</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-warning-soft text-warning">
+          1 Awaiting Confirmation
+        </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-success-soft text-success">
+          1 Cleared
+        </span>
+</div>
+</div>
+<!-- Vendor Ledger Table Card -->
+<div class="bg-surface rounded-xl shadow-sm overflow-hidden">
+<!-- Formal Vendor Header Table Strip -->
+<div class="bg-surface-raised px-space-lg py-space-sm grid grid-cols-12 text-ink-subtle font-label-sm text-label-sm uppercase tracking-wider">
+<div class="col-span-5 sm:col-span-4">Vendor &amp; Service</div>
+<div class="col-span-3 sm:col-span-2 text-right">Personal Share</div>
+<div class="hidden sm:block sm:col-span-3 text-left pl-space-md">Verification State</div>
+<div class="col-span-4 sm:col-span-3 text-right">Actions</div>
+</div>
+<div class="divide-y divide-surface-muted">
+<!-- Vendor Row 1: Campus Laundry Co. (Reported Paid) -->
+<div class="px-space-lg py-space-md grid grid-cols-12 items-center hover:bg-surface-raised transition-colors">
+<div class="col-span-5 sm:col-span-4 flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Campus Laundry Co.</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Batch #2409 • Laundry Pickup</span>
+</div>
+</div>
+<div class="col-span-3 sm:col-span-2 text-right">
+<span class="font-financial-amount-md text-financial-amount-md text-ink tabular-nums">₹70.00</span>
+<span class="block font-body-sm text-body-sm text-ink-muted">UPI Ref: *9210</span>
+</div>
+<div class="hidden sm:flex sm:col-span-3 items-center pl-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-warning bg-warning-soft px-2 py-0.5 rounded-full w-max">
+<span class="material-symbols-outlined text-[13px]">pending</span> Reported Paid
+              </span>
+<span class="font-body-sm text-body-sm text-ink-subtle">Awaiting Vendor Check</span>
+</div>
+</div>
+<div class="col-span-4 sm:col-span-3 flex items-center justify-end gap-space-xs">
+<button class="h-8 px-space-sm rounded-lg bg-surface shadow-sm hover:bg-surface-muted text-ink font-body-sm-strong text-body-sm-strong transition-all" onclick="showReceiptModal('Campus Laundry Co.', '₹70.00', 'INV-9021', 'Awaiting Merchant Match')" type="button">
+              View Payment
+            </button>
+<button class="h-8 px-space-sm rounded-lg bg-brand-soft text-brand hover:bg-brand hover:text-on-primary font-body-sm-strong text-body-sm-strong transition-all" id="btn-simulate-confirm" onclick="simulateVendorVerification(this)" type="button">
+              Simulate Vendor Check
+            </button>
+</div>
+</div>
+<!-- Vendor Row 2: Green Canteen (Cleared) -->
+<div class="px-space-lg py-space-md grid grid-cols-12 items-center hover:bg-surface-raised transition-colors">
+<div class="col-span-5 sm:col-span-4 flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">lunch_dining</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">Green Canteen</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Group Lunch • Direct Counter UPI</span>
+</div>
+</div>
+<div class="col-span-3 sm:col-span-2 text-right">
+<span class="font-financial-amount-md text-financial-amount-md text-ink-muted tabular-nums">₹90.00</span>
+<span class="block font-body-sm text-body-sm text-success">Balance ₹0.00</span>
+</div>
+<div class="hidden sm:flex sm:col-span-3 items-center pl-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-success bg-success-soft px-2 py-0.5 rounded-full w-max">
+<span class="material-symbols-outlined text-[13px]">check</span> Settled via Direct UPI
+              </span>
+<span class="font-body-sm text-body-sm text-ink-subtle">Merchant confirmed 12m ago</span>
+</div>
+</div>
+<div class="col-span-4 sm:col-span-3 flex items-center justify-end gap-space-xs">
+<button class="h-8 px-space-sm rounded-lg bg-surface shadow-sm hover:bg-surface-muted text-ink font-body-sm-strong text-body-sm-strong transition-all flex items-center gap-1" onclick="showReceiptModal('Green Canteen', '₹90.00', 'GC-8812', 'Direct Settled - Confirmed')" type="button">
+<span class="material-symbols-outlined text-[14px] text-ink-muted">receipt</span>
+<span>Receipt</span>
+</button>
+</div>
+</div>
+<!-- Vendor Row 3: QuickBite Cafe (Cleared / ₹0.00) -->
+<div class="px-space-lg py-space-md grid grid-cols-12 items-center hover:bg-surface-raised transition-colors">
+<div class="col-span-5 sm:col-span-4 flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center text-ink flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">coffee</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-strong text-body-md-strong text-ink truncate">QuickBite Cafe</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Campus Library Annex</span>
+</div>
+</div>
+<div class="col-span-3 sm:col-span-2 text-right">
+<span class="font-financial-amount-md text-financial-amount-md text-ink-muted tabular-nums">₹0.00</span>
+<span class="block font-body-sm text-body-sm text-ink-subtle">All Dues Cleared</span>
+</div>
+<div class="hidden sm:flex sm:col-span-3 items-center pl-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-ink-muted bg-surface-muted px-2 py-0.5 rounded-full w-max">
+<span class="material-symbols-outlined text-[13px]">done_all</span> Zero Balance
+              </span>
+<span class="font-body-sm text-body-sm text-ink-subtle">No recurring obligations</span>
+</div>
+</div>
+<div class="col-span-4 sm:col-span-3 flex items-center justify-end gap-space-xs">
+<button class="h-8 px-space-sm rounded-lg bg-surface shadow-sm text-ink-muted font-body-sm text-body-sm cursor-not-allowed opacity-60" type="button">
+              No Dues
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Vendor Settlement Security Protocol -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-brand text-[22px]">policy</span>
+<div>
+<h4 class="font-body-md-strong text-body-md-strong text-ink">Campus Vendor Reconciliation Engine</h4>
+<p class="font-body-sm text-body-sm text-ink-muted">Direct vendor payments send automated webhooks to university terminal registers without intermediary account balance pooling.</p>
+</div>
+</div>
+<button class="h-8 px-space-md rounded-lg bg-surface shadow-sm font-body-sm-strong text-body-sm-strong text-ink hover:bg-surface-muted transition-colors" onclick="alert('Campus vendor integration status: 100% operational.')" type="button">
+        System Health
+      </button>
+</div>
+</div>
+<!-- MODAL: Record Peer Settlement Dialog -->
+<div class="fixed inset-0 z-50 bg-ink/40 hidden items-center justify-center p-4" id="settlement-modal">
+<div class="bg-surface rounded-2xl max-w-md w-full shadow-2xl overflow-hidden transform transition-all">
+<div class="px-space-lg py-space-md bg-surface-raised flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-brand text-[20px]">fact_check</span>
+<span class="font-headline-sm text-headline-sm text-ink">Record Settlement</span>
+</div>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-muted flex items-center justify-center text-ink-muted hover:text-ink" onclick="closeSettlementModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="settlement-form" onsubmit="handleRecordSettlementSubmit(event)">
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Peer Name</label>
+<input class="w-full h-10 px-3 rounded-lg bg-surface-muted text-ink font-body-md-strong text-body-md-strong outline-none" id="modal-peer-name" readonly="" type="text" value="Rohan Verma"/>
+</div>
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Expense Context</label>
+<input class="w-full h-10 px-3 rounded-lg bg-surface-muted text-ink-muted font-body-md text-body-md outline-none" id="modal-peer-expense" readonly="" type="text" value="Dinner at Green Canteen"/>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Amount Settled (₹)</label>
+<input class="w-full h-10 px-3 rounded-lg bg-surface border-0 ring-1 ring-line focus:ring-2 focus:ring-brand font-financial-amount-md text-financial-amount-md text-ink outline-none" id="modal-settle-amount" required="" step="0.01" type="number" value="120.00"/>
+</div>
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Payment Method</label>
+<select class="w-full h-10 px-3 rounded-lg bg-surface ring-1 ring-line focus:ring-2 focus:ring-brand font-body-md text-body-md text-ink outline-none">
+<option>UPI / PhonePe</option>
+<option>Cash in Hand</option>
+<option>Campus ID Card Balance</option>
+<option>Bank IMPS</option>
+</select>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-brand-soft text-brand font-body-sm text-body-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Settling this updates both peer accounts instantaneously.</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm mt-space-xs">
+<button class="h-10 px-space-md rounded-lg bg-surface-muted text-ink font-body-md-strong text-body-md-strong hover:bg-surface-container transition-colors" onclick="closeSettlementModal()" type="button">
+            Cancel
+          </button>
+<button class="h-10 px-space-lg rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover shadow-sm transition-all active:scale-95" type="submit">
+            Confirm Settlement
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Toast Notification Overlay -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none" id="toast-notification">
+<div class="bg-ink text-surface rounded-xl px-space-md py-space-sm shadow-xl flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-accent text-[20px]" id="toast-icon">check_circle</span>
+<span class="font-body-md text-body-md text-surface" id="toast-message">Action completed successfully</span>
+</div>
+</div>
+<!-- Interactive JavaScript Logic -->
+<script>
+    // Tab Switching Logic
+    const tabPeers = document.getElementById('tab-btn-peers');
+    const tabVendors = document.getElementById('tab-btn-vendors');
+    const viewPeers = document.getElementById('tab-view-peers');
+    const viewVendors = document.getElementById('tab-view-vendors');
+
+    function setActiveTab(isPeers) {
+      if (isPeers) {
+        tabPeers.className = 'tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong bg-surface text-ink shadow-sm transition-all';
+        tabVendors.className = 'tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:text-ink hover:bg-surface-raised transition-all';
+        viewPeers.classList.remove('hidden');
+        viewVendors.classList.add('hidden');
+      } else {
+        tabVendors.className = 'tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md-strong text-body-md-strong bg-surface text-ink shadow-sm transition-all';
+        tabPeers.className = 'tab-trigger flex items-center gap-space-xs px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:text-ink hover:bg-surface-raised transition-all';
+        viewVendors.classList.remove('hidden');
+        viewPeers.classList.add('hidden');
+      }
+    }
+
+    tabPeers.addEventListener('click', () => setActiveTab(true));
+    tabVendors.addEventListener('click', () => setActiveTab(false));
+
+    // Toast notification utility
+    function showToast(message, icon = 'check_circle') {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-message');
+      const ic = document.getElementById('toast-icon');
+      text.textContent = message;
+      ic.textContent = icon;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // Settlement modal controls
+    const modal = document.getElementById('settlement-modal');
+    function openSettlementModal(name, amount, expense) {
+      document.getElementById('modal-peer-name').value = name;
+      document.getElementById('modal-peer-expense').value = expense;
+      document.getElementById('modal-settle-amount').value = Number(amount).toFixed(2);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSettlementModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('btn-open-record-settlement').addEventListener('click', () => {
+      openSettlementModal('Rohan Verma', 120.00, 'Dinner at Green Canteen (Oct 22)');
+    });
+
+    function handleRecordSettlementSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('modal-peer-name').value;
+      const amt = document.getElementById('modal-settle-amount').value;
+      closeSettlementModal();
+      showToast(`Settlement of ₹${amt} recorded for ${name}`);
+    }
+
+    function sendRepaymentReminder(name, amount) {
+      showToast(`Repayment nudge sent via WhatsApp to ${name} for ${amount}`, 'notifications_active');
+    }
+
+    function triggerDirectPeerSettle(name, amount, upi) {
+      showToast(`Launching UPI intent for ₹${amount} to ${name} (${upi})`, 'bolt');
+    }
+
+    function viewExpenseDetail(title, share, payer) {
+      showToast(`Viewing ledger receipt: "${title}" (Your liability: ${share})`, 'receipt');
+    }
+
+    function copyUPIHandle() {
+      navigator.clipboard?.writeText('ananya304@okhdfcbank');
+      showToast('UPI Handle copied to clipboard: ananya304@okhdfcbank', 'content_copy');
+    }
+
+    function simulateVendorVerification(btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[14px] animate-spin">refresh</span> Verifying...`;
+      setTimeout(() => {
+        btn.parentElement.innerHTML = `
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-success bg-success-soft px-2.5 py-1 rounded-md">
+            <span class="material-symbols-outlined text-[14px]">verified</span> Confirmed by Laundry Co.
+          </span>
+        `;
+        showToast('Campus Laundry Co. confirmed receipt of ₹70.00 via terminal webhook.');
+      }, 1200);
+    }
+
+    function showReceiptModal(vendor, amount, inv, status) {
+      showToast(`${vendor} [${inv}]: ${amount} (${status})`, 'description');
+    }
+
+    document.getElementById('btn-export-ledger').addEventListener('click', () => {
+      showToast('Generating signed dual-ledger campus report (CSV + PDF)...', 'download');
+    });
+  </script>
+</div></main></div></body></html>

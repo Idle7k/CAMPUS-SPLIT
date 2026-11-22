@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#e7e9e4","on-primary-container":"#9ae9c0","warning-soft":"#FFF3DE","primary-container":"#176b4b","error-container":"#ffdad6","surface-container":"#edeee9","line":"#DDE3DB","surface-dim":"#d9dad6","on-error":"#ffffff","ink":"#1B2821","surface-tint":"#176b4b","surface-variant":"#e2e3de","tertiary":"#3f4c00","surface-container-highest":"#e2e3de","on-surface-variant":"#3f4943","outline-variant":"#bec9c1","canvas":"#F5F6F1","primary-fixed-dim":"#88d6af","info-soft":"#EAF2F8","on-background":"#1a1c19","primary-fixed":"#a4f3ca","brand-soft":"#E7F1EA","on-tertiary-fixed-variant":"#3f4c00","info":"#356B91","outline":"#6f7a72","ink-subtle":"#879188","surface-muted":"#EEF1EA","on-tertiary-container":"#cce36c","surface-bright":"#f9faf5","secondary-fixed-dim":"#bdcac0","tertiary-fixed-dim":"#bad15c","on-surface":"#1a1c19","success":"#24784E","inverse-surface":"#2e312e","inverse-on-surface":"#f0f1ec","surface-container-low":"#f3f4ef","primary":"#005136","on-primary":"#ffffff","success-soft":"#E8F4EC","brand":"#176B4B","tertiary-fixed":"#d6ed75","on-secondary-fixed-variant":"#3e4942","ink-muted":"#68746C","on-tertiary-fixed":"#181e00","error":"#ba1a1a","secondary":"#55615a","on-primary-fixed":"#002114","brand-hover":"#12573D","warning":"#9A5B13","danger":"#B43F3F","on-primary-fixed-variant":"#005236","on-secondary-container":"#5b675f","surface":"#FFFFFF","accent":"#D6ED75","on-secondary":"#ffffff","on-secondary-fixed":"#131e18","background":"#f9faf5","on-tertiary":"#ffffff","surface-raised":"#FAFBF8","on-error-container":"#93000a","inverse-primary":"#88d6af","secondary-fixed":"#d9e6dc","danger-soft":"#FCECEC","tertiary-container":"#556500","surface-container-lowest":"#ffffff","secondary-container":"#d9e6dc"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"3rem","space-xl":"2rem","space-lg":"1.5rem","margin-tablet":"1.5rem","margin-desktop":"2rem","space-md":"1rem","margin":"1rem","space-2xl":"2.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg":["Geist"],"financial-amount-md":["Geist"],"body-md":["Geist"],"label-md":["Geist"],"headline-sm":["Geist"],"financial-amount-lg":["Geist"],"body-sm":["Geist"],"body-md-strong":["Geist"],"headline-lg-mobile":["Geist"],"body-sm-strong":["Geist"],"headline-md":["Geist"],"body-lg":["Geist"],"label-sm":["Geist"]},"fontSize":{"headline-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"financial-amount-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"financial-amount-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md-strong":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"30px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm-strong":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}]}}}};</script></head><body class="bg-canvas font-body-md text-ink antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface border-r border-line z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-line"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">receipt_long</span></div><span class="font-headline-sm text-headline-sm text-ink tracking-tight">Campus Split</span></div><div class="px-space-lg pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Campus workspace</span></div><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="overview" href="#">Overview</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="expenses" href="#">Expenses</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="groups" href="#">Groups</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="balances" href="#">Balances</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="vendors" href="#">Vendors</a></nav></div><div class="p-space-md border-t border-line flex flex-col gap-space-sm"><div class="px-space-md pt-space-xs pb-space-xs"><span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Admin Workspace</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="settings" href="#">Settings</a><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-brand-soft text-brand font-body-md-strong rounded-lg" data-path="manage-vendors" href="#">Manage Vendors</a></nav><div class="flex items-center justify-between px-space-sm py-space-sm rounded-lg bg-surface-raised border border-line"><div class="flex flex-col min-w-0"><span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Ananya Sharma</span><span class="font-body-sm text-body-sm text-ink-muted truncate">Campus Admin</span></div><button aria-label="Log out" class="p-space-xs rounded-lg text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface border-b border-line z-40 px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md"><span class="text-ink-muted">Admin</span><span class="text-ink-subtle">/</span><span class="font-body-md-strong text-body-md-strong text-ink">Manage Vendors</span></div><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">admin_panel_settings</span></div></div></header><main class="w-full pt-16 px-margin-desktop bg-canvas min-h-screen"><div class="flex flex-col w-full pb-space-3xl">
+<!-- Admin Verification Banner -->
+<div class="mb-space-lg rounded-xl bg-surface p-space-md border border-line shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-9 h-9 rounded-lg bg-brand-soft text-brand flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-md-strong text-body-md-strong text-ink">Campus Administrator Mode</span>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded text-[11px] font-semibold bg-accent text-ink uppercase tracking-wider">Authorized Registry</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted truncate">
+          Student Council &amp; Merchant Affairs Directorate · UPI clearing endpoint authorization key #VPA-2025-IIT
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-muted text-ink-muted text-body-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span>NPCI Gateway Live</span>
+</div>
+</div>
+</div>
+<!-- Screen Header & Top Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div>
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Campus Fintech Infrastructure</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink tracking-tight">Manage Vendors</h1>
+<p class="font-body-md text-body-md text-ink-muted mt-1 max-w-2xl">
+        Configure verified campus merchants, UPI clearing VPAs, and settlement policies across campus outlets.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface border border-line text-ink font-body-md-strong text-body-md-strong hover:bg-surface-muted transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-ink-muted">download</span>
+        Export CSV
+      </button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface border border-line text-ink font-body-md-strong text-body-md-strong hover:bg-surface-muted transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-ink-muted">history_toggle_off</span>
+        Audit Log
+      </button>
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover active:scale-[0.98] transition-all shadow-sm" onclick="openDrawer('new')" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        Add New Vendor
+      </button>
+</div>
+</div>
+<!-- Metric / Summary Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+<div class="bg-surface p-space-md rounded-xl border border-line shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Total Registered</span>
+<span class="material-symbols-outlined text-[20px] text-ink-subtle">store</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">8</span>
+<span class="font-body-sm text-body-sm text-ink-muted">stalls cataloged</span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-line flex items-center justify-between text-body-sm">
+<span class="text-ink-subtle">Campus Coverage</span>
+<span class="font-medium text-ink">4 Precincts</span>
+</div>
+</div>
+<div class="bg-surface p-space-md rounded-xl border border-line shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Active Outlets</span>
+<div class="w-2.5 h-2.5 rounded-full bg-success ring-4 ring-success-soft"></div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">7</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-success-soft text-success">87.5% operational</span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-line flex items-center justify-between text-body-sm">
+<span class="text-ink-subtle">Realtime Routing</span>
+<span class="font-medium text-success">Enabled</span>
+</div>
+</div>
+<div class="bg-surface p-space-md rounded-xl border border-line shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Inactive / Term Break</span>
+<span class="material-symbols-outlined text-[20px] text-warning">pause_circle</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums">1</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-warning-soft text-warning">Maintenance</span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-line flex items-center justify-between text-body-sm">
+<span class="text-ink-subtle">Pending Review</span>
+<span class="font-medium text-ink">0 Merchant disputes</span>
+</div>
+</div>
+<div class="bg-surface p-space-md rounded-xl border border-line shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Monthly Clearing Vol.</span>
+<span class="material-symbols-outlined text-[20px] text-brand">payments</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums font-semibold">₹48,250</span>
+<span class="text-[12px] font-semibold text-brand bg-brand-soft px-1.5 py-0.5 rounded">MTD</span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-line flex items-center justify-between text-body-sm">
+<span class="text-ink-subtle">Settlement Rails</span>
+<span class="font-medium text-ink">Zero Transaction Fee</span>
+</div>
+</div>
+</div>
+<!-- Workspace: Table View with Quick Actions & Integrated Detail Drawer -->
+<div class="flex flex-col lg:flex-row gap-space-lg items-start">
+<!-- Vendor Registry Master Table -->
+<div class="w-full flex-1 bg-surface rounded-xl border border-line shadow-sm overflow-hidden flex flex-col">
+<!-- Table Filter Bar -->
+<div class="p-space-md border-b border-line flex flex-col sm:flex-row gap-space-md items-stretch sm:items-center justify-between bg-surface">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-ink-subtle">search</span>
+<input class="w-full pl-9 pr-3 py-2 text-body-md rounded-lg bg-surface border border-line text-ink placeholder:text-ink-subtle focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all" id="vendorSearchInput" placeholder="Search merchant name, UPI ID, or outlet code..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm overflow-x-auto pb-1 sm:pb-0">
+<div class="flex items-center bg-surface-muted p-1 rounded-lg border border-line shrink-0" id="categoryFilterBar">
+<button class="category-pill px-2.5 py-1 text-label-sm rounded-md bg-surface text-ink font-semibold shadow-xs" onclick="filterCategory('All', this)" type="button">All [8]</button>
+<button class="category-pill px-2.5 py-1 text-label-sm rounded-md text-ink-muted hover:text-ink transition-colors" onclick="filterCategory('Laundry', this)" type="button">Laundry [2]</button>
+<button class="category-pill px-2.5 py-1 text-label-sm rounded-md text-ink-muted hover:text-ink transition-colors" onclick="filterCategory('Food', this)" type="button">Food [3]</button>
+<button class="category-pill px-2.5 py-1 text-label-sm rounded-md text-ink-muted hover:text-ink transition-colors" onclick="filterCategory('Printing', this)" type="button">Print [2]</button>
+<button class="category-pill px-2.5 py-1 text-label-sm rounded-md text-ink-muted hover:text-ink transition-colors" onclick="filterCategory('Stationery', this)" type="button">Stores [1]</button>
+</div>
+<select class="px-space-sm py-2 text-body-sm-strong rounded-lg bg-surface border border-line text-ink focus:outline-none focus:border-brand cursor-pointer" id="statusFilter" onchange="filterStatus()">
+<option value="all">Status: All</option>
+<option value="active">Active Only</option>
+<option value="inactive">Inactive Only</option>
+</select>
+</div>
+</div>
+<!-- Merchant Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-raised border-b border-line text-[11px] font-semibold text-ink-subtle uppercase tracking-wider">
+<th class="py-3 px-space-md font-label-sm">Merchant Outlet</th>
+<th class="py-3 px-space-md font-label-sm">UPI VPA Clearing</th>
+<th class="py-3 px-space-md font-label-sm">Settlement Rail</th>
+<th class="py-3 px-space-md font-label-sm text-right">Volume &amp; Orders</th>
+<th class="py-3 px-space-md font-label-sm text-center">Status</th>
+<th class="py-3 px-space-md font-label-sm text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-line text-body-md" id="vendorTableBody">
+<!-- Row 1: Campus Laundry Co. -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Laundry" data-status="active" onclick="editVendor('Campus Laundry Co.', 'Laundry', 'Building 4, Wing B Student Arcade, Shop #12', 'campuslaundry@icici', 'Instant Direct Clearing', true, '₹18,400', '142')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-info-soft text-info flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_laundry_service</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Campus Laundry Co.</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Laundry</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">Wing B Arcade #12 · Code: LND-B12</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">campuslaundry@icici</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('campuslaundry@icici')" title="Copy VPA" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Instant Direct Clearing</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Daily 11:59 PM Auto-sweep</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹18,400</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">142 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Campus Laundry Co.', 'campuslaundry@icici')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Campus Laundry Co.', 'Laundry', 'Building 4, Wing B Student Arcade, Shop #12', 'campuslaundry@icici', 'Instant Direct Clearing', true, '₹18,400', '142')" title="Edit Vendor" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Green Canteen -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Food" data-status="active" onclick="editVendor('Green Canteen', 'Food', 'North Campus Dining Complex, Ground Floor', 'greencanteen.iit@okhdfcbank', 'Instant Direct Clearing', true, '₹14,920', '218')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-success-soft text-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Green Canteen</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Food</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">North Campus Dining · Code: FOD-NC01</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">greencanteen.iit@okhdfcbank</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('greencanteen.iit@okhdfcbank')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Room Ledger Linked</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Real-time Split</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹14,920</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">218 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Green Canteen', 'greencanteen.iit@okhdfcbank')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Green Canteen', 'Food', 'North Campus Dining Complex, Ground Floor', 'greencanteen.iit@okhdfcbank', 'Instant Direct Clearing', true, '₹14,920', '218')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Campus Print Shop -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Printing" data-status="active" onclick="editVendor('Campus Print Shop', 'Printing', 'Central Library Arcade, Room 102', 'campusprint@sbi', 'Instant Direct Clearing', true, '₹5,640', '89')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-muted text-ink flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Campus Print Shop</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Printing</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">Library Arcade · Code: PRT-LIB01</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">campusprint@sbi</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('campusprint@sbi')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Instant Direct Clearing</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Daily 11:59 PM</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹5,640</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">89 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Campus Print Shop', 'campusprint@sbi')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Campus Print Shop', 'Printing', 'Central Library Arcade, Room 102', 'campusprint@sbi', 'Instant Direct Clearing', true, '₹5,640', '89')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: QuickBite Cafe -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Food" data-status="active" onclick="editVendor('QuickBite Cafe', 'Food', 'South Hostel Quadrangle, Kiosk 3', 'quickbite.campus@axisbank', 'Instant Direct Clearing', true, '₹4,110', '96')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-brand-soft text-brand flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">coffee</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">QuickBite Cafe</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Food</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">South Hostel Quad · Code: FOD-SH03</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">quickbite.campus@axisbank</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('quickbite.campus@axisbank')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Instant Direct Clearing</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Daily 11:59 PM</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹4,110</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">96 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('QuickBite Cafe', 'quickbite.campus@axisbank')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('QuickBite Cafe', 'Food', 'South Hostel Quadrangle, Kiosk 3', 'quickbite.campus@axisbank', 'Instant Direct Clearing', true, '₹4,110', '96')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Central Books & Co. -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Stationery" data-status="active" onclick="editVendor('Central Books &amp; Co.', 'Stationery', 'Academic Complex B, Hallway Stall', 'centralbooks@icici', 'Instant Direct Clearing', true, '₹3,280', '41')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-muted text-ink flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Central Books &amp; Co.</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Stationery</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">Academic Complex B · Code: STN-AC02</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">centralbooks@icici</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('centralbooks@icici')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Room Ledger Linked</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Weekly Summary</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹3,280</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">41 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Central Books &amp; Co.', 'centralbooks@icici')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Central Books &amp; Co.', 'Stationery', 'Academic Complex B, Hallway Stall', 'centralbooks@icici', 'Instant Direct Clearing', true, '₹3,280', '41')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Wing C Laundromat -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer" data-category="Laundry" data-status="active" onclick="editVendor('Wing C Laundromat', 'Laundry', 'West Campus Utilities Block C', 'wingclaundry@barodampay', 'Instant Direct Clearing', true, '₹1,900', '24')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-info-soft text-info flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_laundry_service</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Wing C Laundromat</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Laundry</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">West Campus Utilities · Code: LND-WC04</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink font-mono text-[12px] tracking-tight">wingclaundry@barodampay</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('wingclaundry@barodampay')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Instant Direct Clearing</span>
+<span class="font-body-sm text-[11px] text-ink-muted">SLA: Daily 11:59 PM</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink tabular-nums">₹1,900</span>
+<span class="font-body-sm text-[11px] text-ink-muted tabular-nums">24 splits settled</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-success-soft text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Wing C Laundromat', 'wingclaundry@barodampay')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Wing C Laundromat', 'Laundry', 'West Campus Utilities Block C', 'wingclaundry@barodampay', 'Instant Direct Clearing', true, '₹1,900', '24')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Night Owl Snacks (Inactive) -->
+<tr class="vendor-row hover:bg-surface-raised transition-colors group cursor-pointer opacity-80" data-category="Food" data-status="inactive" onclick="editVendor('Night Owl Snacks', 'Food', 'Hostel 4 Annex, Basement Cafeteria', 'nightowl@icici', 'Instant Direct Clearing', false, '₹0', '0')">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-muted text-ink-subtle flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">nightlife</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink">Night Owl Snacks</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-muted text-ink-muted">Food</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted truncate block">Hostel 4 Annex · Term Break Maintenance</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-muted text-ink-subtle font-mono text-[12px] tracking-tight line-through">nightowl@icici</code>
+<button class="text-ink-subtle hover:text-ink p-1 rounded" onclick="event.stopPropagation(); copyToClipboard('nightowl@icici')" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm-strong text-body-sm-strong text-ink-muted">Suspended</span>
+<span class="font-body-sm text-[11px] text-ink-subtle">Routing Paused by Council</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-md-strong text-body-md-strong text-ink-muted tabular-nums">₹0</span>
+<span class="font-body-sm text-[11px] text-ink-subtle tabular-nums">0 active orders</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-warning-soft text-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                  Suspended
+                </span>
+</td>
+<td class="py-3.5 px-space-md text-right" onclick="event.stopPropagation()">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="showQrModal('Night Owl Snacks', 'nightowl@icici')" title="View Terminal QR" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-muted text-ink-muted hover:text-ink transition-colors" onclick="editVendor('Night Owl Snacks', 'Food', 'Hostel 4 Annex, Basement Cafeteria', 'nightowl@icici', 'Instant Direct Clearing', false, '₹0', '0')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface border-t border-line flex items-center justify-between text-body-sm text-ink-muted">
+<span>Showing <strong class="text-ink">7</strong> of <strong class="text-ink">8</strong> campus merchants</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-2.5 py-1 rounded border border-line bg-surface hover:bg-surface-muted disabled:opacity-40" disabled="">Previous</button>
+<span class="px-2 font-medium text-ink">Page 1</span>
+<button class="px-2.5 py-1 rounded border border-line bg-surface hover:bg-surface-muted disabled:opacity-40" disabled="">Next</button>
+</div>
+</div>
+</div>
+<!-- Section 5.8 Integrated Configuration Panel (Right column on large screens, collapsible) -->
+<div class="w-full lg:w-[420px] bg-surface rounded-xl border border-line shadow-sm overflow-hidden flex flex-col shrink-0" id="vendorDrawer">
+<!-- Panel Header -->
+<div class="p-space-md bg-surface-raised border-b border-line flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-brand-soft text-brand flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink leading-tight" id="panelTitle">Edit Vendor Details</h3>
+<span class="font-body-sm text-body-sm text-ink-muted" id="panelSubtitle">Campus Laundry Co. · Code #LND-B12</span>
+</div>
+</div>
+<button class="text-ink-subtle hover:text-ink p-1 rounded-md text-xs font-semibold hover:bg-surface-muted transition-colors" onclick="resetFormToNew()" type="button">
+          Reset Form
+        </button>
+</div>
+<!-- Form Body -->
+<form class="p-space-md flex flex-col gap-space-md" id="vendorForm" onsubmit="handleFormSubmit(event)">
+<!-- Merchant Name -->
+<div class="flex flex-col gap-1">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vName">Merchant Name</label>
+<input class="px-3 py-2 rounded-lg bg-surface border border-line text-ink font-body-md text-body-md focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all" id="vName" required="" type="text" value="Campus Laundry Co."/>
+</div>
+<!-- Category & Settlement SLA Row -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vCategory">Category</label>
+<select class="px-2.5 py-2 rounded-lg bg-surface border border-line text-ink font-body-md text-body-md focus:outline-none focus:border-brand cursor-pointer" id="vCategory">
+<option selected="" value="Laundry">Laundry</option>
+<option value="Food">Food &amp; Canteen</option>
+<option value="Printing">Printing &amp; Stationery</option>
+<option value="Stationery">General Stores</option>
+<option value="Other">Other Campus Stall</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vSLA">Settlement Policy</label>
+<select class="px-2.5 py-2 rounded-lg bg-surface border border-line text-ink font-body-md text-body-md focus:outline-none focus:border-brand cursor-pointer" id="vSLA">
+<option selected="" value="Instant Direct Clearing">Instant Direct</option>
+<option value="Room Ledger Linked">Room Ledger</option>
+<option value="End of Day Sweep">EOD Sweep (23:59)</option>
+</select>
+</div>
+</div>
+<!-- Outlet Location -->
+<div class="flex flex-col gap-1">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vLocation">Outlet Location &amp; Stall Stall</label>
+<input class="px-3 py-2 rounded-lg bg-surface border border-line text-ink font-body-md text-body-md focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all" id="vLocation" required="" type="text" value="Building 4, Wing B Student Arcade, Shop #12"/>
+</div>
+<!-- Direct UPI VPA with Instant Resolution -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted" for="vVpa">Direct UPI Clearing VPA</label>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-brand">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+              NPCI Validated
+            </span>
+</div>
+<div class="relative">
+<input class="w-full px-3 py-2 rounded-lg bg-surface border border-line text-ink font-mono text-[13px] tracking-tight focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all" id="vVpa" required="" type="text" value="campuslaundry@icici"/>
+</div>
+<!-- Bank Resolution Feedback Badge -->
+<div class="mt-1 p-2 rounded-lg bg-surface-raised border border-line flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand shrink-0 mt-0.5">account_balance</span>
+<div class="flex flex-col text-[11px]">
+<span class="font-semibold text-ink" id="resolvedBeneficiary">Resolved: Campus Laundry Solutions LLP</span>
+<span class="text-ink-muted" id="resolvedBank">Bank: ICICI Bank · IFSC: ICIC0000042 · Live UPI Rail</span>
+</div>
+</div>
+</div>
+<!-- QR Code & Static Terminal Preview -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm-strong text-body-sm-strong text-ink-muted">Outlet Counter QR Tag</label>
+<div class="p-3 rounded-lg bg-surface border border-line flex items-center gap-space-md">
+<!-- Inline SVG dynamic visual QR -->
+<div class="w-16 h-16 bg-white border border-line rounded p-1 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full text-ink" fill="currentColor" viewbox="0 0 100 100">
+<rect height="30" rx="4" width="30" x="0" y="0"></rect>
+<rect fill="white" height="18" width="18" x="6" y="6"></rect>
+<rect height="10" width="10" x="10" y="10"></rect>
+<rect height="30" rx="4" width="30" x="70" y="0"></rect>
+<rect fill="white" height="18" width="18" x="76" y="6"></rect>
+<rect height="10" width="10" x="80" y="10"></rect>
+<rect height="30" rx="4" width="30" x="0" y="70"></rect>
+<rect fill="white" height="18" width="18" x="6" y="76"></rect>
+<rect height="10" width="10" x="10" y="80"></rect>
+<rect height="8" width="8" x="40" y="10"></rect>
+<rect height="8" width="8" x="52" y="10"></rect>
+<rect height="8" width="20" x="40" y="24"></rect>
+<rect height="12" width="12" x="10" y="44"></rect>
+<rect height="16" width="8" x="28" y="44"></rect>
+<rect height="16" width="16" x="42" y="42"></rect>
+<rect height="8" width="10" x="64" y="44"></rect>
+<rect height="12" width="12" x="80" y="44"></rect>
+<rect height="8" width="18" x="42" y="64"></rect>
+<rect height="24" width="8" x="66" y="60"></rect>
+<rect height="16" width="12" x="80" y="76"></rect>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Static Counter QR Code</span>
+<span class="font-body-sm text-[12px] text-ink-muted">Pre-embedded with UPI protocol deep-link: <code class="text-brand">upi://pay?pa=...</code></span>
+<div class="mt-1 flex items-center gap-2">
+<button class="text-[12px] font-semibold text-brand hover:underline inline-flex items-center gap-1" onclick="alert('Downloading printer-ready A5 terminal QR standee (PDF)...')" type="button">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                  Print Counter Placard
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Status Switch with Section 5.8 Warning Note -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-brand" id="statusIcon">toggle_on</span>
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Active Outlet Routing</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="vStatusToggle" onchange="toggleStatusSwitch(this)" type="checkbox"/>
+<div class="w-9 h-5 bg-line peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-line after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand"></div>
+</label>
+</div>
+<p class="font-body-sm text-[11px] text-ink-muted leading-relaxed" id="statusWarningText">
+            Deactivating will hide this merchant from student expense splitting, cancel outstanding QR splits, and disable direct UPI routing.
+          </p>
+</div>
+<!-- Form Actions -->
+<div class="flex items-center gap-space-sm pt-space-xs border-t border-line">
+<button class="flex-1 py-2.5 px-space-md rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover active:scale-[0.98] transition-all shadow-sm" type="submit">
+            Save Changes
+          </button>
+<button class="py-2.5 px-space-md rounded-lg bg-surface border border-line text-ink font-body-md-strong text-body-md-strong hover:bg-surface-muted transition-colors" onclick="resetFormToNew()" type="button">
+            Cancel
+          </button>
+</div>
+<!-- Destructive Action (Section 5.8 Mandatory Deactivate Vendor Confirmation) -->
+<div class="pt-space-xs">
+<button class="w-full py-2 px-space-md rounded-lg text-danger hover:bg-danger-soft border border-transparent hover:border-danger/20 font-body-sm-strong text-body-sm-strong transition-colors flex items-center justify-center gap-1.5" onclick="confirmDeactivateVendor()" type="button">
+<span class="material-symbols-outlined text-[16px]">block</span>
+            Deactivate Vendor &amp; Revoke Settlement
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- QR Standee Full Preview Modal Dialog -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-ink/40 backdrop-blur-xs p-4" id="qrModal">
+<div class="bg-surface rounded-xl border border-line shadow-xl max-w-sm w-full p-space-lg flex flex-col items-center text-center animate-in fade-in duration-200">
+<div class="w-10 h-10 rounded-full bg-brand-soft text-brand flex items-center justify-center mb-space-sm">
+<span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-ink" id="modalQrTitle">Campus Laundry Co.</h3>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md">Official Campus Split Verified Merchant Standee</p>
+<!-- High Contrast Stylized Terminal Frame -->
+<div class="w-56 h-56 p-4 rounded-xl bg-canvas border border-line flex flex-col items-center justify-center relative mb-space-md">
+<div class="w-40 h-40 bg-surface rounded-lg p-2 border border-line shadow-xs flex items-center justify-center">
+<svg class="w-full h-full text-ink" fill="currentColor" viewbox="0 0 100 100">
+<rect height="30" rx="3" width="30" x="0" y="0"></rect>
+<rect fill="white" height="18" width="18" x="6" y="6"></rect>
+<rect height="10" width="10" x="10" y="10"></rect>
+<rect height="30" rx="3" width="30" x="70" y="0"></rect>
+<rect fill="white" height="18" width="18" x="76" y="6"></rect>
+<rect height="10" width="10" x="80" y="10"></rect>
+<rect height="30" rx="3" width="30" x="0" y="70"></rect>
+<rect fill="white" height="18" width="18" x="6" y="76"></rect>
+<rect height="10" width="10" x="10" y="80"></rect>
+<rect height="8" width="28" x="36" y="8"></rect>
+<rect height="8" width="14" x="36" y="24"></rect>
+<rect height="16" width="16" x="12" y="40"></rect>
+<rect height="24" width="24" x="38" y="38"></rect>
+<rect height="8" width="16" x="72" y="40"></rect>
+<rect height="14" width="16" x="72" y="54"></rect>
+<rect height="4" width="12" x="8" y="64"></rect>
+<rect height="18" width="12" x="38" y="70"></rect>
+<rect height="8" width="24" x="56" y="72"></rect>
+<rect height="6" width="16" x="64" y="84"></rect>
+</svg>
+</div>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-mono text-ink-muted">
+<span id="modalQrVpa">campuslaundry@icici</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full">
+<button class="flex-1 py-2 px-space-md rounded-lg bg-surface border border-line text-ink font-body-md-strong text-body-md-strong hover:bg-surface-muted transition-colors" onclick="closeQrModal()" type="button">
+          Close
+        </button>
+<button class="flex-1 py-2 px-space-md rounded-lg bg-brand text-on-primary font-body-md-strong text-body-md-strong hover:bg-brand-hover transition-colors shadow-sm" onclick="alert('Standee asset generated. Dispatching to campus print facility.'); closeQrModal()" type="button">
+          Print Standee
+        </button>
+</div>
+</div>
+</div>
+<!-- Notification Toast -->
+<div class="fixed bottom-6 right-6 z-50 hidden items-center gap-2 px-space-md py-3 rounded-xl bg-ink text-surface shadow-xl text-body-sm font-medium transition-all" id="toastMessage">
+<span class="material-symbols-outlined text-[18px] text-accent">check_circle</span>
+<span id="toastText">Action completed successfully</span>
+</div>
+</div>
+<script>
+  function showToast(message) {
+    const toast = document.getElementById('toastMessage');
+    const toastText = document.getElementById('toastText');
+    toastText.innerText = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 3000);
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard?.writeText(text).then(() => {
+      showToast('Copied ' + text + ' to clipboard');
+    }).catch(() => {
+      showToast('Copied ' + text);
+    });
+  }
+
+  function editVendor(name, category, location, vpa, sla, active, volume, orders) {
+    document.getElementById('panelTitle').innerText = 'Edit Vendor Details';
+    document.getElementById('panelSubtitle').innerText = name + ' · ' + category;
+    document.getElementById('vName').value = name;
+    document.getElementById('vCategory').value = category;
+    document.getElementById('vLocation').value = location;
+    document.getElementById('vVpa').value = vpa;
+    document.getElementById('vSLA').value = sla;
+    const toggle = document.getElementById('vStatusToggle');
+    toggle.checked = active;
+    toggleStatusSwitch(toggle);
+
+    document.getElementById('resolvedBeneficiary').innerText = 'Resolved: ' + name + ' Solutions';
+    document.getElementById('resolvedBank').innerText = 'Bank: Verified NPCI Rail · VPA active';
+
+    // Smooth scroll to panel on mobile/tablet
+    if (window.innerWidth < 1024) {
+      document.getElementById('vendorDrawer').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function resetFormToNew() {
+    document.getElementById('panelTitle').innerText = 'Add New Campus Vendor';
+    document.getElementById('panelSubtitle').innerText = 'Register student outlet & direct UPI routing';
+    document.getElementById('vName').value = '';
+    document.getElementById('vCategory').value = 'Food';
+    document.getElementById('vLocation').value = '';
+    document.getElementById('vVpa').value = '';
+    document.getElementById('vSLA').value = 'Instant Direct Clearing';
+    const toggle = document.getElementById('vStatusToggle');
+    toggle.checked = true;
+    toggleStatusSwitch(toggle);
+    document.getElementById('resolvedBeneficiary').innerText = 'Awaiting VPA verification';
+    document.getElementById('resolvedBank').innerText = 'Enter a valid UPI handle (e.g. merchant@icici)';
+    document.getElementById('vName').focus();
+  }
+
+  function openDrawer(mode) {
+    if (mode === 'new') {
+      resetFormToNew();
+    }
+    if (window.innerWidth < 1024) {
+      document.getElementById('vendorDrawer').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function toggleStatusSwitch(checkbox) {
+    const icon = document.getElementById('statusIcon');
+    const warning = document.getElementById('statusWarningText');
+    if (checkbox.checked) {
+      icon.innerText = 'toggle_on';
+      icon.className = 'material-symbols-outlined text-[18px] text-brand';
+      warning.innerText = 'Outlet is ACTIVE. Split charges routed immediately via campus NPCI mesh.';
+      warning.className = 'font-body-sm text-[11px] text-success leading-relaxed';
+    } else {
+      icon.innerText = 'toggle_off';
+      icon.className = 'material-symbols-outlined text-[18px] text-ink-subtle';
+      warning.innerText = 'Deactivating will hide this merchant from student expense splitting and disable direct UPI routing.';
+      warning.className = 'font-body-sm text-[11px] text-danger leading-relaxed font-medium';
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('vName').value;
+    showToast('Merchant configuration saved: ' + name);
+  }
+
+  function confirmDeactivateVendor() {
+    const name = document.getElementById('vName').value || 'this vendor';
+    if (confirm('Section 5.8 Security Protocol:\nAre you sure you want to suspend and revoke UPI settlement routing for "' + name + '"?\n\nThis will immediate invalidate student split drafts.')) {
+      const toggle = document.getElementById('vStatusToggle');
+      toggle.checked = false;
+      toggleStatusSwitch(toggle);
+      showToast(name + ' has been deactivated and removed from active splitting.');
+    }
+  }
+
+  function showQrModal(name, vpa) {
+    document.getElementById('modalQrTitle').innerText = name;
+    document.getElementById('modalQrVpa').innerText = vpa;
+    document.getElementById('qrModal').classList.remove('hidden');
+  }
+
+  function closeQrModal() {
+    document.getElementById('qrModal').classList.add('hidden');
+  }
+
+  // Table category filter
+  function filterCategory(cat, btn) {
+    const pills = document.querySelectorAll('.category-pill');
+    pills.forEach(p => {
+      p.className = 'category-pill px-2.5 py-1 text-label-sm rounded-md text-ink-muted hover:text-ink transition-colors';
+    });
+    btn.className = 'category-pill px-2.5 py-1 text-label-sm rounded-md bg-surface text-ink font-semibold shadow-xs';
+
+    const rows = document.querySelectorAll('.vendor-row');
+    rows.forEach(row => {
+      const rowCat = row.getAttribute('data-category');
+      if (cat === 'All' || rowCat === cat) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  // Status Filter
+  function filterStatus() {
+    const val = document.getElementById('statusFilter').value;
+    const rows = document.querySelectorAll('.vendor-row');
+    rows.forEach(row => {
+      const status = row.getAttribute('data-status');
+      if (val === 'all' || status === val) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  // Instant Search
+  document.getElementById('vendorSearchInput').addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase();
+    const rows = document.querySelectorAll('.vendor-row');
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(query)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script></main></div></body></html>

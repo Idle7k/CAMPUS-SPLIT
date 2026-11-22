@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-fixed': '#131e18', 'info-soft': '#EAF2F8', 'on-error': '#ffffff', 'primary': '#005136', 'error': '#ba1a1a', 'on-primary-container': '#9ae9c0', 'secondary-fixed': '#d9e6dc', 'surface-container-high': '#e7e9e4', 'on-primary-fixed': '#002114', 'surface-raised': '#FAFBF8', 'on-surface': '#1a1c19', 'ink': '#1B2821', 'on-primary': '#ffffff', 'success': '#24784E', 'secondary': '#55615a', 'danger-soft': '#FCECEC', 'outline-variant': '#bec9c1', 'warning': '#9A5B13', 'primary-fixed': '#a4f3ca', 'on-surface-variant': '#3f4943', 'warning-soft': '#FFF3DE', 'on-tertiary-container': '#cce36c', 'primary-fixed-dim': '#88d6af', 'outline': '#6f7a72', 'error-container': '#ffdad6', 'surface-bright': '#f9faf5', 'on-primary-fixed-variant': '#005236', 'surface-muted': '#EEF1EA', 'on-secondary': '#ffffff', 'surface': '#FFFFFF', 'ink-muted': '#68746C', 'surface-variant': '#e2e3de', 'on-tertiary-fixed-variant': '#3f4c00', 'on-secondary-fixed-variant': '#3e4942', 'surface-container-lowest': '#ffffff', 'tertiary-fixed-dim': '#bad15c', 'inverse-surface': '#2e312e', 'surface-container': '#edeee9', 'brand-hover': '#12573D', 'on-tertiary-fixed': '#181e00', 'danger': '#B43F3F', 'on-tertiary': '#ffffff', 'info': '#356B91', 'surface-container-highest': '#e2e3de', 'inverse-primary': '#88d6af', 'primary-container': '#176b4b', 'surface-dim': '#d9dad6', 'secondary-container': '#d9e6dc', 'on-secondary-container': '#5b675f', 'canvas': '#F5F6F1', 'brand': '#176B4B', 'on-error-container': '#93000a', 'brand-soft': '#E7F1EA', 'ink-subtle': '#879188', 'on-background': '#1a1c19', 'tertiary-container': '#556500', 'inverse-on-surface': '#f0f1ec', 'tertiary-fixed': '#d6ed75', 'surface-tint': '#176b4b', 'surface-container-low': '#f3f4ef', 'tertiary': '#3f4c00', 'background': '#f9faf5', 'line': '#DDE3DB', 'success-soft': '#E8F4EC', 'accent': '#D6ED75', 'secondary-fixed-dim': '#bdcac0' }, borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-desktop': '2rem', 'space-2xl': '2.5rem', 'space-xl': '2rem', 'space-3xl': '3rem', 'space-sm': '0.5rem', 'space-xs': '0.25rem', 'gutter-desktop': '1.5rem', 'margin': '1rem', 'margin-tablet': '1.5rem', 'space-lg': '1.5rem' }, fontFamily: { 'headline-md': ['Geist'], 'label-sm': ['Geist'], 'body-sm': ['Geist'], 'label-md': ['Geist'], 'body-md': ['Geist'], 'body-lg': ['Geist'], 'financial-amount-md': ['Geist'], 'body-sm-strong': ['Geist'], 'body-md-strong': ['Geist'], 'headline-lg-mobile': ['Geist'], 'financial-amount-lg': ['Geist'], 'headline-sm': ['Geist'], 'headline-lg': ['Geist'] }, fontSize: { 'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }], 'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }], 'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.01em', fontWeight: '600' }], 'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'financial-amount-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-sm-strong': ['12px', { lineHeight: '16px', fontWeight: '500' }], 'body-md-strong': ['14px', { lineHeight: '20px', fontWeight: '600' }], 'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.015em', fontWeight: '600' }], 'financial-amount-lg': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-sm': ['16px', { lineHeight: '24px', letterSpacing: '-0.005em', fontWeight: '600' }], 'headline-lg': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '600' }] } } } };</script><style>@layer base { html, body { min-height: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-canvas text-ink font-body-md min-h-screen flex flex-col antialiased selection:bg-brand-soft selection:text-brand"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,40,33,0.04)]"><div class="h-14 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[20px]">account_balance_wallet</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-ink font-bold tracking-tight truncate leading-none">Campus Split</span></div><div class="flex items-center gap-1 leading-none mt-0.5"><span class="material-symbols-outlined text-ink-subtle text-[12px]">apartment</span><span class="font-label-sm text-label-sm text-ink-muted truncate font-normal">North Campus · Rm 304</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><span class="sr-only">Home</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-20 bg-canvas"><div class="flex flex-col w-full pb-6 px-margin">
+<!-- Title & Semester Badge -->
+<section class="pt-4 pb-3 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tight font-bold">Overview</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-ink font-label-sm text-label-sm">Semester 1</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-muted">Rm 304</span>
+</div>
+<p class="font-body-md text-body-md text-ink-muted">Your campus expenses, all in one place.</p>
+</section>
+<!-- Quick Action Buttons -->
+<section class="grid grid-cols-2 gap-space-sm py-2">
+<button class="h-11 px-3 bg-brand active:bg-brand-hover text-on-primary rounded-xl font-body-md-strong text-body-md flex items-center justify-center gap-1.5 shadow-sm transition-transform active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="truncate">Split expense</span>
+</button>
+<button class="h-11 px-3 bg-surface active:bg-surface-muted text-ink rounded-xl font-body-md-strong text-body-md flex items-center justify-center gap-1.5 shadow-sm transition-transform active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px] text-brand">qr_code_scanner</span>
+<span class="truncate">Pay vendor</span>
+</button>
+</section>
+<!-- Urgent / Action Required Card -->
+<section class="pt-3 pb-2">
+<div class="bg-surface rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col gap-2.5">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-warning-soft text-warning font-label-sm text-label-sm">Action Required</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Direct vendor share</span>
+</div>
+<span class="material-symbols-outlined text-warning text-[20px]">priority_high</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div>
+<p class="font-headline-md text-headline-md text-ink font-bold tabular-nums">₹70.00</p>
+<p class="font-body-sm text-body-sm text-ink-muted mt-0.5">Campus Laundry Co. · <span class="font-body-sm-strong text-ink">campuslaundry@icici</span></p>
+</div>
+</div>
+<button class="w-full h-10 mt-1 bg-surface-muted hover:bg-brand-soft text-brand rounded-lg font-body-md-strong text-body-md flex items-center justify-between px-3 transition-colors" type="button">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Open UPI Payment Sheet</span>
+</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Three Discrete Financial Summary Cards -->
+<section class="py-2 flex flex-col gap-space-sm">
+<!-- Card 1: People owe you -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-md text-label-md text-ink-muted">People owe you</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm">+₹180.00</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums font-bold">₹180.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">2 repayments pending</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-ink-subtle">2 students owe shares</span>
+<button class="font-body-sm-strong text-body-sm text-brand flex items-center gap-0.5 hover:underline" type="button">
+          View peer balances <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: You owe people -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+<span class="font-label-md text-label-md text-ink-muted">You owe people</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-warning-soft text-warning font-label-sm text-label-sm">Due soon</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums font-bold">₹65.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">1 repayment pending</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-ink-muted">Due to Kabir for evening snacks</span>
+<button class="h-8 px-2.5 bg-surface-muted hover:bg-warning-soft text-ink rounded-lg font-body-sm-strong text-body-sm transition-colors" type="button">
+          Settle ₹65.00
+        </button>
+</div>
+</div>
+<!-- Card 3: Vendor payments due -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-info"></span>
+<span class="font-label-md text-label-md text-ink-muted">Vendor payments due</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-subtle">Due directly</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-financial-amount-lg text-financial-amount-lg text-ink tabular-nums font-bold">₹70.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Room 304 pickup share</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-ink-muted">₹210.00 total bill split 3 ways</span>
+<button class="h-8 px-2.5 bg-brand hover:bg-brand-hover text-on-primary rounded-lg font-body-sm-strong text-body-sm transition-colors" type="button">
+          Pay vendor via UPI
+        </button>
+</div>
+</div>
+</section>
+<!-- Campus Circles / Your Groups Summary -->
+<section class="py-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-ink font-semibold">Campus Circles</h2>
+<button class="font-body-sm-strong text-body-sm text-brand hover:underline" type="button">Manage</button>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface p-3 rounded-xl shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-brand">
+<span class="material-symbols-outlined text-[18px]">apartment</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-subtle">4 members</span>
+</div>
+<div>
+<p class="font-body-md-strong text-body-md text-ink truncate">Room 304</p>
+<p class="font-body-sm text-body-sm text-ink-muted truncate">Last: Laundry ₹210</p>
+</div>
+</div>
+<div class="bg-surface p-3 rounded-xl shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-brand">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-subtle">5 members</span>
+</div>
+<div>
+<p class="font-body-md-strong text-body-md text-ink truncate">Weekend Crew</p>
+<p class="font-body-sm text-body-sm text-ink-muted truncate">Last: Dinner ₹360</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Section -->
+<section class="py-3 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-ink font-semibold">Recent Activity</h2>
+<span class="font-label-sm text-label-sm text-ink-muted">May 2024</span>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1" id="filter-container">
+<button class="filter-chip h-7 px-3 rounded-full bg-brand text-on-primary font-label-sm text-label-sm shrink-0 transition-colors" data-filter="all" type="button">
+        All
+      </button>
+<button class="filter-chip h-7 px-3 rounded-full bg-surface text-ink-muted hover:text-ink font-label-sm text-label-sm shrink-0 transition-colors" data-filter="vendor" type="button">
+        Vendor bills
+      </button>
+<button class="filter-chip h-7 px-3 rounded-full bg-surface text-ink-muted hover:text-ink font-label-sm text-label-sm shrink-0 transition-colors" data-filter="peer" type="button">
+        Peer splits
+      </button>
+</div>
+<!-- Transaction List -->
+<div class="flex flex-col gap-2 mt-1" id="transaction-list">
+<!-- Item 1: Vendor -->
+<div class="tx-item bg-surface rounded-xl p-3 shadow-sm flex items-center justify-between gap-3" data-category="vendor">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-muted flex items-center justify-center shrink-0 text-ink">
+<span class="material-symbols-outlined text-[20px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-body-md-strong text-body-md text-ink truncate">Campus Laundry Co.</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-warning-soft text-warning font-label-sm text-label-sm text-[10px]">Vendor due</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Laundry</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<span class="font-body-md-strong text-body-md text-danger tabular-nums font-semibold">₹70.00</span>
+<button class="h-6 px-2 bg-brand text-on-primary rounded font-label-sm text-label-sm" type="button">Pay UPI</button>
+</div>
+</div>
+<!-- Item 2: Peer owes you -->
+<div class="tx-item bg-surface rounded-xl p-3 shadow-sm flex items-center justify-between gap-3" data-category="peer">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-muted flex items-center justify-center shrink-0 text-ink">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-body-md-strong text-body-md text-ink truncate">Dinner at Green Canteen</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-success-soft text-success font-label-sm text-label-sm text-[10px]">Peer balance</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">1/2 repaid</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-body-md-strong text-body-md text-success tabular-nums font-semibold">+₹120.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Rohan owes</span>
+</div>
+</div>
+<!-- Item 3: Peer owes you -->
+<div class="tx-item bg-surface rounded-xl p-3 shadow-sm flex items-center justify-between gap-3" data-category="peer">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-muted flex items-center justify-center shrink-0 text-ink">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-body-md-strong text-body-md text-ink truncate">Campus Print Shop</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-success-soft text-success font-label-sm text-label-sm text-[10px]">Peer balance</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Awaiting</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-body-md-strong text-body-md text-success tabular-nums font-semibold">+₹60.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Aniket owes</span>
+</div>
+</div>
+<!-- Item 4: You owe peer -->
+<div class="tx-item bg-surface rounded-xl p-3 shadow-sm flex items-center justify-between gap-3" data-category="peer">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-muted flex items-center justify-center shrink-0 text-ink">
+<span class="material-symbols-outlined text-[20px]">local_cafe</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-body-md-strong text-body-md text-ink truncate">Evening Snacks</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-danger-soft text-danger font-label-sm text-label-sm text-[10px]">Peer debt</span>
+<span class="font-body-sm text-body-sm text-ink-muted truncate">Due Kabir</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<span class="font-body-md-strong text-body-md text-danger tabular-nums font-semibold">₹65.00</span>
+<button class="font-body-sm-strong text-body-sm text-brand hover:underline" type="button">Settle</button>
+</div>
+</div>
+</div>
+<!-- History link -->
+<div class="pt-2 text-center">
+<button class="font-body-sm-strong text-body-sm text-brand hover:underline inline-flex items-center gap-1" type="button">
+        View all 34 historical transactions
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    const chips = document.querySelectorAll('.filter-chip');
+    const items = document.querySelectorAll('.tx-item');
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const filter = chip.getAttribute('data-filter');
+        
+        chips.forEach(c => {
+          c.classList.remove('bg-brand', 'text-on-primary');
+          c.classList.add('bg-surface', 'text-ink-muted');
+        });
+
+        chip.classList.add('bg-brand', 'text-on-primary');
+        chip.classList.remove('bg-surface', 'text-ink-muted');
+
+        items.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(27,40,33,0.05)]" data-active-classes="text-brand font-body-md-strong"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] transition-colors text-brand font-body-md-strong" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="expenses" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-sm text-label-sm">Expenses</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="groups" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm">Groups</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="balances" href="#"><span class="material-symbols-outlined text-[22px]">account_balance</span><span class="font-label-sm text-label-sm">Balances</span></a></div></nav></body></html>

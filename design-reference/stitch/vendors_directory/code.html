@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#e7e9e4","on-primary-container":"#9ae9c0","warning-soft":"#FFF3DE","primary-container":"#176b4b","error-container":"#ffdad6","surface-container":"#edeee9","line":"#DDE3DB","surface-dim":"#d9dad6","on-error":"#ffffff","ink":"#1B2821","surface-tint":"#176b4b","surface-variant":"#e2e3de","tertiary":"#3f4c00","surface-container-highest":"#e2e3de","on-surface-variant":"#3f4943","outline-variant":"#bec9c1","canvas":"#F5F6F1","primary-fixed-dim":"#88d6af","info-soft":"#EAF2F8","on-background":"#1a1c19","primary-fixed":"#a4f3ca","brand-soft":"#E7F1EA","on-tertiary-fixed-variant":"#3f4c00","info":"#356B91","outline":"#6f7a72","ink-subtle":"#879188","surface-muted":"#EEF1EA","on-tertiary-container":"#cce36c","surface-bright":"#f9faf5","secondary-fixed-dim":"#bdcac0","tertiary-fixed-dim":"#bad15c","on-surface":"#1a1c19","success":"#24784E","inverse-surface":"#2e312e","inverse-on-surface":"#f0f1ec","surface-container-low":"#f3f4ef","primary":"#005136","on-primary":"#ffffff","success-soft":"#E8F4EC","brand":"#176B4B","tertiary-fixed":"#d6ed75","on-secondary-fixed-variant":"#3e4942","ink-muted":"#68746C","on-tertiary-fixed":"#181e00","error":"#ba1a1a","secondary":"#55615a","on-primary-fixed":"#002114","brand-hover":"#12573D","warning":"#9A5B13","danger":"#B43F3F","on-primary-fixed-variant":"#005236","on-secondary-container":"#5b675f","surface":"#FFFFFF","accent":"#D6ED75","on-secondary":"#ffffff","on-secondary-fixed":"#131e18","background":"#f9faf5","on-tertiary":"#ffffff","surface-raised":"#FAFBF8","on-error-container":"#93000a","inverse-primary":"#88d6af","secondary-fixed":"#d9e6dc","danger-soft":"#FCECEC","tertiary-container":"#556500","surface-container-lowest":"#ffffff","secondary-container":"#d9e6dc"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"3rem","space-xl":"2rem","space-lg":"1.5rem","margin-tablet":"1.5rem","margin-desktop":"2rem","space-md":"1rem","margin":"1rem","space-2xl":"2.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg":["Geist"],"financial-amount-md":["Geist"],"body-md":["Geist"],"label-md":["Geist"],"headline-sm":["Geist"],"financial-amount-lg":["Geist"],"body-sm":["Geist"],"body-md-strong":["Geist"],"headline-lg-mobile":["Geist"],"body-sm-strong":["Geist"],"headline-md":["Geist"],"body-lg":["Geist"],"label-sm":["Geist"]},"fontSize":{"headline-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"financial-amount-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"financial-amount-lg":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md-strong":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"30px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm-strong":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}]}}}};</script></head><body class="bg-canvas font-body-md text-ink antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface border-r border-line z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-line"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">receipt_long</span></div><span class="font-headline-sm text-headline-sm text-ink tracking-tight">Campus Split</span></div><div class="px-space-lg pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm uppercase text-ink-subtle tracking-wider">Campus workspace</span></div><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[20px]">receipt</span><span>Expenses</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="groups" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Groups</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="balances" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Balances</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="vendors" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span>Vendors</span></a></nav></div><div class="p-space-md border-t border-line flex flex-col gap-space-sm"><nav class="flex flex-col" data-active-classes="bg-brand-soft text-brand font-body-md-strong rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav><div class="flex items-center justify-between px-space-sm py-space-sm rounded-lg bg-surface-raised border border-line"><div class="flex flex-col min-w-0"><span class="font-body-sm-strong text-body-sm-strong text-ink truncate">Ananya Sharma</span><span class="font-body-sm text-body-sm text-ink-muted truncate">Room 304</span></div><button aria-label="Log out" class="p-space-xs rounded-lg text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface border-b border-line z-40 px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md"><span class="text-ink-muted">Expenses</span><span class="text-ink-subtle">/</span><span class="font-body-md-strong text-body-md-strong text-ink">Create Expense</span></div><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 px-margin-desktop bg-canvas min-h-screen"><div class="flex flex-col w-full pb-space-3xl">
+<!-- Interactive Toast Layer -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-sm bg-ink text-surface px-space-md py-space-sm rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none transition-all duration-200 ease-out" id="toastNotification">
+<span class="material-symbols-outlined text-[18px] text-accent">check_circle</span>
+<span class="font-body-sm-strong text-body-sm-strong" id="toastMessage">UPI ID copied to clipboard</span>
+</div>
+<!-- Header & Metatags -->
+<div class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle mb-space-xs">
+<span>Campus Workspace</span>
+<span>·</span>
+<span>Verified Merchant Registry</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink">Vendors Directory</h1>
+<p class="font-body-md text-body-md text-ink-muted mt-space-xs">
+          Authorized campus merchants, instant direct UPI clearing, and registered Room 304 automated ledger settlement.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface border border-line text-ink hover:bg-surface-muted transition-colors font-body-md-strong text-body-md-strong" id="openSuggestModalBtn">
+<span class="material-symbols-outlined text-[18px]">add_business</span>
+<span>Suggest Vendor</span>
+</button>
+<button class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-brand hover:bg-brand-hover text-on-primary transition-all font-body-md-strong text-body-md-strong shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+<span>Scan Campus QR</span>
+</button>
+</div>
+</div>
+<!-- Direct Vendor Settlement Policy Banner -->
+<div class="relative overflow-hidden rounded-xl bg-brand-soft border border-line p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center shrink-0 border border-line text-brand">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs font-body-md-strong text-body-md-strong text-ink">
+<span>Direct Vendor Settlement Policy</span>
+<span class="px-space-xs py-0.5 rounded-full bg-accent text-ink font-label-sm text-[10px] uppercase font-semibold">Instant Credit</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mt-0.5 max-w-3xl">
+            When you pay verified merchants using their campus-linked UPI ID, our gateway automatically reconciles the transaction with your registered room account (<span class="font-semibold text-ink">Room 304</span>). This clears your individual share instantaneously without originating unnecessary peer-to-peer debts.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end md:self-center">
+<span class="font-label-sm text-label-sm text-brand font-semibold">Zero-Commission Campus Rail</span>
+<span class="material-symbols-outlined text-brand text-[18px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="bg-surface rounded-xl border border-line p-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md mb-space-lg shadow-sm">
+<!-- Search Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-subtle text-[20px] pointer-events-none">search</span>
+<input class="w-full h-10 pl-10 pr-16 bg-surface border border-line rounded-lg font-body-md text-body-md text-ink placeholder:text-ink-subtle focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft transition-all" id="vendorSearchInput" placeholder="Search vendors by name, services, outlet tag, or UPI ID..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded bg-surface-muted border border-line text-ink-subtle font-label-sm text-[11px]">⌘K</kbd>
+</div>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+<button class="category-pill active flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all bg-brand text-on-primary" data-category="all">
+<span>All Vendors</span>
+<span class="px-1.5 py-0.2 rounded-full bg-brand-hover text-on-primary font-label-sm text-[11px]">8</span>
+</button>
+<button class="category-pill flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all bg-surface border border-line text-ink-muted hover:text-ink hover:bg-surface-muted" data-category="laundry">
+<span>Laundry</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-muted text-ink-muted font-label-sm text-[11px]">2</span>
+</button>
+<button class="category-pill flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all bg-surface border border-line text-ink-muted hover:text-ink hover:bg-surface-muted" data-category="food">
+<span>Food &amp; Canteen</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-muted text-ink-muted font-label-sm text-[11px]">3</span>
+</button>
+<button class="category-pill flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all bg-surface border border-line text-ink-muted hover:text-ink hover:bg-surface-muted" data-category="printing">
+<span>Printing &amp; Lab</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-muted text-ink-muted font-label-sm text-[11px]">2</span>
+</button>
+<button class="category-pill flex items-center gap-1.5 px-space-md py-1.5 rounded-lg font-body-sm-strong text-body-sm-strong transition-all bg-surface border border-line text-ink-muted hover:text-ink hover:bg-surface-muted" data-category="general">
+<span>General Stores</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-muted text-ink-muted font-label-sm text-[11px]">1</span>
+</button>
+</div>
+<!-- Active Status Filter -->
+<div class="flex items-center gap-space-sm pl-0 lg:pl-space-md border-t lg:border-t-0 lg:border-l border-line pt-space-sm lg:pt-0 shrink-0">
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-brand focus:ring-brand-soft accent-brand border-line cursor-pointer" id="activeOnlyToggle" type="checkbox"/>
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Active Outlets Only</span>
+</label>
+</div>
+</div>
+<!-- Vendors Directory Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="vendorGrid">
+<!-- Vendor 1: Campus Laundry Co. -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="laundry" data-name="Campus Laundry Co.">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-brand-soft flex items-center justify-center text-brand shrink-0 border border-brand/20">
+<span class="material-symbols-outlined text-[26px]">local_laundry_service</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">Campus Laundry Co.</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">Wing B Arcade · Express Laundry</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+            Active
+          </span>
+</div>
+<!-- Room 304 Special Tag / Favorite Indicator -->
+<div class="mb-space-md flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-raised border border-line text-ink-muted font-body-sm text-[12px]">
+<span class="material-symbols-outlined text-[15px] text-accent text-ink">star</span>
+<span>Room 304 Favorite Merchant · 42 orders this term</span>
+</div>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Dry Cleaning</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Wash &amp; Fold</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Steam Ironing</span>
+</div>
+<!-- Pending Share / Notice Container -->
+<div class="p-space-sm rounded-lg bg-warning-soft/70 border border-warning/20 mb-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-warning">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Room 304 Balance Due</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ink font-mono tabular-nums">₹70.00</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line group-hover:border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">campuslaundry@icici</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="campuslaundry@icici" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-suggested-amount="70.00" data-upi="campuslaundry@icici" data-vendor="Campus Laundry Co.">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="Campus Laundry Co.">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+<!-- Vendor 2: Green Canteen -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="food" data-name="Green Canteen">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-800 shrink-0 border border-amber-200">
+<span class="material-symbols-outlined text-[26px]">restaurant</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">Green Canteen</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">North Campus Dining Hall</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">
+          Daily subsidized nutritious lunch combos, evening snacks, tea counters, and custom student dinner thalis.
+        </p>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Lunch Combos</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Beverages</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Evening Snacks</span>
+</div>
+<!-- Recent Activity Container -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line mb-space-md flex items-center justify-between text-body-sm text-ink-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">receipt</span>
+<span>Last visited Oct 23</span>
+</div>
+<span class="font-mono font-medium text-ink">₹360.00 split (4 pax)</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">greencanteen.iit@okhdfcbank</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="greencanteen.iit@okhdfcbank" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-upi="greencanteen.iit@okhdfcbank" data-vendor="Green Canteen">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="Green Canteen">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+<!-- Vendor 3: Campus Print Shop -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="printing" data-name="Campus Print Shop">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-info-soft flex items-center justify-center text-info shrink-0 border border-info/20">
+<span class="material-symbols-outlined text-[26px]">print</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">Campus Print Shop</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">Library Arcade, Ground Floor</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">
+          Thesis hardcover binding, digital color posters, architectural blueprint printing &amp; examination supplies.
+        </p>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Color Printing</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Hardcover Binding</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">A0 Plotting</span>
+</div>
+<!-- Recent Activity Container -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line mb-space-md flex items-center justify-between text-body-sm text-ink-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-success">task_alt</span>
+<span>Settled on Oct 19</span>
+</div>
+<span class="font-mono font-medium text-ink">₹124.00 cleared</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">campusprint@sbi</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="campusprint@sbi" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-upi="campusprint@sbi" data-vendor="Campus Print Shop">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="Campus Print Shop">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+<!-- Vendor 4: QuickBite Canteen & Cafe -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="food" data-name="QuickBite Canteen &amp; Cafe">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-800 shrink-0 border border-amber-200">
+<span class="material-symbols-outlined text-[26px]">local_cafe</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">QuickBite Cafe</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">South Hostel Quad</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">
+          Late-night espresso, fresh rolls, grilled sandwiches, shakes, and midnight study session provisions.
+        </p>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Coffee &amp; Tea</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Grilled Subs</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Open till 2:00 AM</span>
+</div>
+<!-- Status Container -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line mb-space-md flex items-center justify-between text-body-sm text-ink-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">schedule</span>
+<span>Operational Hours</span>
+</div>
+<span class="font-medium text-ink">4:00 PM – 2:00 AM</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">quickbite.campus@axisbank</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="quickbite.campus@axisbank" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-upi="quickbite.campus@axisbank" data-vendor="QuickBite Canteen &amp; Cafe">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="QuickBite Canteen &amp; Cafe">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+<!-- Vendor 5: Central Books & Stationery -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="printing" data-name="Central Books &amp; Stationery">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-info-soft flex items-center justify-center text-info shrink-0 border border-info/20">
+<span class="material-symbols-outlined text-[26px]">menu_book</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">Central Books &amp; Co.</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">Academic Complex B</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">
+          Engineering coursepacks, drafting kits, laboratory record notebooks, and scientific calculators.
+        </p>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Textbooks</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Lab Records</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Drafting Kits</span>
+</div>
+<!-- Recent Activity Container -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line mb-space-md flex items-center justify-between text-body-sm text-ink-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">sync_alt</span>
+<span>Room Account Tag</span>
+</div>
+<span class="font-mono text-ink">B2-BOOKS-304</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">centralbooks@icici</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="centralbooks@icici" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-upi="centralbooks@icici" data-vendor="Central Books &amp; Stationery">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="Central Books &amp; Stationery">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+<!-- Vendor 6: Wing C Laundromat -->
+<div class="vendor-card group relative flex flex-col justify-between rounded-xl bg-surface border border-line p-space-lg hover:border-brand/40 transition-all hover:shadow-md" data-active="true" data-category="laundry" data-name="Wing C Laundromat">
+<div class="flex flex-col">
+<!-- Top Metadata & Status -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-brand-soft flex items-center justify-center text-brand shrink-0 border border-brand/20">
+<span class="material-symbols-outlined text-[26px]">water_drop</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-ink group-hover:text-brand transition-colors">Wing C Laundromat</h3>
+<span class="material-symbols-outlined text-brand text-[18px]" title="Campus Verified Merchant">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">West Campus Residence Hall</span>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-success-soft text-success font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-muted mb-space-md line-clamp-2">
+          Token-based self-service washers, industrial drying tumblers, and bulk linen drop-off service.
+        </p>
+<!-- Services Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Self-Service Washing</span>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-body-sm text-[12px]">Express Dry</span>
+</div>
+<!-- Machine Status Container -->
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line mb-space-md flex items-center justify-between text-body-sm text-ink-muted">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-brand">cyclone</span>
+<span>Real-time availability</span>
+</div>
+<span class="font-medium text-brand font-mono">6 of 8 Free</span>
+</div>
+<!-- UPI ID Row -->
+<div class="mb-space-md">
+<span class="font-label-sm text-label-sm text-ink-subtle uppercase block mb-1">Direct Merchant UPI VPA</span>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-raised border border-line">
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-ink tracking-tight select-all">wingclaundry@barodampay</span>
+<button class="copy-upi-btn p-1 text-ink-muted hover:text-brand hover:bg-surface-muted rounded transition-colors" data-upi="wingclaundry@barodampay" title="Copy UPI address">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-space-sm border-t border-line flex items-center gap-space-sm">
+<button class="pay-upi-trigger flex-1 h-9 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" data-upi="wingclaundry@barodampay" data-vendor="Wing C Laundromat">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>Pay via UPI</span>
+</button>
+<button class="view-history-btn px-space-sm h-9 rounded-lg border border-line text-ink hover:bg-surface-muted font-body-md-strong text-body-md-strong flex items-center justify-center transition-colors" data-vendor="Wing C Laundromat">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Suggest Vendor Modal Dialog (Layer 4) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-ink/30 backdrop-blur-sm hidden" id="suggestModal">
+<div class="relative w-full max-w-lg bg-surface rounded-xl border border-line p-space-xl shadow-xl flex flex-col gap-space-lg animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-space-sm border-b border-line">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-brand-soft text-brand flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink">Suggest Campus Vendor</h3>
+<span class="font-body-sm text-body-sm text-ink-muted">Add verified merchant for direct room clearance</span>
+</div>
+</div>
+<button class="text-ink-muted hover:text-ink p-1 rounded-lg hover:bg-surface-muted" id="closeSuggestModalBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-md" id="suggestVendorForm">
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Outlet / Vendor Name</label>
+<input class="w-full h-10 px-3 rounded-lg border border-line bg-surface font-body-md text-body-md text-ink focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft" placeholder="e.g. Hostel 4 Night Canteen" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Category</label>
+<select class="w-full h-10 px-3 rounded-lg border border-line bg-surface font-body-md text-body-md text-ink focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft">
+<option value="food">Food &amp; Dining</option>
+<option value="laundry">Laundry Services</option>
+<option value="printing">Stationery &amp; Print</option>
+<option value="general">General Store</option>
+<option value="other">Other Service</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Campus Location</label>
+<input class="w-full h-10 px-3 rounded-lg border border-line bg-surface font-body-md text-body-md text-ink focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft" placeholder="e.g. Main Gate, Sector 2" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Merchant UPI ID / VPA</label>
+<input class="w-full h-10 px-3 rounded-lg border border-line bg-surface font-body-md text-body-md text-ink font-mono focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft" placeholder="e.g. merchantname@upi" required="" type="text"/>
+<span class="block font-body-sm text-body-sm text-ink-subtle mt-1">Campus admin team verifies VPA validity before approval.</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-line mt-space-xs">
+<button class="px-space-md h-10 rounded-lg border border-line font-body-md-strong text-body-md-strong text-ink hover:bg-surface-muted transition-colors" id="cancelSuggestBtn" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg h-10 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong transition-all shadow-sm active:scale-95" type="submit">
+            Submit Recommendation
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- UPI Instant Payment Modal (Simulated Payment Gate) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-ink/30 backdrop-blur-sm hidden" id="paymentModal">
+<div class="relative w-full max-w-md bg-surface rounded-xl border border-line p-space-xl shadow-xl flex flex-col gap-space-md animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-space-sm border-b border-line">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-brand text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink">Direct Merchant Pay</h3>
+<span class="font-body-sm text-body-sm text-ink-muted">UPI QR &amp; App Handoff</span>
+</div>
+</div>
+<button class="text-ink-muted hover:text-ink p-1 rounded-lg hover:bg-surface-muted" id="closePaymentModalBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Payment Target Details -->
+<div class="p-space-md rounded-lg bg-surface-raised border border-line flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-ink-muted">Recipient Vendor:</span>
+<span class="font-body-md-strong text-body-md-strong text-ink text-right" id="payModalVendorName">Campus Merchant</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-ink-muted">Verified VPA:</span>
+<span class="font-mono text-body-sm-strong text-body-sm-strong text-brand select-all" id="payModalUPI">vendor@icici</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-ink-muted">Auto-Credit Account:</span>
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Room 304 Ledger</span>
+</div>
+</div>
+<!-- QR Simulation Container -->
+<div class="flex flex-col items-center justify-center p-space-md bg-surface-muted rounded-xl border border-line">
+<!-- Minimal SVG UPI QR Code representation -->
+<svg class="w-40 h-40 bg-surface p-2 rounded-lg border border-line" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="white" height="100" width="100"></rect>
+<path clip-rule="evenodd" d="M10 10H40V40H10V10ZM15 15H35V35H15V15ZM20 20H30V30H20V20Z" fill="#1B2821" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M60 10H90V40H60V10ZM65 15H85V35H65V15ZM70 20H80V30H70V20Z" fill="#1B2821" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M10 60H40V90H10V60ZM15 65H35V85H15V65ZM20 70H30V80H20V70Z" fill="#1B2821" fill-rule="evenodd"></path>
+<rect fill="#176B4B" height="15" width="5" x="45" y="10"></rect>
+<rect fill="#176B4B" height="15" width="5" x="50" y="20"></rect>
+<rect fill="#176B4B" height="10" width="10" x="45" y="45"></rect>
+<rect fill="#1B2821" height="20" width="5" x="60" y="45"></rect>
+<rect fill="#1B2821" height="5" width="15" x="70" y="55"></rect>
+<rect fill="#1B2821" height="25" width="10" x="80" y="65"></rect>
+<rect fill="#176B4B" height="5" width="10" x="55" y="70"></rect>
+<rect fill="#1B2821" height="10" width="15" x="45" y="80"></rect>
+<rect fill="#176B4B" height="5" width="10" x="65" y="80"></rect>
+</svg>
+<span class="font-body-sm text-body-sm text-ink-muted mt-space-sm">Scan with GPay, PhonePe, Paytm, or BHIM</span>
+</div>
+<!-- Amount input with preset share -->
+<div>
+<label class="block font-body-sm-strong text-body-sm-strong text-ink-muted mb-1">Enter Transaction Amount (₹)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-headline-sm text-headline-sm text-ink-muted">₹</span>
+<input class="w-full h-11 pl-8 pr-3 rounded-lg border border-line bg-surface font-headline-sm text-headline-sm text-ink tabular-nums focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft" id="payModalAmount" placeholder="0.00" step="0.5" type="number"/>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="w-full h-10 rounded-lg bg-brand hover:bg-brand-hover text-on-primary font-body-md-strong text-body-md-strong flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-95" id="confirmPaidBtn">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>I've Sent UPI Payment</span>
+</button>
+</div>
+</div>
+</div>
+<!-- History Drawer (Layer 3) -->
+<div class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-surface border-l border-line p-space-xl shadow-xl flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out" id="historyDrawer">
+<div class="flex flex-col">
+<div class="flex items-center justify-between pb-space-md border-b border-line mb-space-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink" id="historyDrawerTitle">Vendor History</h3>
+<span class="font-body-sm text-body-sm text-ink-muted">Room 304 Transaction Clearing Log</span>
+</div>
+<button class="text-ink-muted hover:text-ink p-1 rounded-lg hover:bg-surface-muted" id="closeHistoryDrawerBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Transaction Log Rows -->
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-success-soft text-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div>
+<span class="font-body-sm-strong text-body-sm-strong text-ink block">Automated UPI Split</span>
+<span class="font-body-sm text-[11px] text-ink-muted">Yesterday · Ananya S. paid</span>
+</div>
+</div>
+<span class="font-mono font-medium text-ink tabular-nums">₹140.00</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-success-soft text-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div>
+<span class="font-body-sm-strong text-body-sm-strong text-ink block">Direct Merchant Settlement</span>
+<span class="font-body-sm text-[11px] text-ink-muted">Oct 14 · Full Room Tab Cleared</span>
+</div>
+</div>
+<span class="font-mono font-medium text-ink tabular-nums">₹490.00</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-raised border border-line flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-muted text-ink-muted flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div>
+<span class="font-body-sm-strong text-body-sm-strong text-ink block">Monthly Invoice Reconciled</span>
+<span class="font-body-sm text-[11px] text-ink-muted">Sep 30 · Campus Bill Ledger</span>
+</div>
+</div>
+<span class="font-mono font-medium text-ink tabular-nums">₹1,120.00</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-line flex justify-end">
+<button class="px-space-md py-space-sm rounded-lg bg-surface border border-line text-ink font-body-md-strong text-body-md-strong hover:bg-surface-muted transition-colors" id="closeHistoryDrawerBottomBtn">
+        Dismiss Ledger
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // DOM Elements
+  const toastNotification = document.getElementById('toastNotification');
+  const toastMessage = document.getElementById('toastMessage');
+  const searchInput = document.getElementById('vendorSearchInput');
+  const categoryPills = document.querySelectorAll('.category-pill');
+  const activeToggle = document.getElementById('activeOnlyToggle');
+  const vendorCards = document.querySelectorAll('.vendor-card');
+
+  // Suggest Modal
+  const suggestModal = document.getElementById('suggestModal');
+  const openSuggestBtn = document.getElementById('openSuggestModalBtn');
+  const closeSuggestBtn = document.getElementById('closeSuggestModalBtn');
+  const cancelSuggestBtn = document.getElementById('cancelSuggestBtn');
+  const suggestForm = document.getElementById('suggestVendorForm');
+
+  // Payment Modal
+  const paymentModal = document.getElementById('paymentModal');
+  const closePaymentBtn = document.getElementById('closePaymentModalBtn');
+  const payModalVendorName = document.getElementById('payModalVendorName');
+  const payModalUPI = document.getElementById('payModalUPI');
+  const payModalAmount = document.getElementById('payModalAmount');
+  const confirmPaidBtn = document.getElementById('confirmPaidBtn');
+
+  // History Drawer
+  const historyDrawer = document.getElementById('historyDrawer');
+  const closeHistoryBtn = document.getElementById('closeHistoryDrawerBtn');
+  const closeHistoryBottomBtn = document.getElementById('closeHistoryDrawerBottomBtn');
+  const historyDrawerTitle = document.getElementById('historyDrawerTitle');
+
+  // Helpers
+  function showToast(msg) {
+    if (!toastNotification || !toastMessage) return;
+    toastMessage.textContent = msg;
+    toastNotification.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+    toastNotification.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toastNotification.classList.remove('opacity-100', 'translate-y-0');
+      toastNotification.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+    }, 2400);
+  }
+
+  // Copy UPI functionality
+  document.querySelectorAll('.copy-upi-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const upi = btn.getAttribute('data-upi');
+      if (upi) {
+        navigator.clipboard.writeText(upi).then(() => {
+          showToast(`Copied "${upi}" to clipboard`);
+        }).catch(() => {
+          showToast(`Copied ${upi}`);
+        });
+      }
+    });
+  });
+
+  // Filter & Search Logic
+  let currentCategory = 'all';
+  function filterVendors() {
+    const query = (searchInput.value || '').toLowerCase().trim();
+    const activeOnly = activeToggle.checked;
+
+    vendorCards.forEach(card => {
+      const name = (card.getAttribute('data-name') || '').toLowerCase();
+      const category = card.getAttribute('data-category');
+      const textContent = card.innerText.toLowerCase();
+      const isActive = card.getAttribute('data-active') === 'true';
+
+      const matchesSearch = query === '' || name.includes(query) || textContent.includes(query);
+      const matchesCategory = currentCategory === 'all' || category === currentCategory;
+      const matchesStatus = !activeOnly || isActive;
+
+      if (matchesSearch && matchesCategory && matchesStatus) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // Search input listeners
+  searchInput.addEventListener('input', filterVendors);
+
+  // Keyboard shortcut CMD+K
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // Category Pill switching
+  categoryPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      categoryPills.forEach(p => {
+        p.classList.remove('bg-brand', 'text-on-primary', 'active');
+        p.classList.add('bg-surface', 'border', 'border-line', 'text-ink-muted');
+      });
+      pill.classList.remove('bg-surface', 'border', 'border-line', 'text-ink-muted');
+      pill.classList.add('bg-brand', 'text-on-primary', 'active');
+
+      currentCategory = pill.getAttribute('data-category') || 'all';
+      filterVendors();
+    });
+  });
+
+  activeToggle.addEventListener('change', filterVendors);
+
+  // Suggest Vendor Modal Handlers
+  function openSuggest() {
+    suggestModal.classList.remove('hidden');
+  }
+  function closeSuggest() {
+    suggestModal.classList.add('hidden');
+  }
+  if (openSuggestBtn) openSuggestBtn.addEventListener('click', openSuggest);
+  if (closeSuggestBtn) closeSuggestBtn.addEventListener('click', closeSuggest);
+  if (cancelSuggestBtn) cancelSuggestBtn.addEventListener('click', closeSuggest);
+
+  if (suggestForm) {
+    suggestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeSuggest();
+      suggestForm.reset();
+      showToast('Vendor suggestion submitted for admin campus verification!');
+    });
+  }
+
+  // Payment Modal Handlers
+  document.querySelectorAll('.pay-upi-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const vendorName = btn.getAttribute('data-vendor') || 'Campus Vendor';
+      const upi = btn.getAttribute('data-upi') || '';
+      const suggestedAmount = btn.getAttribute('data-suggested-amount') || '';
+
+      payModalVendorName.textContent = vendorName;
+      payModalUPI.textContent = upi;
+      payModalAmount.value = suggestedAmount;
+
+      paymentModal.classList.remove('hidden');
+    });
+  });
+
+  function closePayment() {
+    paymentModal.classList.add('hidden');
+  }
+  if (closePaymentBtn) closePaymentBtn.addEventListener('click', closePayment);
+  if (confirmPaidBtn) {
+    confirmPaidBtn.addEventListener('click', () => {
+      closePayment();
+      showToast('Transaction registered! Room 304 ledger clearing queued.');
+    });
+  }
+
+  // History Drawer Handlers
+  document.querySelectorAll('.view-history-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const vendor = btn.getAttribute('data-vendor') || 'Vendor';
+      historyDrawerTitle.textContent = `${vendor} History`;
+      historyDrawer.classList.remove('translate-x-full');
+    });
+  });
+
+  function closeHistory() {
+    historyDrawer.classList.add('translate-x-full');
+  }
+  if (closeHistoryBtn) closeHistoryBtn.addEventListener('click', closeHistory);
+  if (closeHistoryBottomBtn) closeHistoryBottomBtn.addEventListener('click', closeHistory);
+
+  // Close modals on Esc key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSuggest();
+      closePayment();
+      closeHistory();
+    }
+  });
+</script></main></div></body></html>

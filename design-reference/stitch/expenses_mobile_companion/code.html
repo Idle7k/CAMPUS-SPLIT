@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-fixed': '#131e18', 'info-soft': '#EAF2F8', 'on-error': '#ffffff', 'primary': '#005136', 'error': '#ba1a1a', 'on-primary-container': '#9ae9c0', 'secondary-fixed': '#d9e6dc', 'surface-container-high': '#e7e9e4', 'on-primary-fixed': '#002114', 'surface-raised': '#FAFBF8', 'on-surface': '#1a1c19', 'ink': '#1B2821', 'on-primary': '#ffffff', 'success': '#24784E', 'secondary': '#55615a', 'danger-soft': '#FCECEC', 'outline-variant': '#bec9c1', 'warning': '#9A5B13', 'primary-fixed': '#a4f3ca', 'on-surface-variant': '#3f4943', 'warning-soft': '#FFF3DE', 'on-tertiary-container': '#cce36c', 'primary-fixed-dim': '#88d6af', 'outline': '#6f7a72', 'error-container': '#ffdad6', 'surface-bright': '#f9faf5', 'on-primary-fixed-variant': '#005236', 'surface-muted': '#EEF1EA', 'on-secondary': '#ffffff', 'surface': '#FFFFFF', 'ink-muted': '#68746C', 'surface-variant': '#e2e3de', 'on-tertiary-fixed-variant': '#3f4c00', 'on-secondary-fixed-variant': '#3e4942', 'surface-container-lowest': '#ffffff', 'tertiary-fixed-dim': '#bad15c', 'inverse-surface': '#2e312e', 'surface-container': '#edeee9', 'brand-hover': '#12573D', 'on-tertiary-fixed': '#181e00', 'danger': '#B43F3F', 'on-tertiary': '#ffffff', 'info': '#356B91', 'surface-container-highest': '#e2e3de', 'inverse-primary': '#88d6af', 'primary-container': '#176b4b', 'surface-dim': '#d9dad6', 'secondary-container': '#d9e6dc', 'on-secondary-container': '#5b675f', 'canvas': '#F5F6F1', 'brand': '#176B4B', 'on-error-container': '#93000a', 'brand-soft': '#E7F1EA', 'ink-subtle': '#879188', 'on-background': '#1a1c19', 'tertiary-container': '#556500', 'inverse-on-surface': '#f0f1ec', 'tertiary-fixed': '#d6ed75', 'surface-tint': '#176b4b', 'surface-container-low': '#f3f4ef', 'tertiary': '#3f4c00', 'background': '#f9faf5', 'line': '#DDE3DB', 'success-soft': '#E8F4EC', 'accent': '#D6ED75', 'secondary-fixed-dim': '#bdcac0' }, borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-desktop': '2rem', 'space-2xl': '2.5rem', 'space-xl': '2rem', 'space-3xl': '3rem', 'space-sm': '0.5rem', 'space-xs': '0.25rem', 'gutter-desktop': '1.5rem', 'margin': '1rem', 'margin-tablet': '1.5rem', 'space-lg': '1.5rem' }, fontFamily: { 'headline-md': ['Geist'], 'label-sm': ['Geist'], 'body-sm': ['Geist'], 'label-md': ['Geist'], 'body-md': ['Geist'], 'body-lg': ['Geist'], 'financial-amount-md': ['Geist'], 'body-sm-strong': ['Geist'], 'body-md-strong': ['Geist'], 'headline-lg-mobile': ['Geist'], 'financial-amount-lg': ['Geist'], 'headline-sm': ['Geist'], 'headline-lg': ['Geist'] }, fontSize: { 'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }], 'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }], 'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.01em', fontWeight: '600' }], 'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'financial-amount-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-sm-strong': ['12px', { lineHeight: '16px', fontWeight: '500' }], 'body-md-strong': ['14px', { lineHeight: '20px', fontWeight: '600' }], 'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.015em', fontWeight: '600' }], 'financial-amount-lg': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-sm': ['16px', { lineHeight: '24px', letterSpacing: '-0.005em', fontWeight: '600' }], 'headline-lg': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '600' }] } } } };</script><style>@layer base { html, body { min-height: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-canvas text-ink font-body-md min-h-screen flex flex-col antialiased selection:bg-brand-soft selection:text-brand"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,40,33,0.04)]"><div class="h-14 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[20px]">account_balance_wallet</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-ink font-bold tracking-tight truncate leading-none">Campus Split</span></div><div class="flex items-center gap-1 leading-none mt-0.5"><span class="material-symbols-outlined text-ink-subtle text-[12px]">apartment</span><span class="font-label-sm text-label-sm text-ink-muted truncate font-normal">North Campus · Rm 304</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><span class="sr-only">Home</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-20 bg-canvas"><div class="flex flex-col w-full">
+<div class="px-margin pt-space-md pb-space-lg flex flex-col gap-space-md">
+<!-- Top Context & Header Title -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tight font-bold">Expenses</h1>
+<p class="font-body-sm text-body-sm text-ink-muted mt-0.5">Track split bills, payments, and settlements.</p>
+</div>
+<button aria-label="Export or filter options" class="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-brand-soft text-brand hover:bg-brand hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full flex items-center justify-center gap-space-sm bg-brand hover:bg-brand-hover active:scale-[0.98] text-on-primary py-2.5 px-space-md rounded-[10px] transition-all shadow-[0_2px_8px_rgba(23,107,75,0.18)] cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="font-label-md text-label-md font-semibold tracking-wide">+ Split an expense</span>
+</button>
+<!-- Summary Metrics Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Unsettled Liability Card -->
+<div class="bg-surface rounded-xl p-3.5 flex flex-col justify-between shadow-[0_1px_4px_rgba(27,40,33,0.03)]">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-ink-muted uppercase tracking-wider">Unsettled</span>
+<span class="w-2 h-2 rounded-full bg-warning"></span>
+</div>
+<div class="flex items-baseline gap-1 my-0.5">
+<span class="font-financial-amount-md text-financial-amount-md text-ink font-semibold tabular-nums">₹140.00</span>
+</div>
+<div class="flex flex-col gap-0.5 mt-1 pt-1.5 bg-surface-muted/50 rounded-lg p-1.5">
+<div class="flex items-center justify-between text-[11px] leading-tight text-ink-muted">
+<span>Direct Vendor:</span>
+<span class="font-semibold text-warning tabular-nums">₹70.00</span>
+</div>
+<div class="flex items-center justify-between text-[11px] leading-tight text-ink-muted">
+<span>Peer Debt:</span>
+<span class="font-semibold text-danger tabular-nums">₹70.00</span>
+</div>
+</div>
+</div>
+<!-- Monthly Volume Card -->
+<div class="bg-surface rounded-xl p-3.5 flex flex-col justify-between shadow-[0_1px_4px_rgba(27,40,33,0.03)]">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-ink-muted uppercase tracking-wider">This Month</span>
+<span class="material-symbols-outlined text-[16px] text-ink-subtle">calendar_today</span>
+</div>
+<div class="flex items-baseline gap-1 my-0.5">
+<span class="font-financial-amount-md text-financial-amount-md text-ink font-semibold tabular-nums">₹1,450.00</span>
+</div>
+<div class="mt-1 pt-1.5 flex items-center gap-1.5 text-ink-muted">
+<span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+<span class="font-body-sm text-body-sm leading-tight text-ink-muted">8 shared expenses</span>
+</div>
+</div>
+</div>
+<!-- Search Input Bar -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-ink-subtle">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="w-full bg-surface text-ink text-body-md font-body-md pl-9 pr-8 py-2 rounded-[10px] placeholder:text-ink-subtle focus:outline-none focus:bg-surface-raised transition-colors shadow-[0_1px_3px_rgba(27,40,33,0.02)]" placeholder="Search expenses or vendors..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-ink-subtle">
+<span class="text-[10px] bg-surface-muted text-ink-muted px-1.5 py-0.5 rounded font-mono">⌘K</span>
+</div>
+</div>
+<!-- Filter Pills (Horizontally Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5 -mx-margin px-margin">
+<button class="shrink-0 px-3 py-1 rounded-full bg-brand text-on-primary font-label-sm text-label-sm transition-transform active:scale-95 shadow-sm">All</button>
+<button class="shrink-0 px-3 py-1 rounded-full bg-surface hover:bg-surface-muted text-ink-muted font-label-sm text-label-sm transition-colors">Unsettled</button>
+<button class="shrink-0 px-3 py-1 rounded-full bg-surface hover:bg-surface-muted text-ink-muted font-label-sm text-label-sm transition-colors">Direct Vendor</button>
+<button class="shrink-0 px-3 py-1 rounded-full bg-surface hover:bg-surface-muted text-ink-muted font-label-sm text-label-sm transition-colors">Peer Splits</button>
+<button class="shrink-0 px-3 py-1 rounded-full bg-surface hover:bg-surface-muted text-ink-muted font-label-sm text-label-sm transition-colors">Settled</button>
+</div>
+<!-- Section 1: This Week -->
+<div class="flex flex-col gap-space-sm mt-1">
+<div class="flex items-center justify-between px-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle font-semibold">This Week</span>
+<span class="font-body-sm text-body-sm text-ink-muted">2 transactions</span>
+</div>
+<!-- Item 1: Campus Laundry Co. (Direct Vendor Due) -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-[0_1px_4px_rgba(27,40,33,0.04)]">
+<!-- Vendor-Style Header Substrate -->
+<div class="bg-surface-raised px-4 py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-warning-soft text-warning font-label-sm text-label-sm font-semibold tracking-wide">Laundry</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Wing B Facility</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-warning bg-warning-soft px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-warning"></span> Direct Vendor Due
+          </span>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center shrink-0 text-brand">
+<span class="material-symbols-outlined text-[22px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="font-body-md-strong text-body-md-strong text-ink truncate">Campus Laundry Co.</h2>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-muted font-body-sm text-body-sm">
+<span>Today, Oct 24</span>
+<span>·</span>
+<span>Room 304 (3 split)</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-financial-amount-md text-headline-sm text-ink tabular-nums font-semibold">₹210.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Total Bill</span>
+</div>
+</div>
+<!-- Split / Share Breakdown Notice -->
+<div class="bg-surface-muted/60 rounded-lg p-2.5 flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-warning">error_outline</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Direct UPI share not yet paid</span>
+</div>
+<div class="text-right">
+<span class="font-body-sm-strong text-body-sm-strong text-ink">Your share: </span>
+<span class="font-body-md-strong text-body-md-strong text-warning tabular-nums">₹70.00</span>
+</div>
+</div>
+<!-- Vendor Quick CTA -->
+<button class="w-full flex items-center justify-center gap-2 bg-brand text-on-primary py-2 px-3 rounded-[10px] font-label-md text-label-md font-semibold hover:bg-brand-hover active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+            Pay ₹70.00 via UPI
+          </button>
+</div>
+</div>
+<!-- Item 2: Dinner at Green Canteen (Peer balance owed to you) -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-[0_1px_4px_rgba(27,40,33,0.04)]">
+<div class="p-4 flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-brand-soft text-brand flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-body-md-strong text-body-md-strong text-ink truncate">Dinner at Green Canteen</h2>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-label-sm text-label-sm">Food</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-muted font-body-sm text-body-sm">
+<span>Yesterday, Oct 23</span>
+<span>·</span>
+<span class="text-brand">You covered Rohan &amp; Kabir</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-financial-amount-md text-headline-sm text-ink tabular-nums font-semibold">₹360.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">You paid full</span>
+</div>
+</div>
+<!-- Status Badge Banner -->
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-success-soft text-success">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">arrow_downward_alt</span>
+<span class="font-label-sm text-label-sm font-semibold">Peer balance: ₹120.00 owed to you</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-muted">1/2 settled</span>
+</div>
+<!-- Participant Micro Ledger -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center text-[10px] font-semibold">R</div>
+<span class="text-ink">Rohan</span>
+</div>
+<span class="font-label-sm text-label-sm text-warning bg-warning-soft px-2 py-0.5 rounded">Pending ₹120.00</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-muted text-ink-muted flex items-center justify-center text-[10px] font-semibold">K</div>
+<span class="text-ink-muted">Kabir</span>
+</div>
+<span class="font-label-sm text-label-sm text-success bg-success-soft px-2 py-0.5 rounded">Paid ₹120.00</span>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-[10px] bg-surface-muted hover:bg-surface-variant text-ink font-label-md text-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px] text-ink-muted">notifications_active</span>
+              Remind
+            </button>
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-[10px] bg-brand-soft hover:bg-brand-soft/80 text-brand font-label-md text-label-md font-semibold transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+              View split
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Earlier in October -->
+<div class="flex flex-col gap-space-sm mt-3">
+<div class="flex items-center justify-between px-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-subtle font-semibold">Earlier in October</span>
+<span class="font-body-sm text-body-sm text-ink-muted">3 transactions</span>
+</div>
+<!-- Item 3: Campus Print Shop (Peer balance owed to you) -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_1px_4px_rgba(27,40,33,0.04)] flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted text-ink flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">print</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-body-md-strong text-body-md-strong text-ink truncate">Campus Print Shop</h2>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-label-sm text-label-sm">Printing</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-muted font-body-sm text-body-sm">
+<span>Oct 21</span>
+<span>·</span>
+<span>Academic Project</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-financial-amount-md text-headline-sm text-ink tabular-nums font-semibold">₹180.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">You paid ₹180</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm font-semibold text-success bg-success-soft px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> Peer balance: ₹60.00 owed (Aniket)
+          </span>
+<button class="font-label-sm text-label-sm font-semibold text-brand hover:underline flex items-center gap-0.5">
+            View details
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Evening Snacks (You owe Kabir) -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_1px_4px_rgba(27,40,33,0.04)] flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted text-danger flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">bakery_dining</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-body-md-strong text-body-md-strong text-ink truncate">Evening Snacks (Chai &amp; Samosas)</h2>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-label-sm text-label-sm">Food</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-muted font-body-sm text-body-sm">
+<span>Oct 20</span>
+<span>·</span>
+<span>Kabir paid upfront</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-financial-amount-md text-headline-sm text-ink tabular-nums font-semibold">₹195.00</span>
+<span class="font-body-sm text-body-sm text-ink-muted">Total split</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-danger-soft p-2.5 rounded-lg">
+<div class="flex items-center gap-1.5 text-danger">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span class="font-label-sm text-label-sm font-semibold">You owe Kabir ₹65.00</span>
+</div>
+<button class="bg-danger text-on-error px-3 py-1 rounded-lg font-label-sm text-label-sm font-semibold hover:opacity-90 active:scale-95 transition-all">
+            Settle ₹65.00
+          </button>
+</div>
+</div>
+<!-- Item 5: Groceries & Milk (Fully Settled) -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_1px_4px_rgba(27,40,33,0.04)] flex flex-col gap-2.5 opacity-90">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-muted text-ink-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-body-md-strong text-body-md-strong text-ink truncate">Groceries &amp; Milk</h2>
+<span class="px-2 py-0.5 rounded bg-surface-muted text-ink-muted font-label-sm text-label-sm">General</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-muted font-body-sm text-body-sm">
+<span>Oct 18</span>
+<span>·</span>
+<span>Room 304</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-financial-amount-md text-headline-sm text-ink-muted tabular-nums font-semibold">₹540.00</span>
+<span class="font-label-sm text-label-sm text-success bg-success-soft px-2 py-0.5 rounded flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Settled
+            </span>
+</div>
+</div>
+<div class="text-body-sm font-body-sm text-ink-subtle pt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span>All 4 members settled directly via UPI</span>
+</div>
+</div>
+</div>
+<!-- Delight / Campus Tip Card -->
+<div class="bg-surface-raised rounded-xl p-3.5 mt-1 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-accent text-ink flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-body-sm-strong text-body-sm-strong text-ink">Campus Tip</p>
+<p class="font-body-sm text-body-sm text-ink-muted">Vendor invoices settle instantly to campus store balance.</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Ensure the Expenses tab in the fixed bottom nav is highlighted as active per design prompt
+  (function activateExpensesTab() {
+    const expensesNav = document.querySelector('nav a[data-path="expenses"]');
+    if (expensesNav) {
+      document.querySelectorAll('nav a').forEach(el => {
+        el.classList.remove('text-brand', 'font-body-md-strong');
+        el.classList.add('text-ink-muted');
+      });
+      expensesNav.classList.remove('text-ink-muted');
+      expensesNav.classList.add('text-brand', 'font-body-md-strong');
+      const icon = expensesNav.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.style.fontVariationSettings = "'FILL' 1";
+      }
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(27,40,33,0.05)]" data-active-classes="text-brand font-body-md-strong"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="expenses" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-sm text-label-sm">Expenses</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="groups" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm">Groups</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] text-ink-muted transition-colors hover:text-ink" data-path="balances" href="#"><span class="material-symbols-outlined text-[22px]">account_balance</span><span class="font-label-sm text-label-sm">Balances</span></a></div></nav></body></html>
