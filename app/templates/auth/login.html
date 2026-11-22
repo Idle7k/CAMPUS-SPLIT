@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Sign In — Campus Split{% endblock %}
+
+{% block auth_content %}
+<div class="sm:mx-auto sm:w-full sm:max-w-md px-4" x-data="{
+    fillDemo(user, pass) {
+        document.getElementById('username').value = user;
+        document.getElementById('password').value = pass;
+    }
+}">
+    <div class="text-center mb-8">
+        <div class="inline-flex w-12 h-12 rounded-2xl bg-emerald-700 items-center justify-center text-white font-bold text-xl shadow-md mb-3">
+            CS
+        </div>
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900">Welcome to Campus Split</h2>
+        <p class="mt-1 text-sm text-stone-600">Direct campus vendor payments & peer debt tracking</p>
+    </div>
+
+    <div class="cs-card p-6 sm:p-8">
+        <!-- Quick Demo Accounts Helper -->
+        <div class="mb-6 p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-stone-600 uppercase tracking-wider">Demo Accounts (One-Click)</span>
+                <span class="text-[11px] text-stone-600 font-mono">localhost only</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+                <button type="button" @click="fillDemo('admin', 'admin123')" class="p-2 text-left bg-white hover:bg-emerald-50 hover:border-emerald-200 border border-stone-200 rounded-lg transition-colors">
+                    <span class="font-semibold text-stone-900 block">admin</span>
+                    <span class="text-[10px] text-amber-700 font-medium">Administrator</span>
+                </button>
+                <button type="button" @click="fillDemo('aarav', 'student123')" class="p-2 text-left bg-white hover:bg-emerald-50 hover:border-emerald-200 border border-stone-200 rounded-lg transition-colors">
+                    <span class="font-semibold text-stone-900 block">aarav</span>
+                    <span class="text-[10px] text-emerald-700 font-medium">Student Demo</span>
+                </button>
+                <button type="button" @click="fillDemo('diya', 'student123')" class="p-2 text-left bg-white hover:bg-emerald-50 hover:border-emerald-200 border border-stone-200 rounded-lg transition-colors">
+                    <span class="font-semibold text-stone-900 block">diya</span>
+                    <span class="text-[10px] text-emerald-700 font-medium">Student Demo</span>
+                </button>
+                <button type="button" @click="fillDemo('rohan', 'student123')" class="p-2 text-left bg-white hover:bg-emerald-50 hover:border-emerald-200 border border-stone-200 rounded-lg transition-colors">
+                    <span class="font-semibold text-stone-900 block">rohan</span>
+                    <span class="text-[10px] text-emerald-700 font-medium">Student Demo</span>
+                </button>
+            </div>
+        </div>
+
+        <form action="/login" method="POST" class="space-y-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            
+            <div>
+                <label for="username" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">Username</label>
+                <input type="text" id="username" name="username" required autocomplete="username"
+                       placeholder="e.g. aarav or admin"
+                       value="{{ username|default('') }}"
+                       class="cs-input">
+            </div>
+
+            <div>
+                <label for="password" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password"
+                       placeholder="••••••••"
+                       class="cs-input">
+            </div>
+
+            <button type="submit" class="cs-btn-primary w-full py-2.5 mt-2">
+                Sign In
+            </button>
+        </form>
+
+        <div class="mt-6 pt-5 border-t border-stone-200 text-center text-xs text-stone-600">
+            Don't have a demo account? 
+            <a href="/register" class="font-semibold text-emerald-700 hover:text-emerald-800 hover:underline">Register here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — Campus Split{% endblock %}
+{% block page_title %}Student Overview{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+
+    <!-- Phase 1 Architecture Banner -->
+    <div class="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1">
+            <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">
+                    Phase 1 Active
+                </span>
+                <span class="text-xs text-stone-600 font-mono">Models &bull; Authentication &bull; Vendor Management</span>
+            </div>
+            <h3 class="text-base font-semibold text-stone-900 tracking-tight">System Foundation Ready</h3>
+            <p class="text-xs text-stone-600 max-w-2xl">
+                Relational schema and role-based permissions are active. The balance cards below reflect clear zero placeholders pending the Phase 2/3 financial calculation engine. No transactions are fabricated.
+            </p>
+        </div>
+
+        <div class="shrink-0 flex items-center gap-3">
+            <a href="/vendors" class="cs-btn-secondary text-xs py-2 px-3.5">
+                Browse Vendors
+            </a>
+            <button type="button" 
+                    @click="alert('Expense splitting and share allocation will be unlocked in Phase 2!')"
+                    class="cs-btn-primary text-xs py-2 px-4 shadow-sm inline-flex items-center space-x-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                <span>Split an Expense</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Balance Distinction Cards (Mandatory 4 Concepts from AGENTS.md Section 6.6) -->
+    <div>
+        <div class="flex items-center justify-between mb-3 px-1">
+            <h4 class="text-xs font-semibold text-stone-600 uppercase tracking-wider">Financial Overview (Zero State)</h4>
+            <span class="text-[11px] text-stone-600 italic">Separate balances &bull; Never combined</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- 1. Others Owe You (Peer Debt) -->
+            <div class="cs-card p-5">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-medium text-stone-600">Others Owe You</span>
+                    <span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-xs">
+                        &darr;
+                    </span>
+                </div>
+                <div class="mt-3">
+                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
+                    <span class="inline-block mt-1 text-[11px] text-emerald-700 font-medium">Peer debts owed to you</span>
+                </div>
+                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
+                    <span>Engine Status</span>
+                    <span class="font-mono text-stone-600">Phase 3</span>
+                </div>
+            </div>
+
+            <!-- 2. You Owe Others (Peer Debt) -->
+            <div class="cs-card p-5">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-medium text-stone-600">You Owe Others</span>
+                    <span class="w-7 h-7 rounded-lg bg-stone-100 text-stone-600 flex items-center justify-center text-xs">
+                        &uarr;
+                    </span>
+                </div>
+                <div class="mt-3">
+                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
+                    <span class="inline-block mt-1 text-[11px] text-stone-600 font-medium">Covered by peers</span>
+                </div>
+                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
+                    <span>Engine Status</span>
+                    <span class="font-mono text-stone-600">Phase 3</span>
+                </div>
+            </div>
+
+            <!-- 3. You Owe Vendors (Direct Liability) -->
+            <div class="cs-card p-5">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-medium text-stone-600">You Owe Vendors</span>
+                    <span class="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center text-xs">
+                        &bull;
+                    </span>
+                </div>
+                <div class="mt-3">
+                    <div class="text-2xl font-bold text-stone-900 tracking-tight">₹0.00</div>
+                    <span class="inline-block mt-1 text-[11px] text-amber-800 font-medium">Unpaid direct shares</span>
+                </div>
+                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
+                    <span>Engine Status</span>
+                    <span class="font-mono text-stone-600">Phase 2/3</span>
+                </div>
+            </div>
+
+            <!-- 4. Pending Vendor Payments -->
+            <div class="cs-card p-5">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-medium text-stone-600">Pending Payments</span>
+                    <span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-xs">
+                        &hellip;
+                    </span>
+                </div>
+                <div class="mt-3">
+                    <div class="text-2xl font-bold text-stone-900 tracking-tight">0</div>
+                    <span class="inline-block mt-1 text-[11px] text-blue-800 font-medium">Awaiting confirmation</span>
+                </div>
+                <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-600">
+                    <span>Engine Status</span>
+                    <span class="font-mono text-stone-600">Phase 4</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid: Recent Activity & Campus Directory Shortcut -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Recent Activity (2 Cols) -->
+        <div class="lg:col-span-2 cs-card p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+                    <div>
+                        <h4 class="text-sm font-semibold text-stone-900">Recent Activity</h4>
+                        <p class="text-xs text-stone-600">Shared purchases, direct payments and peer settlements</p>
+                    </div>
+                    <span class="cs-badge-gray text-[11px]">Real data only</span>
+                </div>
+
+                <!-- Empty State (No fabricated data per AGENTS.md rule 9) -->
+                <div class="py-12 px-4 text-center">
+                    <div class="w-12 h-12 rounded-full bg-stone-100 text-stone-600 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <h5 class="text-sm font-semibold text-stone-800">No Transaction History Yet</h5>
+                    <p class="text-xs text-stone-600 max-w-sm mx-auto mt-1">
+                        Phase 1 establishes the database schema and authentication. When expenses and payments are recorded in Phase 2–4, your full audit trail will display here.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-600">
+                <span>Direct vendor payments require zero peer collection</span>
+                <a href="/vendors" class="text-emerald-700 font-medium hover:underline">View Active Vendors &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Campus Quick Info & Active Vendors Preview (1 Col) -->
+        <div class="cs-card p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+                    <h4 class="text-sm font-semibold text-stone-900">Campus Vendors</h4>
+                    <span class="text-xs text-stone-600 font-mono">{{ active_vendor_count }} Available</span>
+                </div>
+
+                <div class="mt-4 space-y-3">
+                    {% for vendor in sample_vendors %}
+                    <a href="/vendors/{{ vendor.id }}" class="block p-3 rounded-xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200/80 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold text-stone-900 truncate">{{ vendor.name }}</span>
+                            <span class="text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded bg-stone-200 text-stone-700">
+                                {{ vendor.category }}
+                            </span>
+                        </div>
+                        <div class="mt-1 text-[11px] text-stone-600 font-mono truncate">
+                            {{ vendor.upi_id }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="pt-4 mt-4 border-t border-stone-100">
+                <a href="/vendors" class="cs-btn-secondary w-full text-xs py-2">
+                    Open Full Vendor Directory
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

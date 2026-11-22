@@ -1,0 +1,21 @@
+<header class="hidden md:flex items-center justify-between h-16 px-8 border-b border-stone-200/80 bg-white/70 backdrop-blur-md sticky top-0 z-20">
+    <div class="flex items-center space-x-3">
+        <h2 class="text-base font-semibold text-stone-900 tracking-tight">
+            {% block page_title %}{{ page_title|default('Dashboard') }}{% endblock %}
+        </h2>
+    </div>
+
+    <div class="flex items-center space-x-4">
+        <!-- Local Prototype Status Pill -->
+        <div class="flex items-center space-x-2 text-xs bg-stone-100 text-stone-600 px-3 py-1.5 rounded-full border border-stone-200/60">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span class="font-medium">Localhost Dev Mode</span>
+        </div>
+
+        <div class="h-4 w-px bg-stone-200"></div>
+
+        <div class="text-xs text-stone-600">
+            Signed in as <span class="font-semibold text-stone-900">{{ current_user.username }}</span>
+        </div>
+    </div>
+</header>

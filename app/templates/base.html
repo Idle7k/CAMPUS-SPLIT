@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Campus Split — Direct Campus Expense Sharing{% endblock %}</title>
+    
+    <!-- Tailwind CSS (Play CDN with fallback) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stone: {
+                            50: '#FBFBFA',
+                            100: '#F7F7F5',
+                            200: '#E8E7E3',
+                            300: '#D5D4CE',
+                            400: '#A8A7A0',
+                            500: '#7B7A73',
+                            600: '#5C5B55',
+                            700: '#42413C',
+                            800: '#2A2926',
+                            900: '#181715',
+                        },
+                        emerald: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            600: '#16A34A',
+                            700: '#15803D',
+                            800: '#166534',
+                            900: '#14532D',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Project CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Vendored Local HTMX & Alpine.js -->
+    <script src="/static/js/htmx.min.js"></script>
+    <script defer src="/static/js/alpine.min.js"></script>
+</head>
+<body class="h-full bg-stone-50 text-stone-900 font-sans antialiased" x-data="{ mobileNavOpen: false }">
+
+    {% if current_user %}
+    <div class="min-h-full flex flex-col md:flex-row">
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 border-r border-stone-200 bg-white">
+            {% include "components/sidebar.html" %}
+        </aside>
+
+        <!-- Mobile Top Nav -->
+        <header class="md:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-stone-200 sticky top-0 z-30">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white font-bold text-sm tracking-tight shadow-sm">
+                    CS
+                </div>
+                <span class="font-semibold text-stone-900 text-base tracking-tight">Campus Split</span>
+            </div>
+            <button @click="mobileNavOpen = !mobileNavOpen" type="button" class="p-2 rounded-lg text-stone-600 hover:bg-stone-100 focus:outline-none" aria-label="Toggle Navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path x-show="!mobileNavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path x-show="mobileNavOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <div x-show="mobileNavOpen" x-cloak class="md:hidden fixed inset-0 z-40 bg-stone-900/50 backdrop-blur-sm" @click="mobileNavOpen = false"></div>
+        <div x-show="mobileNavOpen" x-cloak class="md:hidden fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl flex flex-col" @click.stop>
+            {% include "components/sidebar.html" %}
+        </div>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 md:pl-64 flex flex-col min-h-screen">
+            <!-- Topbar Header -->
+            {% include "components/navbar.html" %}
+
+            <!-- Alerts Banner -->
+            {% include "components/alerts.html" %}
+
+            <!-- Page Content -->
+            <div class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+                {% block content %}{% endblock %}
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-auto border-t border-stone-200/80 px-6 py-4 text-xs text-stone-600 flex flex-col sm:flex-row items-center justify-between gap-2 bg-stone-100/60">
+                <span>Campus Split &bull; Academic Local Evaluation Prototype</span>
+                <span class="text-stone-600">Phase 1: Foundation Active</span>
+            </footer>
+        </main>
+    </div>
+    {% else %}
+    <!-- Public / Auth Layout -->
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-stone-50">
+        {% include "components/alerts.html" %}
+        {% block auth_content %}{% endblock %}
+    </div>
+    {% endif %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
